@@ -33,7 +33,13 @@ if which fzf >/dev/null 2>&1; then
 
     function fzf-git-status-widget() {
         local selected
-        selected=$($dotfiles/bin/unbuffer git status -sb | fzf --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70%)
+        selected=$($dotfiles/bin/unbuffer git status -sb | fzf -m --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70%)
+        if [[ "$selected" =~ \\S ]]; then
+            BUFFER+=$(strutil de <<< $selected | strutil newline -r=' ')
+            CURSOR=${#BUFFER}
+            zle redisplay
+            typeset -f zle-line-init >/dev/null && zle zle-line-init
+        fi
     }
     zle -N fzf-git-status-widget
     bindkey "^g^s" fzf-git-status-widget
