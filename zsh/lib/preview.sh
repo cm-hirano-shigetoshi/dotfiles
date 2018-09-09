@@ -7,7 +7,7 @@ if [ $# -ge 2 ] && echo "$1" | grep '^-\d\+' >/dev/null 2>&1; then
 fi
 
 if [ ! -e $1 ]; then
-    cmd=$(echo -n "$1" | sed -e 's/^\.\///')
+    cmd=$(echo "$1" | strutil newline -z | sed -e 's/^\.\///')
     which $cmd
 elif [ -f $1 ]; then
     if file $1 | grep '\(text\|empty\|: data$\)' >/dev/null 2>&1; then
