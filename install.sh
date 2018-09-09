@@ -11,7 +11,7 @@ if [ $# -gt 0 ] && [ "$1" = "--dev" ]; then
 fi
 
 download() {
-    git clone https://github.com/cm-hirano-shigetoshi/dotfiles
+    git clone https://github.com/cm-hirano-shigetoshi/dotfiles ~/dotfiles
 }
 
 dotfiles() {
