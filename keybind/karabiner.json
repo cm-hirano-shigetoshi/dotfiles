@@ -329,7 +329,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -364,7 +364,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -399,7 +399,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -434,7 +434,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -469,7 +469,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -504,7 +504,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -539,7 +539,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -574,7 +574,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -609,7 +609,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -644,7 +644,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -679,7 +679,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -714,7 +714,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
@@ -749,7 +749,7 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "Terminal"
+                                            "Terminal|iterm2"
                                         ],
                                         "type": "frontmost_application_if"
                                     }
