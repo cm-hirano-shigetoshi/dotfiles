@@ -1,4 +1,5 @@
 function mac() {
+    PATH="/usr/local/Cellar/gnu-sed/4.5/libexec/gnubin:$PATH"
     PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 }
 
