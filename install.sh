@@ -28,6 +28,9 @@ dotfiles() {
         rm -f $(basename $f)
         ln -s $f $(basename $f)
     done
+    if [ "$environment" = "darwin_amd64" ]; then
+        rm -f pbcopy
+    fi
     cd $OLDPWD
 }
 
