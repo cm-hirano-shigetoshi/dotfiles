@@ -9,7 +9,11 @@ touch $history_all
 
 function preexec_history() {
     local history_dir
-    cmd=$(strutil newline -z -r="\\n" <<< $1)
+    if [[ "$1" =~ ^[1-9]$ ]]; then
+        cmd=$(strutil newline -z -r="\\n" <<< $3)
+    else
+        cmd=$(strutil newline -z -r="\\n" <<< $1)
+    fi
     cat <<< "$cmd$(builtin pwd)" >> $history_all
     history_dir="${history_basedir}$(builtin pwd)"
     mkdir -p $history_dir
