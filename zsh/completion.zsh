@@ -53,7 +53,7 @@ __fzf_generic_path_completion() {
       leftover=${leftover/#\/}
       [ -z "$dir" ] && dir='.'
       [ "$dir" != "/" ] && dir="${dir/%\//}"
-      matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
+      matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
         echo -n "${(q)item}$suffix "
       done)
       matches=${matches% }
@@ -129,7 +129,7 @@ _fzf_complete_unalias() {
 }
 fzf-completion() {
   FZF_DEFAULT_OPTS="-e"
-  FZF_COMPLETION_OPTS="--preview=\"$dotfiles/zsh/lib/preview.sh {}\" --preview-window=right:70%"
+  FZF_COMPLETION_OPTS="--preview=\"$dotfiles/zsh/lib/preview.sh {}\" --preview-window=up:40%"
   local tokens cmd prefix trigger tail fzf matches lbuf d_cmds
   setopt localoptions noshwordsplit noksh_arrays noposixbuiltins
   # http://zsh.sourceforge.net/FAQ/zshfaq03.html
@@ -143,7 +143,7 @@ fzf-completion() {
   # Kill completion (do not require trigger sequence)
   if [ "$cmd" = kill -a "${LBUFFER[-1]}" = ' ' ]; then
     fzf="$(__fzfcmd_complete)"
-    matches=$(command ps -ef | sed 1d | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-50%} --min-height 15 --reverse $FZF_DEFAULT_OPTS --preview 'echo {}' --preview-window down:3:wrap $FZF_COMPLETION_OPTS" ${=fzf} -m | awk '{print $2}' | tr '\n' ' ')
+    matches=$(command ps -ef | sed 1d | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-50%} --min-height 15 --reverse $FZF_DEFAULT_OPTS --preview 'echo {}' --preview-window down:3:wrap" ${=fzf} -m | awk '{print $2}' | tr '\n' ' ')
     if [ -n "$matches" ]; then
       LBUFFER="$LBUFFER$matches"
     fi
