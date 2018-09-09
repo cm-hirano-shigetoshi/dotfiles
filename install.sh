@@ -36,7 +36,7 @@ keybind() {
     if [ "$environment" = "darwin_amd64" ]; then
         mkdir -p .config/karabiner
         rm -f .config/karabiner/karabiner.json
-        ln -s ~/dotfiles/keybind/karabiner.json .config/karabiner
+        ln ~/dotfiles/keybind/karabiner.json .config/karabiner
     fi
 }
 
