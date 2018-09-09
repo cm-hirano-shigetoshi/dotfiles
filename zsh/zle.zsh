@@ -99,7 +99,7 @@ function readPathLink() {
 zle -N readPathLink
 
 function copyBuffer() {
-    clip <(echo -n $BUFFER)
+    strutil newline -z <<< $BUFFER | pbcopy
 }
 zle -N copyBuffer
 
