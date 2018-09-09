@@ -1,6 +1,14 @@
 #!/bin/sh 
 
+environment="linux_amd64"
+if which sw_vers >/dev/null 2>&1 && sw_vers | grep 'ProductName:\s\+Mac OS X' >/dev/null 2>&1; then
+    environment="darwin_amd64"
+fi
 develop=false
+if [ $# -gt 0 ] && [ "$1" = "--dev" ]; then
+    develop=true
+    shift
+fi
 
 download() {
     git clone https://github.com/cm-hirano-shigetoshi/dotfiles
@@ -15,6 +23,12 @@ dotfiles() {
         rm -f $(basename $f)
         ln -s $f $(basename $f)
     done
+    cd dotfiles/bin
+    for f in $environment/*; do
+        rm -f $(basename $f)
+        ln -s $f $(basename $f)
+    done
+    cd $OLDPWD
 }
 
 vim() {
@@ -39,10 +53,10 @@ fzf() {
     EXTERNAL_APP_PATH=${EXTERNAL_APP_PATH:-$HOME/local}
     if ! which fzf >/dev/null 2>&1; then
         mkdir -p ${EXTERNAL_APP_PATH}/bin
-        wget https://github.com/junegunn/fzf-bin/releases/download/0.17.4/fzf-0.17.4-linux_amd64.tgz
-        tar xvf fzf-0.17.4-linux_amd64.tgz
+        wget https://github.com/junegunn/fzf-bin/releases/download/0.17.4/fzf-0.17.4-$environment.tgz
+        tar xvf fzf-0.17.4-$environment.tgz
         mv fzf ${EXTERNAL_APP_PATH}/bin
-        rm -f fzf-0.17.4-linux_amd64.tgz
+        rm -f fzf-0.17.4-$environment.tgz
     fi
     git clone https://github.com/junegunn/fzf .vim/pack/master/opt/github.com_junegunn_fzf
     find .vim/pack/master/opt/github.com_junegunn_fzf -maxdepth 1 -mindepth 1 | grep -v 'plugin$' | xargs rm -fr
@@ -53,7 +67,7 @@ fzf() {
 nim() {
     cd $HOME
     if $develop; then
-        if rm -fr /tmp/choosenim-0.3.2_linux_amd64 /tmp/untar-nim; then
+        if rm -fr /tmp/choosenim-0.3.2_$environment /tmp/untar-nim; then
             local count=0
             curl https://nim-lang.org/choosenim/init.sh -sSf > choosenim.sh
             while true; do
@@ -67,16 +81,12 @@ nim() {
                     break
                 fi
             done
-            rm -fr choosenim.sh /tmp/choosenim-0.3.2_linux_amd64 /tmp/untar-nim
+            rm -fr choosenim.sh /tmp/choosenim-0.3.2_$environment /tmp/untar-nim
         fi
     fi
 }
 
 
-if [ $# -gt 0 ] && [ "$1" = "--dev" ]; then
-    develop=true
-    shift
-fi
 if [ $# -eq 0 ]; then
     download
     dotfiles
@@ -91,3 +101,5 @@ else
     done
 fi
 
+unset develop
+unset environment
