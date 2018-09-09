@@ -31,6 +31,15 @@ dotfiles() {
     cd $OLDPWD
 }
 
+keybind() {
+    cd $HOME
+    if [ "$environment" = "darwin_amd64" ]; then
+        mkdir -p .config/karabiner
+        rm -f .config/karabiner/karabiner.json
+        ln -s ~/dotfiles/keybind/karabiner.json .config/karabiner
+    fi
+}
+
 vim() {
     cd $HOME
     mkdir -p .vim/backup
@@ -91,6 +100,7 @@ nim() {
 if [ $# -eq 0 ]; then
     download
     dotfiles
+    keybind
     vim
     cui
     fzf
