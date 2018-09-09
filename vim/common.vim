@@ -59,6 +59,9 @@ let mapleader = " "
 autocmd ColorScheme * highlight Comment ctermfg=7 ctermbg=4
 colorscheme default
 
+" SQLでもctrl+cの反応をよくする
+let g:ftplugin_sql_omni_key = '<C-j>'
+
 nnoremap // I#<Esc>
 nnoremap * *zz
 nnoremap # #zz
