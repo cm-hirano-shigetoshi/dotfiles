@@ -11,7 +11,7 @@ if which fzf >/dev/null 2>&1; then
 
     function fzf-git-branch() {
         local selected
-        selected=$(git branch --color=always | fzf --no-sort --reverse --ansi | sed -e 's/^\s*\*\?\s\+//')
+        selected=$(git branch -a --color=always | fzf --no-sort --reverse --ansi | sed -e 's/^\s*\*\?\s\+//' -e 's/ .*$//')
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
             git checkout $selected
         fi
