@@ -16,6 +16,7 @@ function __add_directory_session() {
 }
 
 function chpwd_directory() {
+    precmd_git
     builtin pwd >> $directory_all
     __add_directory_session
 }
