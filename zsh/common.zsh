@@ -7,7 +7,7 @@ typeset -U path
 # プロンプトの設定
 autoload -U colors
 colors
-PROMPT_STR="[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]"$'\n'"$ "
+PROMPT_STR="[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]%gb"$'\n'"$ "
 PROMPT=$PROMPT_STR
 # 言語設定
 export ENCODING="utf8"

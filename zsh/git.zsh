@@ -48,3 +48,13 @@ else
     alias gb='git branch; git chechout'
 fi
 
+precmd_git() {
+    local branch
+    branch=$(git branch 2>/dev/null)
+    if [ $? -eq 0 ]; then
+        branch=$(grep '^\s*\*' <<< $branch | awk '{print $2}')
+        PROMPT=$(strutil replace "%gb" " [35m($branch)[0m" <<< $PROMPT)
+    else
+        PROMPT=$(sed -e 's/%gb//' <<< $PROMPT)
+    fi
+}

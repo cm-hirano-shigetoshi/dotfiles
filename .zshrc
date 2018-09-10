@@ -22,5 +22,6 @@ function chpwd() {
 function precmd() {
     PIPESTATUS=$pipestatus
     precmd_pipestatus $PIPESTATUS "$@"
+    precmd_git $PIPESTATUS "$@"
 }
 
