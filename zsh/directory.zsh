@@ -74,7 +74,6 @@ if which fzf >/dev/null 2>&1; then
             elif [ "$key" = "ctrl-s" ]; then
                 directory_type="session"
             else
-                echo "$selected" >> ~/debug.txt
                 cd "$selected"
                 break
             fi
