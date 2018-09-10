@@ -24,7 +24,7 @@ dotfiles() {
         ln -s $f $(basename $f)
     done
     cd dotfiles/bin
-    for f in $environment/*; do
+    test -e $environment && for f in $environment/*; do
         rm -f $(basename $f)
         ln -s $f $(basename $f)
     done
