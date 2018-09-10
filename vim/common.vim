@@ -54,6 +54,8 @@ set isfname-=\=
 set tags+=~/.tags
 " mapleaderの設定
 let mapleader = " "
+" 最後の行に改行がないファイルをそのまま扱う
+set nofixeol
 
 " カラーリング
 autocmd ColorScheme * highlight Comment ctermfg=7 ctermbg=4
