@@ -18,7 +18,7 @@ compinit
 # 補完候補にも色を付ける
 zstyle ':completion:*' list-colors 'di=34;1'
 # ファイル名の途中でも補完候補とし、小文字は大文字としても検索
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[.-]=*'
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'l:|=* r:|[.-]=*'
 # _から始まる補完関数を補完候補にしない
 zstyle ':completion::complete:-command-::' tag-order !functions
 # Ctrl+s （ターミナルロック）を無効化
