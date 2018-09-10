@@ -15,10 +15,15 @@ foreach (@ARGV) {
 }
 
 my $target = "";
+my $who = `whoami | strutil newline -z`;
 foreach (split("\n", `tmux list-panes -F "#{pane_pid}#{pane_id}"`)) {
     if (/^([^%]+)(%.+)$/) {
         my ($p, $t) = ($1, $2);
-        if (`pstree $p` =~ /--vim$/) {
+        my $pstree = `pstree $p`;
+        if ($pstree =~ /--vim$/) {
+            $target = $t;
+            last;
+        } elsif ($pstree =~ /--- \d+ $who vim /) {
             $target = $t;
             last;
         }
