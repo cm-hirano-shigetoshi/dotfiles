@@ -23,14 +23,17 @@ dotfiles() {
         rm -f $(basename $f)
         ln -s $f $(basename $f)
     done
-    cd dotfiles/bin
-    test -e $environment && for f in $environment/*; do
+    EXTERNAL_APP_PATH=${EXTERNAL_APP_PATH:-$HOME/local}
+    mkdir -p $EXTERNAL_APP_PATH/bin
+    cd $EXTERNAL_APP_PATH/bin
+    for f in $(find ~/dotfiles/bin -maxdepth 1 -mindepth 1 -type f); do
         rm -f $(basename $f)
         ln -s $f $(basename $f)
     done
-    if [ "$environment" = "darwin_amd64" ]; then
-        rm -f pbcopy
-    fi
+    test -e ~/dotfiles/bin/$environment && for f in ~/dotfiles/bin/$environment/*; do
+        rm -f $(basename $f)
+        ln -s $f $(basename $f)
+    done
     cd $OLDPWD
 }
 
