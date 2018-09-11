@@ -315,6 +315,14 @@
                         "description": "Ctrl+c with IME OFF",
                         "manipulators": [
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "Terminal|iterm2"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": {
