@@ -1,3 +1,14 @@
+function git-fetch() {
+    if [ $(git fetch 2>&1 | wc -l) -gt 0 ]; then
+        local branch
+        branch=$(git branch | grep '^\s*\*' | awk '{print $2}')
+        git diff $branch origin/$branch
+    else
+        echo "No updates"
+    fi
+}
+alias gf='git-fetch'
+
 if which fzf >/dev/null 2>&1; then
     function fzf-git-add() {
         local selected
