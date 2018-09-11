@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-stdin=$(cat /proc/self/fd/0)
+stdin=$(cat /dev/stdin)
 while [ $# -gt 0 ]; do
     eval "echo \"$stdin\" | $1"
     shift
