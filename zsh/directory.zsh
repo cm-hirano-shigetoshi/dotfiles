@@ -16,7 +16,6 @@ function __add_directory_session() {
 }
 
 function chpwd_directory() {
-    precmd_git
     builtin pwd >> $directory_all
     __add_directory_session
 }
@@ -53,6 +52,7 @@ if which fzf >/dev/null 2>&1; then
                 break
             else
                 builtin cd "$selected"
+                precmd
                 zle reset-prompt
                 break
             fi
@@ -87,6 +87,7 @@ if which fzf >/dev/null 2>&1; then
         prev_index=$(($directory_index - 1))
         if [ $prev_index -gt 0 ]; then
             if builtin cd $(strutil line $prev_index <<< $directory_session); then
+                precmd
                 zle reset-prompt
                 __add_directory_session $prev_index
             fi
@@ -100,6 +101,7 @@ if which fzf >/dev/null 2>&1; then
         next_index=$(($directory_index + 1))
         if [ $next_index -le $(wc -l <<< $directory_session) ]; then
             if builtin cd $(strutil line $next_index <<< $directory_session); then
+                precmd
                 zle reset-prompt
                 __add_directory_session $next_index
             fi

@@ -49,6 +49,7 @@ bindkey "^[[3~" delete-char
 # 一つ上のディレクトリへ移動
 function cd_up() {
     cd ..
+    precmd
     zle reset-prompt
 }
 zle -N cd_up
