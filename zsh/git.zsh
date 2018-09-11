@@ -60,15 +60,18 @@ else
 fi
 
 precmd_git() {
-    local branch
-    branch=$(git branch 2>/dev/null)
+    git branch >/dev/null 2>&1
     if [ $? -eq 0 ]; then
-        branch=$(grep '^\s*\*' <<< $branch | awk '{print $2}')
+        local branch
+        branch=$(git branch | grep '^\s*\*' | awk '{print $2}' 2>/dev/null)
         local change=""
-        if [ $(git status -s | wc -l) -gt 0 ]; then
-            change="*"
+        if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
+            change+="!"
         fi
-        PROMPT=$(strutil replace "%gb" " [35m($branch$change)[0m" <<< $PROMPT)
+        if [ $(git status -s | wc -l) -gt 0 ]; then
+            change+="+"
+        fi
+        PROMPT=$(strutil replace "%gb" " [35m($change$branch)[0m" <<< $PROMPT)
     else
         PROMPT=$(sed -e 's/%gb//' <<< $PROMPT)
     fi
