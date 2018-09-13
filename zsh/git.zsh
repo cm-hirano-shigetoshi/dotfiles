@@ -31,7 +31,7 @@ if which fzf >/dev/null 2>&1; then
 
     function fzf-git-log-widget() {
         local selected
-        selected=($(git log --graph --decorate --oneline --abbrev=40 --color=always | fzf --no-sort --reverse --ansi | grep -o '[0-9a-z]\{40\}'))
+        selected=($(git log --graph --decorate --oneline --abbrev=40 --color=always | fzf -m --no-sort --reverse --ansi | grep -o '[0-9a-z]\{40\}'))
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
             BUFFER+="$selected"
             CURSOR=${#BUFFER}
@@ -65,6 +65,7 @@ precmd_git() {
         local branch
         branch=$(git branch | grep '^\s*\*' | awk '{print $2}' 2>/dev/null)
         local change=""
+        # TODO check origin/$branch is exist
         if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
             change+="!"
         fi
