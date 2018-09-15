@@ -6,13 +6,10 @@ if [ $# -ge 2 ] && echo "$1" | grep '^-\d\+' >/dev/null 2>&1; then
     shift
 fi
 
+branch=$(git branch | grep '^\*' | awk '{print $2}')
 if [ -e "$1" ]; then
-    git diff --color=always "$1" | head $n | grep '.'
-    if [ $? -ne 0 ]; then
-        head $n "$1"
-    fi
+    git diff --color=always "$branch" "$1"
 else
-    branch=$(git branch | grep '^\*' | strutil de)
     if echo "$1" | grep "^${branch}\.\.\." >/dev/null 2>&1; then
         git diff --color=always $branch
     else
