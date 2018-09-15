@@ -20,7 +20,7 @@ if which fzf >/dev/null 2>&1; then
     function fzf-git-branch() {
         local query=""
         if [ $# -gt 0 ]; then
-            if git branch | grep "^\s*$1" 2>&1 >/dev/null; then
+            if git branch | sed -e 's/^\s*\*//' | grep "^\s*$selected" >/dev/null 2>&1; then
                 git checkout $1
                 return
             else
@@ -31,7 +31,17 @@ if which fzf >/dev/null 2>&1; then
         local selected
         selected=$(git branch -a --color=always | fzf --no-sort --reverse --ansi --query="$query" | sed -e 's/^\s*\*\?\s\+//' -e 's/ .*$//')
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
-            git checkout $selected
+            if [[ "$selected" =~ ^remotes/origin/ ]]; then
+                local basename
+                basename=$(sed -e 's/^remotes\/origin\///' <<< "$selected")
+                if git branch | sed -e 's/^\s*\*//' | grep "^\s*$basename$" >/dev/null 2>&1; then
+                    git checkout $basename
+                else
+                    git checkout -b $basename origin/$basename
+                fi
+            else
+                git checkout $selected
+            fi
         fi
     }
     alias gb='fzf-git-branch'
