@@ -1,11 +1,8 @@
 function git-fetch() {
-    if [ $(git fetch 2>&1 | wc -l) -gt 0 ]; then
-        local branch
-        branch=$(git branch | grep '^\s*\*' | awk '{print $2}')
-        git diff $branch origin/$branch
-    else
-        echo "No updates"
-    fi
+    local branch
+    branch=$(git branch | grep '^\s*\*' | awk '{print $2}')
+    git fetch 2>&1
+    git diff $branch origin/$branch
 }
 alias gf='git-fetch'
 
