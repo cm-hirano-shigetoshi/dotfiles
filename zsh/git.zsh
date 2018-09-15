@@ -18,8 +18,18 @@ if which fzf >/dev/null 2>&1; then
     alias ga='fzf-git-add'
 
     function fzf-git-branch() {
+        local query=""
+        if [ $# -gt 0 ]; then
+            if git branch | grep "^\s*$1" 2>&1 >/dev/null; then
+                git checkout $1
+                return
+            else
+                echo "No such branch: $1" >&2
+                return 1
+            fi
+        fi
         local selected
-        selected=$(git branch -a --color=always | fzf --no-sort --reverse --ansi | sed -e 's/^\s*\*\?\s\+//' -e 's/ .*$//')
+        selected=$(git branch -a --color=always | fzf --no-sort --reverse --ansi --query="$query" | sed -e 's/^\s*\*\?\s\+//' -e 's/ .*$//')
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
             git checkout $selected
         fi
