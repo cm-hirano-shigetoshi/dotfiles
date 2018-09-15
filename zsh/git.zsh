@@ -62,9 +62,12 @@ precmd_git() {
         local branch
         branch=$(git branch | grep '^\s*\*' | awk '{print $2}' 2>/dev/null)
         local change=""
-        # TODO check origin/$branch is exist
-        if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
-            change+="!"
+        if git branch -a | grep "^\s*remotes/origin/$branch" >/dev/null 2>&1; then
+            if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
+                change+="!"
+            fi
+        else
+            change+="?"
         fi
         if [ $(git status -s | wc -l) -gt 0 ]; then
             change+="+"
