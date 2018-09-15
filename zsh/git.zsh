@@ -28,7 +28,7 @@ if which fzf >/dev/null 2>&1; then
 
     function fzf-git-log-widget() {
         local selected
-        selected=($(git log --graph --decorate --oneline --abbrev=40 --color=always | fzf -m --no-sort --reverse --ansi | grep -o '[0-9a-z]\{40\}'))
+        selected=($(git log --graph --decorate --oneline --abbrev=40 --color=always | fzf -m --no-sort --reverse --ansi --bind='tab:toggle+up,shift-tab:toggle+down' | grep -o '[0-9a-z]\{40\}'))
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
             BUFFER+="$selected"
             CURSOR=${#BUFFER}
