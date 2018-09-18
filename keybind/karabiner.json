@@ -825,6 +825,28 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Alfred Keyboard",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "international2"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "fn"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": "option"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
