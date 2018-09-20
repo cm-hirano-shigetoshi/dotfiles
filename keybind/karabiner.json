@@ -53,11 +53,11 @@
                         ]
                     },
                     {
-                        "description": "Eisuu Modifier",
+                        "description": "aaa",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "lang2",
+                                    "key_code": "japanese_pc_nfer",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -65,10 +65,16 @@
                                     }
                                 },
                                 "to": [
-                                    { "key_code": "fn" }
+                                    {"set_variable": { "name": "eisuu_mod", "value": 1} }
                                 ],
                                 "to_if_alone": [
                                     { "key_code": "japanese_eisuu" }
+                                ],
+                                "to_after_key_up": [
+                                    {"set_variable": { "name": "eisuu_mod", "value": 0} }
+                                ],
+                                "conditions": [
+                                    {"type": "variable_if", "name": "eisuu_mod", "value": 0 }
                                 ],
                                 "type": "basic"
                             }
@@ -91,28 +97,6 @@
                                 ],
                                 "to_if_alone": [
                                     { "key_code": "japanese_kana" }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Muhenkan Modifier",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "japanese_pc_nfer",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    { "key_code": "fn" }
-                                ],
-                                "to_if_alone": [
-                                    { "key_code": "japanese_eisuu" }
                                 ],
                                 "type": "basic"
                             }
@@ -198,11 +182,16 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "mandatory": [ "fn" ]
+                                        "optional": [ "any" ]
                                     }
                                 },
                                 "to": [
-                                    { "key_code": "right_arrow" }
+                                    {
+                                        "key_code": "right_arrow"
+                                    }
+                                ],
+                                "conditions": [
+                                    {"type": "variable_if", "name": "eisuu_mod", "value": 1 }
                                 ],
                                 "type": "basic"
                             }
