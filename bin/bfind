@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my ($realOptionEnds, $mindepth, $maxdepth) = (-1, 0, -1);
+my @args = ();
+for (my $i=0; $i<=$#ARGV; $i++) {
+    $_ = $ARGV[$i];
+    if ($realOptionEnds < 0) {
+        if (/^-[HLPD]$/ or /^-O\d+$/) {
+        } else {
+            $realOptionEnds = $i;
+            if (/^-/) {
+                push(@args, ".");
+            }
+        }
+    }
+    if ($_ eq "-mindepth") {
+        $mindepth = $ARGV[++$i];
+    } elsif ($_ eq "-maxdepth") {
+        $maxdepth = $ARGV[++$i];
+    } else {
+        push(@args, $_);
+    }
+}
+if (scalar(@ARGV) <= 0) {
+    @args = (".");
+    $realOptionEnds = 0;
+}
+
+my $head = join(" ", splice(@args, 0, $realOptionEnds)) . " \"" . shift(@args) . "\"";
+my $tail = "\"" . join("\" \"", @args) . "\"";
+$tail =~ s/^\""$//;
+
+for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
+    system(&find($d) . " | grep .");
+    if ($?) { last; }
+}
+
+sub find {
+    my $d = $_[0];
+    #open(OUT, ">>", $ENV{HOME} . "/debug.txt");
+    #print OUT "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail . "\n";
+    #close(OUT);
+    return "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail;
+}
