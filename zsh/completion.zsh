@@ -53,16 +53,33 @@ __fzf_generic_path_completion() {
       leftover=${leftover/#\/}
       [ -z "$dir" ] && dir='.'
       [ "$dir" != "/" ] && dir="${dir/%\//}"
-      matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
-        echo -n "${(q)item}$suffix "
-      done)
-      matches=${matches% }
-      if [ -n "$matches" ]; then
-        LBUFFER="$lbuf$matches$tail"
-      fi
+      #matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
+        #echo -n "${(q)item}$suffix "
+      #done)
+      local orig_list list out
+      orig_list=$(eval "$compgen $(printf %q "$dir")")
+      list=$orig_list
+      while out=$(FZF_DEFAULT_OPTS="--print-query --expect=f1,f2,f3,f4,f5,f6,f7,f8,f9 --height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" <<< $list); do
+        local query key selected >/dev/null
+        query=$(strutil line 1 <<< "$out")
+        key=$(strutil line 2 <<< "$out")
+        selected=$(strutil line 3: <<< "$out")
+        if [[ "$key" =~ ^f[1-8]$ ]]; then
+          list=$(grep -v '/' <<< $orig_list)
+        elif [ "$key" = "f9" ]; then
+          list=$orig_list
+        else
+          if [ -n "$selected" ]; then
+            LBUFFER="$lbuf$(strutil newline -z -r=' ' <<< $selected)$tail"
+          fi
+          zle redisplay
+          typeset -f zle-line-init >/dev/null && zle zle-line-init
+          return
+        fi
+      done
       zle redisplay
       typeset -f zle-line-init >/dev/null && zle zle-line-init
-      break
+      return
     fi
     dir=$(dirname "$dir")
     dir=${dir%/}/
