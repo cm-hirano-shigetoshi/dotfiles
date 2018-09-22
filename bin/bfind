@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+my ($realOptionEnds, $mindepth, $maxdepth) = (-1, 0, -1);
+my @args = ();
+for (my $i=0; $i<=$#ARGV; $i++) {
+    $_ = $ARGV[$i];
+    if ($realOptionEnds < 0) {
+        if (/^-[HLPD]$/ or /^-O\d+$/) {
+        } else {
+            $realOptionEnds = $i;
+        }
+    }
+    if ($_ eq "-mindepth") {
+        $mindepth = $ARGV[++$i];
+    } elsif ($_ eq "-maxdepth") {
+        $maxdepth = $ARGV[++$i];
+    } else {
+        push(@args, $_);
+    }
+}
+
+my $head = join(" ", splice(@args, 0, $realOptionEnds)) . "\"" . $args[$realOptionEnds] . "\"";
+my $tail = "\"" . join("\" \"", splice(@args, $realOptionEnds+1)) . "\"";
+$tail =~ s/^\""$//;
+
+for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
+    system(&find($d) . " | grep .");
+    if ($?) { last; }
+}
+
+sub find {
+    my $d = $_[0];
+    #print STDERR "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail . "\n";
+    return "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail;
+}
