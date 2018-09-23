@@ -2,6 +2,8 @@
 use strict;
 use warnings;
 
+#open(OUT, ">>", $ENV{HOME} . "/.debug");
+
 my ($realOptionEnds, $mindepth, $maxdepth) = (-1, 1, -1);
 my @args = ();
 for (my $i=0; $i<=$#ARGV; $i++) {
@@ -30,17 +32,21 @@ my $path = shift(@args);
 my $tail = "\"" . join("\" \"", @args) . "\"";
 $tail =~ s/^\""$//;
 
-system(&find(0));
-for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
-    system(&find($d) . " | strutil count -n=$d /");
-    if ($?) { last; }
+system(&find(0) . ' | grep -v ^/$');
+my $minAttemptDepth = 5;
+if ($maxdepth >= 0 && $maxdepth < $minAttemptDepth) {
+    $minAttemptDepth = $maxdepth;
 }
+for (my $d=$mindepth; $d<$minAttemptDepth; $d++) {
+    system(&find($d) . " | strutil count -n=$d /");
+    if ($? != 0 && $d >= $minAttemptDepth) { last; }
+}
+system(&find($minAttemptDepth) . " | strutil count -s -n=$minAttemptDepth+ /");
 
 sub find {
     my $d = $_[0];
-    #open(OUT, ">>", $ENV{HOME} . "/.debug");
     #print OUT "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail . "\n";
-    #close(OUT);
     return "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail;
 }
 
+#close(OUT);
