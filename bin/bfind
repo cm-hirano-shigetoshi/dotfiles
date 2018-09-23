@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-my ($realOptionEnds, $mindepth, $maxdepth) = (-1, 0, -1);
+my ($realOptionEnds, $mindepth, $maxdepth) = (-1, 1, -1);
 my @args = ();
 for (my $i=0; $i<=$#ARGV; $i++) {
     $_ = $ARGV[$i];
@@ -28,19 +28,22 @@ if (scalar(@ARGV) <= 0) {
     $realOptionEnds = 0;
 }
 
-my $head = join(" ", splice(@args, 0, $realOptionEnds)) . " \"" . shift(@args) . "\"";
+my $head = join(" ", splice(@args, 0, $realOptionEnds));
+my $path = shift(@args);
 my $tail = "\"" . join("\" \"", @args) . "\"";
 $tail =~ s/^\""$//;
 
+print $path . "\n";
 for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
-    system(&find($d) . " | grep .");
+    system(&find($d) . " | strutil count -n=$d /");
     if ($?) { last; }
 }
 
 sub find {
     my $d = $_[0];
     #open(OUT, ">>", $ENV{HOME} . "/debug.txt");
-    #print OUT "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail . "\n";
+    #print OUT "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail . "\n";
     #close(OUT);
-    return "find " . $head . " -mindepth " . $d . " -maxdepth " . $d . " " . $tail;
+    return "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail;
 }
+
