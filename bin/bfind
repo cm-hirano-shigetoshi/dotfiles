@@ -30,7 +30,7 @@ my $path = shift(@args);
 my $tail = "\"" . join("\" \"", @args) . "\"";
 $tail =~ s/^\""$//;
 
-print $path . "\n";
+system(&find(0));
 for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
     system(&find($d) . " | strutil count -n=$d /");
     if ($?) { last; }
@@ -38,7 +38,7 @@ for (my $d=$mindepth; $maxdepth<0 || $d<=$maxdepth; $d++) {
 
 sub find {
     my $d = $_[0];
-    #open(OUT, ">>", $ENV{HOME} . "/debug.txt");
+    #open(OUT, ">>", $ENV{HOME} . "/.debug");
     #print OUT "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail . "\n";
     #close(OUT);
     return "find " . $head . " \"" . $path . "\" -maxdepth " . $d . " " . $tail;
