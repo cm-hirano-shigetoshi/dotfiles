@@ -59,6 +59,5 @@ bindkey "^d^u" cd_up
 alias ls='ls --color'
 alias grep='grep --color'
 alias sort='LANG=C sort'
-alias vim="sh $dotfiles/zsh/tovim.sh"
 alias now='date +%Y%m%d_%H%M%S_%3N'
 
