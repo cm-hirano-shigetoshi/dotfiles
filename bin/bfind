@@ -10,9 +10,6 @@ for (my $i=0; $i<=$#ARGV; $i++) {
         if (/^-[HLPD]$/ or /^-O\d+$/) {
         } else {
             $realOptionEnds = $i;
-            if (/^-/) {
-                push(@args, ".");
-            }
         }
     }
     if ($_ eq "-mindepth") {
