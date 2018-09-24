@@ -1,6 +1,69 @@
-#!/bin/sh
-set -eu
+#!/usr/bin/perl
+use strict;
+use warnings;
 
-CMD=$(perl $(dirname $(readlink -e $0))/tovim.pl "$@")
-eval $CMD
+if (!defined $ENV{TMUX} || $ENV{TMUX} eq "") {
+    &normalOpen(\@ARGV);
+    exit;
+}
+
+foreach (@ARGV) {
+    if (/^-/) {
+        &normalOpen(\@ARGV);
+        exit;
+    }
+}
+
+my $target = "";
+my $who = `whoami | strutil newline -z`;
+foreach (split("\n", `tmux list-panes -F "#{pane_pid}#{pane_id}"`)) {
+    if (/^([^%]+)(%.+)$/) {
+        my ($p, $t) = ($1, $2);
+        my $pstree = `pstree $p`;
+        if ($pstree =~ /--vim$/) {
+            $target = $t;
+            last;
+        } elsif ($pstree =~ /--- \d+ $who vim /) {
+            $target = $t;
+            last;
+        }
+    }
+}
+
+if ($target eq "") {
+    &normalOpen(\@ARGV);
+    exit;
+}
+
+my $abstPaths = &getPaths(\@ARGV);
+system("tmux send-keys -t$target \":ar$abstPaths\" C-m; tmux select-pane -t$target");
+
+sub normalOpen {
+    my $args = "";
+    foreach (@{$_[0]}) {
+        $args .= " '" . &readlink($_) . "'";
+    }
+    system("vim$args");
+}
+
+sub readlink {
+    if ($_[0] =~ m%^(/mnt/|/)[a-z]/%) {
+        return `readlink -m $_[0] | strutil newline -z`;
+    }
+    return $_[0];
+}
+
+sub getPaths {
+    my $paths = "";
+    foreach (@{$_[0]}) {
+        if (/ /) {
+            $_ = `readlink -m "$_" | strutil newline -z`;
+            s/ /\\ /g;
+            $paths .= " " . $_;
+        } else {
+            $paths .= " " . `readlink -m $_ | strutil newline -z`;
+        }
+    }
+    return $paths;
+}
 
