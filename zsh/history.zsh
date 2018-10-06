@@ -56,7 +56,8 @@ if which fzf >/dev/null 2>&1; then
         local fzf_default_opts history_type out
         fzf_default_opts="--query=\"\" --print-query --no-sort --ansi -e +m --expect=ctrl-c,ctrl-a,ctrl-e,ctrl-r,ctrl-d,ctrl-s,ctrl-h,ctrl-t,F1,F2,F3,F4,F5,F6,F7,F8,F9 "
         history_type=${HISTORY_TYPE:-"directory"}
-        while out=$(read_history $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf); do
+        while true; do
+            out=$(read_history $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
             local query key selected >/dev/null
             query=$(strutil line 1 <<< "$out")
             key=$(strutil line 2 <<< "$out")
