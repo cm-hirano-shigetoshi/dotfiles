@@ -48,7 +48,7 @@ if which fzf >/dev/null 2>&1; then
         local history_type
         history_type=$1
         if [ "$history_type" = "history" ]; then
-            history | sed -e 's/^\s*\S\+\s*//' -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique | grep -i "^$LBUFFER"
+            history | sed -e 's/^\s*\S\+\s*//' -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique
         elif [ "$history_type" = "directory" ]; then
             local history_here
             history_here="${history_basedir}$(builtin pwd)/history"
@@ -56,11 +56,11 @@ if which fzf >/dev/null 2>&1; then
                 mkdir -p $(dirname $history_here)
                 touch $history_here
             fi
-            tac $history_here | sed -e 's/\(\s\|\\n\)/\n/g' | strutil unique | grep -i "^$LBUFFER"
+            tac $history_here | sed -e 's/\(\s\|\\n\)/\n/g' | strutil unique
         elif [ "$history_type" = "all" ]; then
-            sed -e 's/.*$//' -e 's/\(\s\|\\n\)/\n/g' $history_all | tac | strutil unique | grep -i "^$LBUFFER"
+            sed -e 's/.*$//' -e 's/\(\s\|\\n\)/\n/g' $history_all | tac | strutil unique
         elif [ "$history_type" = "session" ]; then
-            echo -e $history_session | sed -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique | grep -i "^$LBUFFER"
+            echo -e $history_session | sed -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique
         fi
     }
 
@@ -72,8 +72,13 @@ if which fzf >/dev/null 2>&1; then
         fi
     }
 
-    function __add_buffer() {
-        BUFFER+=$(strutil newline -t=1 -r=" " <<< "$1")
+    function __insert_buffer() {
+        local insert
+        insert=$(strutil newline -t=1 -r=" " <<< "$1")
+        BUFFER="$LBUFFER$insert$RBUFFER"
+        CURSOR+=${#insert}
+        zle redisplay
+        typeset -f zle-line-init >/dev/null && zle zle-line-init
     }
 
     function fzf-history-widget() {
@@ -136,21 +141,20 @@ if which fzf >/dev/null 2>&1; then
     bindkey "^r" fzf-history-widget
 
     function fzf-history-word-widget() {
-        local fzf_default_opts history_type out
-        fzf_default_opts="--bind='tab:toggle+up,shift-tab:toggle+down' --query=\"\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-a,ctrl-e,ctrl-r,ctrl-d,ctrl-s,ctrl-h, "
+        local query rbuf fzf_default_opts history_type out
+        query=$(strutil column -S -1 <<< "$LBUFFER")
+        rbuf=${RBUFFER#?}
+        CURSOR+=-${#query}
+        BUFFER="$LBUFFER$buf"
+        fzf_default_opts="--bind='tab:toggle+up,shift-tab:toggle+down' --query=\"$query\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-r,ctrl-d,ctrl-s,ctrl-h "
         history_type=${HISTORY_TYPE:-"all"}
         while true; do
             out=$(__read_history_word $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
-            local query key selected >/dev/null
+            local key selected >/dev/null
             query=$(strutil line 1 <<< "$out")
             key=$(strutil line 2 <<< "$out")
             selected=$(strutil line 3: <<< "$out")
-            if [ "$key" = "ctrl-a" ]; then
-                __add_buffer "$selected"
-                zle redisplay
-                typeset -f zle-line-init >/dev/null && zle zle-line-init
-                break
-            elif [ "$key" = "ctrl-r" ]; then
+            if [ "$key" = "ctrl-r" ]; then
                 history_type="all"
             elif [ "$key" = "ctrl-d" ]; then
                 history_type="directory"
@@ -165,10 +169,7 @@ if which fzf >/dev/null 2>&1; then
                 typeset -f zle-line-init >/dev/null && zle zle-line-init
                 break
             else
-                __add_buffer "$selected"
-                CURSOR=${#BUFFER}
-                zle redisplay
-                typeset -f zle-line-init >/dev/null && zle zle-line-init
+                __insert_buffer "$selected"
                 break
             fi
         done
