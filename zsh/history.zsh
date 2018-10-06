@@ -146,7 +146,7 @@ if which fzf >/dev/null 2>&1; then
         rbuf=${RBUFFER#?}
         CURSOR+=-${#query}
         BUFFER="$LBUFFER$buf"
-        fzf_default_opts="--bind='tab:toggle+up,shift-tab:toggle+down' --query=\"$query\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-r,ctrl-d,ctrl-s,ctrl-h "
+        fzf_default_opts="--query=\"$query\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-r,ctrl-d,ctrl-s,ctrl-h "
         history_type=${HISTORY_TYPE:-"all"}
         while true; do
             out=$(__read_history_word $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
