@@ -22,7 +22,7 @@ function preexec_history() {
 }
 
 if which fzf >/dev/null 2>&1; then
-    function read_history() {
+    function __read_history() {
         local history_type
         history_type=$1
         if [ "$history_type" = "history" ]; then
@@ -44,6 +44,26 @@ if which fzf >/dev/null 2>&1; then
         fi
     }
 
+    function __read_history_word() {
+        local history_type
+        history_type=$1
+        if [ "$history_type" = "history" ]; then
+            history | sed -e 's/^\s*\S\+\s*//' -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique | grep -i "^$LBUFFER"
+        elif [ "$history_type" = "directory" ]; then
+            local history_here
+            history_here="${history_basedir}$(builtin pwd)/history"
+            if [ ! -e $history_here ]; then
+                mkdir -p $(dirname $history_here)
+                touch $history_here
+            fi
+            tac $history_here | sed -e 's/\(\s\|\\n\)/\n/g' | strutil unique | grep -i "^$LBUFFER"
+        elif [ "$history_type" = "all" ]; then
+            sed -e 's/.*$//' -e 's/\(\s\|\\n\)/\n/g' $history_all | tac | strutil unique | grep -i "^$LBUFFER"
+        elif [ "$history_type" = "session" ]; then
+            echo -e $history_session | sed -e 's/\(\s\|\\n\)/\n/g' | tac | strutil unique | grep -i "^$LBUFFER"
+        fi
+    }
+
     function __set_buffer() {
         if [ "$1" = "all_there" ]; then
             BUFFER=$(strutil line $(awk '{print $1}' <<< "$2") $history_all | sed -e 's/^\(.*\)\([^]\+\)$/(cd "\2" \&\& \1)/' -e 's/\\n/\n/g')
@@ -52,12 +72,16 @@ if which fzf >/dev/null 2>&1; then
         fi
     }
 
+    function __add_buffer() {
+        BUFFER+=$(strutil newline -t=1 -r=" " <<< "$1")
+    }
+
     function fzf-history-widget() {
         local fzf_default_opts history_type out
         fzf_default_opts="--query=\"\" --print-query --no-sort --ansi -e +m --expect=ctrl-c,ctrl-a,ctrl-e,ctrl-r,ctrl-d,ctrl-s,ctrl-h,ctrl-t,F1,F2,F3,F4,F5,F6,F7,F8,F9 "
         history_type=${HISTORY_TYPE:-"directory"}
         while true; do
-            out=$(read_history $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
+            out=$(__read_history $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
             local query key selected >/dev/null
             query=$(strutil line 1 <<< "$out")
             key=$(strutil line 2 <<< "$out")
@@ -110,5 +134,46 @@ if which fzf >/dev/null 2>&1; then
     }
     zle -N fzf-history-widget
     bindkey "^r" fzf-history-widget
+
+    function fzf-history-word-widget() {
+        local fzf_default_opts history_type out
+        fzf_default_opts="--bind='tab:toggle+up,shift-tab:toggle+down' --query=\"\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-a,ctrl-e,ctrl-r,ctrl-d,ctrl-s,ctrl-h, "
+        history_type=${HISTORY_TYPE:-"all"}
+        while true; do
+            out=$(__read_history_word $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
+            local query key selected >/dev/null
+            query=$(strutil line 1 <<< "$out")
+            key=$(strutil line 2 <<< "$out")
+            selected=$(strutil line 3: <<< "$out")
+            if [ "$key" = "ctrl-a" ]; then
+                __add_buffer "$selected"
+                zle redisplay
+                typeset -f zle-line-init >/dev/null && zle zle-line-init
+                break
+            elif [ "$key" = "ctrl-r" ]; then
+                history_type="all"
+            elif [ "$key" = "ctrl-d" ]; then
+                history_type="directory"
+            elif [ "$key" = "ctrl-s" ]; then
+                history_type="session"
+            elif [ "$key" = "ctrl-h" ]; then
+                history_type="history"
+            elif [ "$key" = "ctrl-c" ]; then
+                BUFFER="$query"
+                CURSOR=${#BUFFER}
+                zle redisplay
+                typeset -f zle-line-init >/dev/null && zle zle-line-init
+                break
+            else
+                __add_buffer "$selected"
+                CURSOR=${#BUFFER}
+                zle redisplay
+                typeset -f zle-line-init >/dev/null && zle zle-line-init
+                break
+            fi
+        done
+    }
+    zle -N fzf-history-word-widget
+    bindkey "^s" fzf-history-word-widget
 fi
 
