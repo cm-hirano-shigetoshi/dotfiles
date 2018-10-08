@@ -9,10 +9,21 @@
 # - $FZF_COMPLETION_TRIGGER (default: '**')
 # - $FZF_COMPLETION_OPTS    (default: empty)
 
+__filter_depth() {
+    local depth=$1
+    if [ $depth -eq -1 ]; then
+        echo ""
+    elif [ $depth -ge 0 ]; then
+        echo "-mindepth $depth -maxdepth $depth"
+    fi
+}
+
 # To use custom commands instead of find, override _fzf_compgen_{path,dir}
 if ! declare -f _fzf_compgen_path > /dev/null; then
   _fzf_compgen_path() {
-    command bfind -L "$1" \
+    local depth=
+    depth=$(__filter_depth $2)
+    command find -L "$1" ${=depth} \
       -name .git -prune -o -name .svn -prune -o \( -type d -o -type f -o -type l \) \
       -print 2> /dev/null | sed 's@^\./@@'
   }
@@ -20,7 +31,9 @@ fi
 
 if ! declare -f _fzf_compgen_dir > /dev/null; then
   _fzf_compgen_dir() {
-    command bfind -L "$1" \
+    local depth=
+    depth=$(__filter_depth $2)
+    command find -L "$1" ${=depth} \
       -name .git -prune -o -name .svn -prune -o -type d \
       -print 2> /dev/null | sed 's@^\./@@'
   }
@@ -52,21 +65,16 @@ __fzf_generic_path_completion() {
       leftover=${leftover/#\/}
       [ -z "$dir" ] && dir='.'
       [ "$dir" != "/" ] && dir="${dir/%\//}"
-      #matches=$(eval "$compgen $(printf %q "$dir")" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" | while read item; do
-        #echo -n "${(q)item}$suffix "
-      #done)
-      local orig_list list out
-      orig_list=$(eval "$compgen $(printf %q "$dir")")
-      list=$orig_list
-      while out=$(FZF_DEFAULT_OPTS="--print-query --expect=f1,f2,f3,f4,f5,f6,f7,f8,f9 --height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover" <<< $list); do
-        local query key selected >/dev/null
+      local depth
+      depth=-1
+      while true; do
+        local out query key selected >/dev/null
+        out=$(eval "$compgen $(printf %q "$dir") $depth" | FZF_DEFAULT_OPTS="--print-query --expect=f1,f2,f3,f4,f5,f6,f7,f8,f9 --height ${FZF_TMUX_HEIGHT:-80%} --reverse $FZF_DEFAULT_OPTS $FZF_COMPLETION_OPTS" ${=fzf} ${=fzf_opts} -q "$leftover")
         query=$(strutil line 1 <<< "$out")
         key=$(strutil line 2 <<< "$out")
         selected=$(strutil line 3: <<< "$out")
-        if [[ "$key" =~ ^f[1-8]$ ]]; then
-          list=$(grep -v '/' <<< $orig_list)
-        elif [ "$key" = "f9" ]; then
-          list=$orig_list
+        if [[ $key =~ ^f[1-9]$ ]]; then
+          depth=${key#f}
         else
           if [ -n "$selected" ]; then
             LBUFFER="$lbuf$(strutil newline -z -r=' ' <<< $selected)$tail"
