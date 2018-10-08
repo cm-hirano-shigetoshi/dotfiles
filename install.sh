@@ -49,6 +49,12 @@ keybind() {
 vim() {
     cd $HOME
     mkdir -p .vim/backup
+    for d in ~/dotfiles/vim/before/*; do
+        rm -fr .vim/$(basename $d)
+        ln -s $d .vim/
+    done
+    rm -fr .vim/after
+    ln -s ~/dotfiles/vim/after .vim/
     mkdir -p .vim/pack/master/{opt,start}
     git clone https://github.com/tpope/vim-surround .vim/pack/master/opt/github.com_tpope_vim-suround
     git clone https://github.com/kana/vim-textobj-user .vim/pack/master/opt/github.com_kana_vim-textobj-user
