@@ -1,4 +1,10 @@
+function! s:filetype_nim()
+    packadd github.com_zah_nim.vim
+    set filetype=nim
+endfunction
+
 augroup nim
   autocmd!
-  au BufNewFile,BufRead *.nim,*.nims,*.nimble set filetype=nim
+  autocmd BufNewFile,BufRead *.nim,*.nims,*.nimble call s:filetype_nim()
 augroup END
+

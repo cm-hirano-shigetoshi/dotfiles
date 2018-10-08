@@ -1,3 +1,5 @@
+" 色をつける
+syntax on
 " filetypeによるplugin,indentの設定ファイルを読み込む
 filetype plugin indent on
 " 書き込み権限がないとき、!をつけても上書きしない
