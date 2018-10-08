@@ -1,7 +1,3 @@
-" 色をつける
-syntax on
-" filetypeによるplugin,indentの設定ファイルを読み込む
-filetype plugin indent on
 " 書き込み権限がないとき、!をつけても上書きしない
 set cpoptions+=W
 " 折り返したときは行番号の部分にも描画する
