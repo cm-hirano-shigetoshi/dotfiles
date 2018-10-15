@@ -233,8 +233,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "a",
-                                        "modifiers": "control"
+                                        "key_code": "left_arrow",
+                                        "modifiers": "command"
                                     }
                                 ],
                                 "type": "basic"
@@ -254,8 +254,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "e",
-                                        "modifiers": "control"
+                                        "key_code": "right_arrow",
+                                        "modifiers": "command"
                                     }
                                 ],
                                 "type": "basic"
