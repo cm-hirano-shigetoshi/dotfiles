@@ -100,7 +100,7 @@ zle -N readPathLink
 
 function __expand-buffer() {
   local result
-  result=$(sh <<< "$BUFFER" | fzf -m -0 -1 | strutil newline -z -r=' ')
+  result=$(sh <<< "$BUFFER" | fzf -m -0 -1 -e --ansi | strutil newline -z -r=' ')
   BUFFER="$result"
   CURSOR=$#BUFFER
   zle redisplay
