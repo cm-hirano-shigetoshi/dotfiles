@@ -8,3 +8,8 @@ augroup nim
   autocmd BufNewFile,BufRead *.nim,*.nims,*.nimble call s:filetype_nim()
 augroup END
 
+augroup sql
+  autocmd!
+  autocmd BufNewFile,BufRead *.ddl set filetype=sql
+augroup END
+
