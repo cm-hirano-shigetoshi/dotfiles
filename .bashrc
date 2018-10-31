@@ -1,13 +1,13 @@
-if [ $# -eq 0 ] && [[ "$0" =~ ^-?bash$ ]]; then
-    dotfiles=$(dirname $(readlink -e ~/.bashrc))
-else
-    dotfiles=$(dirname $(readlink -e $0))
-fi
-
 if ! shopt -q login_shell; then
     if [ -f ~/.bash_profile ]; then
         . ~/.bash_profile
     fi
+fi
+
+if [ $# -eq 0 ] && [[ "$0" =~ ^-?bash$ ]]; then
+    dotfiles=$(dirname $(readlink -e ~/.bashrc))
+else
+    dotfiles=$(dirname $(readlink -e $0))
 fi
 
 if [ -f /etc/bashrc ]; then
