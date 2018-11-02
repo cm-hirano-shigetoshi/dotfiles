@@ -15,6 +15,26 @@
                 },
                 "rules": [
                     {
+                        "description": "LeftClick",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": [ "fn" ],
+                                        "optional": [ "any" ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "button1"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Escape",
                         "manipulators": [
                             {
