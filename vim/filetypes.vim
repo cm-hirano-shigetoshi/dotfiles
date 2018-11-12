@@ -10,6 +10,6 @@ augroup END
 
 augroup sql
   autocmd!
-  autocmd BufNewFile,BufRead *.ddl set filetype=sql
+  autocmd BufNewFile,BufRead *.ddl,*.sql.vm set filetype=sql
 augroup END
 
