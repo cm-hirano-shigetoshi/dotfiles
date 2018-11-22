@@ -1,4 +1,4 @@
-let g:fzf_complete_path_options = ['-e', '--ansi', '--preview', g:dotfiles . '/zsh/lib/preview.sh {}', '--preview-window', 'right:70%']
+let g:fzf_files_options = ['-e', '--ansi', '--preview', g:dotfiles . '/zsh/lib/preview.sh {}', '--preview-window', 'top:60%']
 
 nnoremap <S-Tab> :Files<CR>
 nnoremap <Tab>f :History<CR>
