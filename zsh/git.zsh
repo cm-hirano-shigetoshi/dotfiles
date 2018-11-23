@@ -9,7 +9,7 @@ alias gf='git-fetch'
 if which fzf >/dev/null 2>&1; then
     function fzf-git-add() {
         local selected
-        selected=($($dotfiles/bin/unbuffer git status -s | fzf --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70% -m | awk '{print $2}'))
+        selected=($($dotfiles/bin/unbuffer git status -s | fzf --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70% -m | strutil island -1))
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
             sed -e 's/\s\+/\n/g' -e 's/^/add /' <<< "$selected"
             git add $selected
