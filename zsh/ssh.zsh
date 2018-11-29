@@ -1,9 +1,9 @@
 function set_pane_style() {
-  grep '^\s*Host.*#\[[^\]\+\]$' ~/.ssh/config | while read line; do
-    if grep "$(strutil island 2 <<< $line)" <<< "$*" >/dev/null 2>&1; then
-      tmux select-pane -P "$(vimu 'df#xf]D' <<< $line)"
-    fi
-  done
+  local style
+  style=$(grep '^Host .*#' ~/.ssh/config | strutil shift | sed 's/ *#/\t/' | strutil preg -1 "$*")
+  if [[ -n "$style" ]]; then
+    tmux select-pane -P "$style"
+  fi
 }
 
 function ssh() {
@@ -12,7 +12,7 @@ function ssh() {
     #trap "tmux select-pane -t $pane_id -P 'default'" 1 2 3 15
     trap "tmux select-pane -P 'default'" 1 2 3 15
 
-    set_pane_style "$@"
+    set_pane_style "$0" "$@"
 
     command ssh $@
 
