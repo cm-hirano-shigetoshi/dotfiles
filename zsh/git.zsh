@@ -63,7 +63,7 @@ if which fzf >/dev/null 2>&1; then
         local selected
         selected=$($dotfiles/bin/unbuffer git status -sb | fzf -m --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70%)
         if grep '\S' <<< "$selected" >/dev/null 2>&1; then
-            BUFFER+=$(strutil de <<< $selected | strutil newline -r=' ')
+            BUFFER+=$(strutil shift <<< $selected | strutil newline -r=' ')
             CURSOR=${#BUFFER}
             zle redisplay
             typeset -f zle-line-init >/dev/null && zle zle-line-init
