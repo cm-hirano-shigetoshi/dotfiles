@@ -142,7 +142,7 @@ if which fzf >/dev/null 2>&1; then
 
     function fzf-history-word-widget() {
         local query rbuf fzf_default_opts history_type out
-        query=$(strutil island -1 <<< "$LBUFFER")
+        query=$(strutil island -- -1 <<< "$LBUFFER")
         rbuf=${RBUFFER#?}
         CURSOR+=-${#query}
         BUFFER="$LBUFFER$buf"
