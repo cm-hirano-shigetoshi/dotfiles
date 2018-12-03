@@ -18,3 +18,5 @@ augroup END
 let g:EasyMotion_do_mapping = 0
 map s <Plug>(easymotion-bd-f)
 
+nmap S ys
+
