@@ -60,6 +60,7 @@ vim() {
     git clone https://github.com/tpope/vim-surround .vim/pack/master/opt/github.com_tpope_vim-suround
     git clone https://github.com/kana/vim-textobj-user .vim/pack/master/opt/github.com_kana_vim-textobj-user
     git clone https://github.com/kana/vim-textobj-indent .vim/pack/master/opt/github.com_kana_vim-textobj-indent
+    git clone https://github.com/easymotion/vim-easymotion .vim/pack/master/opt/github.com_easymotion_vim-easymotion
     if $develop; then
         git clone https://github.com/zah/nim.vim .vim/pack/master/opt/github.com_zah_nim.vim
     fi
