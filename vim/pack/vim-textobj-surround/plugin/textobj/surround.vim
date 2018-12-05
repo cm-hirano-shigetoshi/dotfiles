@@ -54,7 +54,7 @@ function! s:get_range()
         endif
         let right_pos = s:get_right(left_char_pos['char'], col('.')-1)
         if right_pos < 0
-            let from = left_char_pos['pos']
+            let from = left_char_pos['pos'] - 1
             continue
         endif
         return [left_char_pos['pos']+1, right_pos+1]
