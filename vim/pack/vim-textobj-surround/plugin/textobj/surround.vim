@@ -11,28 +11,26 @@ call textobj#user#plugin('quoted', {
 \    })
 
 function! s:get_left(char_dict, from)
-    if a:from > 1
-        let left = getline('.')[:a:from-1]
-        let i = a:from
-        while i >= 0
-            let i -= 1
-            let c = left[i]
-            if has_key(a:char_dict, c)
-                return {'char':a:char_dict[c], 'pos':i+1}
-            endif
-        endwhile
-    endif
+    let left = getline('.')[:a:from] "include cursor pos
+    let i = a:from+1
+    while i >= 0
+        let i -= 1
+        let c = left[i]
+        if has_key(a:char_dict, c)
+            return {'char':a:char_dict[c], 'pos':i}
+        endif
+    endwhile
     return {'char':"", 'pos':-1}
 endfunction
 
 function! s:get_right(char, from)
-    let right = getline('.')[a:from:]
-    let i = 0
+    let right = getline('.')[a:from+1:]
+    let i = -1
     while i <= len(right)
         let i += 1
-        let c = right[i-1]
+        let c = right[i]
         if c == a:char
-            return a:from + i
+            return a:from+1 + i
         endif
     endwhile
     return -1
@@ -59,7 +57,7 @@ function! s:get_range()
             let from = left_char_pos['pos']
             continue
         endif
-        return [left_char_pos['pos'], right_pos]
+        return [left_char_pos['pos']+1, right_pos+1]
     endwhile
 endfunction
 
