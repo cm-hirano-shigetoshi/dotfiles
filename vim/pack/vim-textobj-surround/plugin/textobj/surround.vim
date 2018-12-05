@@ -46,6 +46,7 @@ function! s:get_range()
 \       '[' : ']',
 \       '(' : ')',
 \       '{' : '}',
+\       '<' : '>',
 \   }
     let from = col('.')-1
     while 1
