@@ -20,3 +20,4 @@ map s <Plug>(easymotion-bd-f)
 
 nmap S ys
 
+nmap <Space><Space> viS
