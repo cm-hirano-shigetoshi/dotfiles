@@ -7,6 +7,7 @@ augroup always-use-plugins
   packadd github.com_junegunn_fzf
   packadd github.com_kana_vim-textobj-user
   packadd github.com_easymotion_vim-easymotion
+  packadd vim-textobj-surround
 augroup END
 
 augroup nim-plugins
