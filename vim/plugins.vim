@@ -8,6 +8,7 @@ augroup always-use-plugins
   packadd github.com_kana_vim-textobj-user
   packadd github.com_easymotion_vim-easymotion
   packadd vim-textobj-surround
+  packadd vim-textobj-group
 augroup END
 
 augroup nim-plugins
@@ -20,4 +21,6 @@ map s <Plug>(easymotion-bd-f)
 
 nmap S ys
 
+nmap <Space> vi<Space>
 nmap <Space><Space> viS
+
