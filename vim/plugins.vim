@@ -9,6 +9,7 @@ augroup always-use-plugins
   packadd github.com_easymotion_vim-easymotion
   packadd vim-textobj-surround
   packadd vim-textobj-group
+  packadd jump-to-surround
 augroup END
 
 augroup nim-plugins
