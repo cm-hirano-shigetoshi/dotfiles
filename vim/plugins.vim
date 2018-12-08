@@ -1,3 +1,15 @@
+let g:surround_no_mappings = 1
+nmap S <Plug>Ysurround
+xmap S <Plug>VSurround
+
+let g:EasyMotion_do_mapping = 0
+map s <Plug>(easymotion-bd-f)
+
+map f<Space> <Plug>(jump_to_surround#Jump)
+
+nmap <Space> vi<Space>
+nmap <Space><Space> viS
+
 "ls ~/.vim/pack/master/opt
 augroup always-use-plugins
   autocmd!
@@ -16,12 +28,4 @@ augroup nim-plugins
   autocmd!
   autocmd FileType nim packadd github.com_zah_nim.vim
 augroup END
-
-let g:EasyMotion_do_mapping = 0
-map s <Plug>(easymotion-bd-f)
-
-nmap S ys
-
-nmap <Space> vi<Space>
-nmap <Space><Space> viS
 
