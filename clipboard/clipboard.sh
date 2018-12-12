@@ -2,7 +2,7 @@ function fzf_history() {
   export PATH="~/local/bin:$PATH"
   local readonly CLIPBOARD_HISTORY_FILE="${HOME}/.clipboard_history"
   local text
-  text=$(tac "${CLIPBOARD_HISTORY_FILE}" \
+  text=$(/usr/local/opt/coreutils/libexec/gnubin/tac "${CLIPBOARD_HISTORY_FILE}" \
           | grep -v '^\s*$' \
           | strutil unique \
           | fzf --preview="echo -n {} | sed -e 's//\n/g'" --preview-window='wrap' \
