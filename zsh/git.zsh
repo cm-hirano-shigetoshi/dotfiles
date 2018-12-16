@@ -1,6 +1,17 @@
+function __get_branch() {
+  local cur_line
+  cur_line=$(git branch | grep '^\s*\*' | strutil shift)
+  if [[ "$cur_line" =~ rebasing ]]; then
+    echo -n "${cur_line%)}" | sed 's/^.*rebasing//'
+  else
+    echo -n "${cur_line}"
+  fi
+}
+
+
 function git-fetch() {
     local branch
-    branch=$(git branch | grep '^\s*\*' | awk '{print $2}')
+    branch=$(__get_branch)
     git fetch 2>&1
     git diff $branch origin/$branch
 }
@@ -80,19 +91,24 @@ precmd_git() {
     git branch >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         local branch
-        branch=$(git branch | grep '^\s*\*' | awk '{print $2}' 2>/dev/null)
-        local change=""
-        if git branch -a | grep "^\s*remotes/origin/$branch" >/dev/null 2>&1; then
-            if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
-                change+="!"
-            fi
+        branch=$(__get_branch)
+        if [[ "$branch[1]" = " " ]]; then
+          branch=${branch# }
+          PROMPT=$(strutil replace "%gb" " [32m($change$branch)[0m" <<< $PROMPT)
         else
-            change+="?"
+          local change=""
+          if git branch -a | grep "^\s*remotes/origin/$branch" >/dev/null 2>&1; then
+              if [ $(git diff $branch origin/$branch | wc -l) -gt 0 ]; then
+                  change+="!"
+              fi
+          else
+              change+="?"
+          fi
+          if [ $(git status -s | wc -l) -gt 0 ]; then
+              change+="+"
+          fi
+          PROMPT=$(strutil replace "%gb" " [35m($change$branch)[0m" <<< $PROMPT)
         fi
-        if [ $(git status -s | wc -l) -gt 0 ]; then
-            change+="+"
-        fi
-        PROMPT=$(strutil replace "%gb" " [35m($change$branch)[0m" <<< $PROMPT)
     else
         PROMPT=$(sed -e 's/%gb//' <<< $PROMPT)
     fi
