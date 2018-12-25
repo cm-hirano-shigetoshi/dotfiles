@@ -5,7 +5,7 @@ xmap S <Plug>VSurround
 let g:EasyMotion_do_mapping = 0
 map s <Plug>(easymotion-bd-f)
 
-map f<Space> <Plug>(jump_to_surround#Jump)
+map f<CR> <Plug>(jump_to_surround#Jump)
 
 nmap <Space> vi<Space>
 nmap <Space><Space> viS
