@@ -5,7 +5,7 @@ function fzf_history() {
   text=$(/usr/local/opt/coreutils/libexec/gnubin/tac "${CLIPBOARD_HISTORY_FILE}" \
           | grep -v '^\s*$' \
           | strutil unique \
-          | fzf -m --preview="echo -n {} | sed -e 's//\n/g'" --preview-window='wrap' \
+          | fzf -e +s -m --preview="echo -n {} | sed -e 's//\n/g'" --preview-window='wrap' \
           | strutil newline -z \
           | sed 's//\n/g' \
         )
