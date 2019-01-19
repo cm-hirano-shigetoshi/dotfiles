@@ -2,9 +2,25 @@
 set -eu
 
 readonly PERL_SCRIPT=~/dotfiles/zsh/remove_escapesequence.pl
+
+mode=""
+
+if [[ $# -gt 0 && "$1" = "--fzf" ]]; then
+  mode="fzf"
+  shift
+fi
+
 if [[ $# -gt 0 ]]; then
-  cat "$1" | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+  if [[ "$mode" = "fzf" ]]; then
+    cat "$1" | perl ${PERL_SCRIPT}
+  else
+    cat "$1" | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+  fi
 else
-  cat /dev/stdin | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+  if [[ "$mode" = "fzf" ]]; then
+    cat /dev/stdin | perl ${PERL_SCRIPT}
+  else
+    cat /dev/stdin | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+  fi
 fi
 
