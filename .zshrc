@@ -27,5 +27,5 @@ function precmd() {
     precmd_git $PIPESTATUS "$@"
 }
 
-tmux pipe-pane 'cat >> ~/.zsh/#{pane_pid}'
+tmux pipe-pane 'cat >> ~/.zsh/buffer_history/#{pane_pid}'
 
