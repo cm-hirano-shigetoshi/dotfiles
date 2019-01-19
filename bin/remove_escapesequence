@@ -1,0 +1,10 @@
+#!/bin/bash
+set -eu
+
+readonly PERL_SCRIPT=~/dotfiles/zsh/remove_escapesequence.pl
+if [[ $# -gt 0 ]]; then
+  cat "$1" | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+else
+  cat /dev/stdin | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+fi
+
