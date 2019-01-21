@@ -2,8 +2,8 @@
 use strict;
 use warnings;
 
-#my $SOP = "[START_OF_PROMPT]";
-my $SOP = "";
+my $SOP = "___START_OF_PROMPT___";
+#my $SOP = "";
 
 while (<>) {
     s/[\r\n]//g;
