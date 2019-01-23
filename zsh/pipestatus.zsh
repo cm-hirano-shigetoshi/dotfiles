@@ -9,13 +9,13 @@ function precmd_pipestatus() {
     if [ ! -z $PRE_COMMAND ]; then
         STATUS=$(perl $dotfiles/zsh/lib/returnStatus.pl $PIPESTATUS)
         if [ $STATUS -eq 0 ]; then
-            PROMPT=$'\n'$fg[white]"@END %D %* ["${PRE_COMMAND}"]"${reset_color}
+            echo "\n@END [${PRE_COMMAND}]"
         elif [ $STATUS -eq 1 ]; then
-            PROMPT=$'\n'$fg[cyan]"@END %D %* ["${PRE_COMMAND}"]=>["${PIPESTATUS}"]"${reset_color}
+            echo "\n[36m@END [${PRE_COMMAND}]=>[${PIPESTATUS}][0m"
         else
-            PROMPT=$'\n'$fg[red]"@END %D %* ["${PRE_COMMAND}"]=>["${PIPESTATUS}"]"${reset_color}
+            echo "\n[31m@END [${PRE_COMMAND}]=>[${PIPESTATUS}][0m"
         fi
-        PROMPT+=$'\n'$PROMPT_BASE
+        PROMPT=$PROMPT_BASE
     fi
 }
 
