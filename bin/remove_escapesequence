@@ -1,26 +1,31 @@
 #!/bin/bash
-set -eu
+set -e
 
 readonly PERL_SCRIPT=~/dotfiles/zsh/remove_escapesequence.pl
-
 mode=""
 
-if [[ $# -gt 0 && "$1" = "--fzf" ]]; then
-  mode="fzf"
-  shift
-fi
+while [[ $# -gt 0 ]]; do
+  if [[ "$1" = "--fzf" ]]; then
+    mode="fzf"
+    shift
+  elif [[ "$1" = "-s" ]]; then
+    readonly START_OF_PROMPT=$2
+    shift
+    shift
+  fi
+done
 
 if [[ $# -gt 0 ]]; then
   if [[ "$mode" = "fzf" ]]; then
-    cat "$1" | perl ${PERL_SCRIPT}
+    cat "$1" | perl ${PERL_SCRIPT} ${START_OF_PROMPT}
   else
-    cat "$1" | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+    cat "$1" | perl ${PERL_SCRIPT} ${START_OF_PROMPT} | fzf --ansi -f ^ | col -bx
   fi
 else
   if [[ "$mode" = "fzf" ]]; then
-    cat /dev/stdin | perl ${PERL_SCRIPT}
+    cat /dev/stdin | perl ${PERL_SCRIPT} ${START_OF_PROMPT}
   else
-    cat /dev/stdin | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+    cat /dev/stdin | perl ${PERL_SCRIPT} ${START_OF_PROMPT} | fzf --ansi -f ^ | col -bx
   fi
 fi
 
