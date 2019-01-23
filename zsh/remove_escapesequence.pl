@@ -2,8 +2,11 @@
 use strict;
 use warnings;
 
-my $SOP = "___START_OF_PROMPT___";
-#my $SOP = "";
+my $SOP = "";
+if (scalar(@ARGV) > 0) {
+    $SOP = $ARGV[0];
+    pop(@ARGV);
+}
 
 while (<>) {
     s/[\r\n]//g;
