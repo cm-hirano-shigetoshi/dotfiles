@@ -2,16 +2,10 @@
 use strict;
 use warnings;
 
-my $SOP = "";
-if (scalar(@ARGV) > 0) {
-    $SOP = $ARGV[0];
-    pop(@ARGV);
-}
-
 while (<>) {
     s/[\r\n]//g;
 
-    s/\[3m%\[23m/[3m${SOP}[23m/g;
+    s/\[3m%\[23m/[3m[23m/g;
 
     while (/^(.*?)(+)(.*)$/) {
         my ($head, $space, $tail) = ($1, $2, $3);
