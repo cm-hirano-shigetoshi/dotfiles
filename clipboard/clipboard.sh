@@ -9,6 +9,9 @@ function fzf_history() {
           | strutil newline -z \
           | sed 's//\n/g' \
         )
+  if [[ -z "$text" ]]; then
+    return
+  fi
   if [[ $(wc -l <<< "${text}") -lt 2 ]]; then
     cat <<< "${text}" | strutil newline -z | pbcopy
   else
