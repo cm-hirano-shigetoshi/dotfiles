@@ -3,13 +3,13 @@ PRE_COMMAND=""
 
 function preexec_pipestatus() {
     PRE_TIME=$(date +%s)
-    PRE_COMMAND=$1
+    PRE_COMMAND=$(strutil newline -z <<< "$1")
 }
 
 function precmd_pipestatus() {
     local cur_time=$(date +%s)
     PIPESTATUS=$1
-    if [ ! -z $PRE_COMMAND ]; then
+    if [[ -n $PRE_COMMAND ]]; then
         local duration=$(($cur_time - $PRE_TIME))
         STATUS=$(perl $dotfiles/zsh/lib/returnStatus.pl $PIPESTATUS)
         if [ $STATUS -eq 0 ]; then

@@ -10,11 +10,11 @@ for f in $dotfiles/zsh/*.zsh; do
 done
 
 function zshaddhistory() {
+    preexec_pipestatus "$@"
 }
 
 function preexec() {
     preexec_history "$@"
-    preexec_pipestatus "$@"
 }
 
 function chpwd() {
