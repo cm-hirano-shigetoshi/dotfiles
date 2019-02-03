@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-readonly PERL_SCRIPT=~/dotfiles/zsh/remove_escapesequence.pl
+readonly PERL_SCRIPT_1=~/dotfiles/zsh/remove_escapesequence_1.pl
+readonly PERL_SCRIPT_2=~/dotfiles/zsh/remove_escapesequence_2.pl
 mode=""
 
 while [[ $# -gt 0 ]]; do
@@ -13,15 +14,15 @@ done
 
 if [[ $# -gt 0 ]]; then
   if [[ "$mode" = "fzf" ]]; then
-    cat "$1" | perl ${PERL_SCRIPT}
+    cat "$1" | perl ${PERL_SCRIPT_1} | perl ${PERL_SCRIPT_2}
   else
-    cat "$1" | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+    cat "$1" | perl ${PERL_SCRIPT_1} | perl ${PERL_SCRIPT_2} | fzf --ansi -f ^ | col -bx
   fi
 else
   if [[ "$mode" = "fzf" ]]; then
-    cat /dev/stdin | perl ${PERL_SCRIPT}
+    cat /dev/stdin | perl ${PERL_SCRIPT_1} | perl ${PERL_SCRIPT_2}
   else
-    cat /dev/stdin | perl ${PERL_SCRIPT} | fzf --ansi -f ^ | col -bx
+    cat /dev/stdin | perl ${PERL_SCRIPT_1} | perl ${PERL_SCRIPT_2} | fzf --ansi -f ^ | col -bx
   fi
 fi
 

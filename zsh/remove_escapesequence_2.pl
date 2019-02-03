@@ -4,18 +4,19 @@ use warnings;
 
 while (<>) {
     s/[\r\n]//g;
-
     s/\[3m%\[23m/[3m[23m/g;
 
-    while (/^(.*?)(+)(.*)$/) {
+    while (/^(.*?)(+)(.*)$/) {
         my ($head, $space, $tail) = ($1, $2, $3);
+        $head =~ s/\[\d+m//g;
         $head = substr($head, 0, length($head)-length($space));
         $_ = $head . $tail
     }
 
-    while (/^(.*?)\[(\d+)D +\[(\d+)D(.*)$/) {
-        my ($head, $space, $tail) = ($1, $2, $4);
-        $head = substr($head, 0, length($head)-$space);
+    while (/^(.*?)\[(\d+)D(.*)$/) {
+        my ($head, $delete, $tail) = ($1, $2, $3);
+        $head =~ s/\[\d+m//g;
+        $head = substr($head, 0, length($head)-$delete);
         $_ = $head . $tail
     }
 
