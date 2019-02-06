@@ -6,7 +6,7 @@ function __fzf-buffer-history() {
     remove_escapesequence | \
     tr '\n' '' | sed -e 's// /g' | \
     sed -e "s/${START_OF_PROMPT}/\n/g" | \
-    fzf --with-nth 4.. --ansi --preview="echo {} | sed -e 's/ /\n/g' | strutil newline -l=0 -t=1" --preview-window='wrap' | \
+    fzf --with-nth 4.. --ansi --preview="echo {} | sed -e 's/ /\n/g' | strutil newline -l=0 -t=1" --preview-window='up:60%:wrap' | \
     sed -e 's/ /\n/g' | \
     strutil newline -l=0 -t=1
 }
