@@ -139,42 +139,5 @@ if which fzf >/dev/null 2>&1; then
     }
     zle -N fzf-history-widget
     bindkey "^r" fzf-history-widget
-
-    function fzf-history-word-widget() {
-        local query rbuf fzf_default_opts history_type out
-        query=$(strutil island -- -1 <<< "$LBUFFER")
-        rbuf=${RBUFFER#?}
-        CURSOR+=-${#query}
-        BUFFER="$LBUFFER$buf"
-        fzf_default_opts="--query=\"$query\" --print-query --no-sort --ansi -e -m --expect=ctrl-c,ctrl-r,ctrl-d,ctrl-s,ctrl-h "
-        history_type=${HISTORY_TYPE:-"all"}
-        while true; do
-            out=$(__read_history_word $history_type | FZF_DEFAULT_OPTS=$fzf_default_opts fzf)
-            local key selected >/dev/null
-            query=$(strutil line 1 <<< "$out")
-            key=$(strutil line 2 <<< "$out")
-            selected=$(strutil line 3: <<< "$out")
-            if [ "$key" = "ctrl-r" ]; then
-                history_type="all"
-            elif [ "$key" = "ctrl-d" ]; then
-                history_type="directory"
-            elif [ "$key" = "ctrl-s" ]; then
-                history_type="session"
-            elif [ "$key" = "ctrl-h" ]; then
-                history_type="history"
-            elif [ "$key" = "ctrl-c" ]; then
-                BUFFER="$query"
-                CURSOR=${#BUFFER}
-                zle redisplay
-                typeset -f zle-line-init >/dev/null && zle zle-line-init
-                break
-            else
-                __insert_buffer "$selected"
-                break
-            fi
-        done
-    }
-    zle -N fzf-history-word-widget
-    bindkey "^s" fzf-history-word-widget
 fi
 
