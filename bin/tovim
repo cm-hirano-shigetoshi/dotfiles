@@ -23,7 +23,7 @@ foreach (split("\n", `tmux list-panes -F "#{pane_pid}#{pane_id}"`)) {
         if ($pstree =~ /--vim$/) {
             $target = $t;
             last;
-        } elsif ($pstree =~ /--- \d+ $who vim /) {
+        } elsif ($pstree =~ /\d+ $who vim( |$)/) {
             $target = $t;
             last;
         }
