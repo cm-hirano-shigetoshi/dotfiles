@@ -22,10 +22,6 @@ sub analyze {
         print $1;
         return ($2, 1049)
     }
-    if ($flag == 0 && /^(.*?)(.*)$/) {
-        print $1;
-        return ($2, 1)
-    }
     if ($flag == 0 && /^(.*?)\]0;(.*)$/) {
         print $1;
         return ($2, -1)
@@ -35,9 +31,6 @@ sub analyze {
         return ($1."\n", 0);
     }
     if ($flag == 1049 && /\[\?1049l(.*)$/) {
-        return ($1."\n", 0);
-    }
-    if ($flag == 1 && /(.*?)$/) {
         return ($1."\n", 0);
     }
     if ($flag == -1 && /\\(.*?)$/) {
