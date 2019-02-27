@@ -1,6 +1,5 @@
-readonly START_OF_PROMPT="___START_OF_PROMPT___"
-
 function __fzf-buffer-history() {
+  readonly START_OF_PROMPT="___START_OF_PROMPT___"
   cat $1 | \
     sed -e "s/${HIDDEN_START_OF_PROMPT}/${START_OF_PROMPT}/g" | \
     remove_escapesequence | \
