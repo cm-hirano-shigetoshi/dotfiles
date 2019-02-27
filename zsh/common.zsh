@@ -61,4 +61,5 @@ alias ls='ls --color'
 alias grep='grep --color'
 alias sort='LANG=C sort'
 alias now='date +%Y%m%d_%H%M%S_%3N'
+alias pt='pt -U'
 
