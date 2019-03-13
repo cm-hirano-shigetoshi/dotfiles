@@ -1,3 +1,16 @@
+function aws-profile() {
+    local profile
+    profile=$(cat ~/.aws/config ~/.aws/credentials \
+                | grep '\[' \
+                | sed 's/\[profile /[/' \
+                | tr -d '\[\]' \
+                | fzf -e +s --no-mouse \
+                   --preview="cat ~/.aws/config ~/.aws/credentials | grep -A 5 -F '{}]'" \
+                   --preview-window=up \
+            )
+    export AWS_PROFILE=${profile}
+}
+
 function override_backward-word() {
     if [ $CURSOR -gt 2 ] && [ "X$LBUFFER[-2,-1]" = "X /" ]; then
         zle backward-char
