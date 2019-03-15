@@ -1,0 +1,25 @@
+fzf: /Users/hirano.shigetoshi/local/bin/fzf
+base_task:
+    input: unbuffer git status -sb
+    opts:
+        - multi
+        - no-sort
+        - ansi
+        - reverse
+        - nth=2..
+        - preview-window=up:60%
+    preview: ~/dotfiles/zsh/lib/preview-git.sh {2..}
+binds:
+    alt-c: execute-silent(echo -n {-1} | pbcopy)
+    ctrl-v: execute-silent(tovim {-1})
+expects:
+    ctrl-m:
+        pipe: strutil island -- -1 | strutil newline -z -r=' '
+    ctrl-a:
+        pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/git add /'
+    ctrl-r:
+        pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/git reset /'
+        #ctrl-v:
+        #pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/vim /'
+
+

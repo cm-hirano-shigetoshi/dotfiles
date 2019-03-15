@@ -71,10 +71,10 @@ if which fzf >/dev/null 2>&1; then
     bindkey "^g^l" fzf-git-log-widget
 
     function fzf-git-status-widget() {
-        local selected
-        selected=$($dotfiles/bin/unbuffer git status -sb | fzf -m --no-sort --reverse --ansi --preview="$dotfiles/zsh/lib/preview-git.sh {2..}" --preview-window=up:70%)
-        if grep '\S' <<< "$selected" >/dev/null 2>&1; then
-            BUFFER+=$(strutil shift <<< $selected | strutil newline -r=' ')
+        local out
+        out=$(~/PublicRepository/fzfer/fzfer.sh $dotfiles/zsh/fzfer/git-status.yml)
+        if [[ -n "$out" ]]; then
+            BUFFER+="$out"
             CURSOR=${#BUFFER}
             zle redisplay
             typeset -f zle-line-init >/dev/null && zle zle-line-init
