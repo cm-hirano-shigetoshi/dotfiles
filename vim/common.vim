@@ -54,6 +54,8 @@ set tags+=~/.tags
 let mapleader = " "
 " 最後の行に改行がないファイルをそのまま扱う
 set nofixeol
+" viminfoに保存する情報の量
+set viminfo='50000,/50000,:50000,s10000,h
 
 " カラーリング
 autocmd ColorScheme * highlight Comment ctermfg=7 ctermbg=4
