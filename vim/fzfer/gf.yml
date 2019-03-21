@@ -1,0 +1,12 @@
+base_task:
+    input: git ls-files
+    query: $(sed 's/$/ /' /Users/hirano.shigetoshi/temp)
+    opts:
+        - multi
+expects:
+    ctrl-m:
+        stdout:
+            join:
+    ctrl-h:
+        continue:
+            input: pt -g='^' -e '^' ~
