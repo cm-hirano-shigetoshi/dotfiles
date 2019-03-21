@@ -16,19 +16,5 @@ expects:
     ctrl-m:
         stdout:
             nth: -1
-            join:
-            newline: false
-    ctrl-a:
-        stdout:
-            nth: -1
-            join:
-            pipe: sed 's/^/git add /'
-            newline: false
-    ctrl-r:
-        stdout:
-            nth: -1
-            join:
-            pipe: sed 's/^/git reset /'
-            newline: false
-
+            files:
 
