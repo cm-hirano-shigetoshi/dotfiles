@@ -14,12 +14,21 @@ binds:
     ctrl-v: execute-silent(tovim {-1})
 expects:
     ctrl-m:
-        pipe: strutil island -- -1 | strutil newline -z -r=' '
+        stdout:
+            nth: -1
+            join:
+            newline: false
     ctrl-a:
-        pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/git add /'
+        stdout:
+            nth: -1
+            join:
+            pipe: sed 's/^/git add /'
+            newline: false
     ctrl-r:
-        pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/git reset /'
-        #ctrl-v:
-        #pipe: strutil island -- -1 | tr '\n' ' ' | sed 's/^/vim /'
+        stdout:
+            nth: -1
+            join:
+            pipe: sed 's/^/git reset /'
+            newline: false
 
 
