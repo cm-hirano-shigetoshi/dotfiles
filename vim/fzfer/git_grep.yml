@@ -1,0 +1,15 @@
+base_task:
+    input: git grep -n --color=always "$(cat /Users/hirano.shigetoshi/temp)"
+    opts:
+        - multi
+        - delimiter=':'
+        - nth=2..
+        - with-nth=1,3..
+    preview: cat {1} | tail -n +{2}
+expects:
+    ctrl-m:
+        stdout:
+            pipe: awk '!a[$0]++' | sed 's/:.*$//' | strutil newline -z -r=' '
+    ctrl-h:
+        continue:
+            input: pt "$(cat /Users/hirano.shigetoshi/temp)" ~
