@@ -12,4 +12,4 @@ binds:
 expects:
     ctrl-m:
         stdout:
-            pipe: cut -c 4- | sed 's/^.\+ -> //'
+            pipe: grep -v '^##' | cut -c 4- | sed 's/^.\+ -> //' | tr '\n' ' '
