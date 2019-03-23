@@ -1,19 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -eu
 
-n=-100
-if [ $# -ge 2 ] && echo "$1" | grep '^-\d\+' >/dev/null 2>&1; then
-    n=$1
-    shift
-fi
+readonly BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-branch=$(git branch | grep '^\*' | awk '{print $2}')
-if [ -e "$1" ]; then
-    git diff --color=always "$branch" "$1"
+if echo "$1" | grep -q '^## '; then
+    git diff --color=always "$BRANCH"
 else
-    if echo "$1" | grep "^${branch}\.\.\." >/dev/null 2>&1; then
-        git diff --color=always $branch
-    else
-        echo "renamed or removed."
-    fi
+  readonly STATUS=$(echo "$1" | cut -c -2)
+  readonly TARGET=$(echo "$1" | cut -c 4- | sed 's/^.\+ -> //')
+
+  if [[ "$STATUS" = "??" ]]; then
+    cat "$TARGET"
+  elif [[ -e "$TARGET" ]]; then
+    git diff --color=always "$BRANCH" "$TARGET"
+  fi
 fi
 

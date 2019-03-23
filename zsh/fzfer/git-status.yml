@@ -6,7 +6,7 @@ base_task:
         - reverse
         - nth=2..
         - preview-window=up:60%
-    preview: ~/dotfiles/zsh/lib/preview-git.sh {2..}
+    preview: ~/dotfiles/zsh/lib/preview-git.sh {}
 binds:
     ctrl-v: execute-silent(tovim {-1})
 expects:
