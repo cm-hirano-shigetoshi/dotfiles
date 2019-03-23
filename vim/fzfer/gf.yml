@@ -3,10 +3,11 @@ base_task:
     query: $(sed 's/$/ /' /Users/hirano.shigetoshi/temp)
     opts:
         - multi
+        - reverse
+        - no-sort
+        - select-1
+    preview: head -1000 {}
 expects:
     ctrl-m:
         stdout:
             join:
-    ctrl-h:
-        continue:
-            input: pt -g='^' -e '^' ~
