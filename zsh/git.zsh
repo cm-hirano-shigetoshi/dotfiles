@@ -58,10 +58,10 @@ if which fzf >/dev/null 2>&1; then
     alias gb='fzf-git-branch'
 
     function fzf-git-log-widget() {
-        local selected
-        selected=($(git log --graph --decorate --oneline --abbrev=40 --color=always | fzf -m --no-sort --reverse --ansi --bind='tab:toggle+up,shift-tab:toggle+down' | grep -o '[0-9a-z]\{40\}'))
-        if grep '\S' <<< "$selected" >/dev/null 2>&1; then
-            BUFFER+="$selected"
+        local out
+        out=$(~/PublicRepository/fzfer/fzfer.sh $dotfiles/zsh/fzfer/git-log.yml)
+        if [[ -n "$out" ]]; then
+            BUFFER+="$out"
             CURSOR=${#BUFFER}
             zle redisplay
             typeset -f zle-line-init >/dev/null && zle zle-line-init
