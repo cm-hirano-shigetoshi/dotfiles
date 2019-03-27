@@ -1,9 +1,6 @@
 function! Fzf_gf()
-    let tmp = @@
-    silent normal gvy
-    let selected = @@ . " "
-    let @@ = tmp
-    call writefile([selected], "/Users/hirano.shigetoshi/temp")
+    let file_name = expand('<cfile>')
+    call writefile([file_name], "/Users/hirano.shigetoshi/temp")
     let out = system("~/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/vim/fzfer/gf.yml 2>/dev/tty")
     execute("ar " . out)
     redraw!

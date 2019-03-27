@@ -6,9 +6,12 @@ base_task:
         - reverse
         - no-sort
         - select-1
-    preview: head -1000 {}
+    preview: head -1000 $(git rev-parse --show-toplevel)/{}
 expects:
     ctrl-m:
+        stdout:
+            pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
+    select-1:
         stdout:
             pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
     ctrl-h:
