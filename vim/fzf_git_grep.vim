@@ -10,6 +10,7 @@ function! FzfGitGrep()
     for file in split(out, '\n')
         let file_line = split(file, ':')
         execute('edit +' . file_line[1] . ' ' . file_line[0])
+        execute('normal zz')
     endfor
     execute('cd ' . orig_path)
     redraw!
@@ -25,6 +26,7 @@ function! FzfGitGrepEmpty()
     for file in split(out, '\n')
         let file_line = split(file, ':')
         execute('edit +' . file_line[1] . ' ' . file_line[0])
+        execute('normal zz')
     endfor
     execute('cd ' . orig_path)
     redraw!
