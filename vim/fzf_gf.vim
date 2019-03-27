@@ -5,4 +5,4 @@ function! Fzf_gf()
     execute("ar " . out)
     redraw!
 endfunction
-vnoremap <silent> gf :call Fzf_gf()<CR>
+nnoremap <silent> gf :call Fzf_gf()<CR>
