@@ -6,6 +6,7 @@ base_task:
         - reverse
         - no-sort
         - select-1
+        - height=9999
     preview: head -1000 $(git rev-parse --show-toplevel)/{}
 expects:
     ctrl-m:
