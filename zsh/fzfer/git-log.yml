@@ -11,5 +11,5 @@ base_task:
 expects:
     ctrl-m:
         line_select:
-            pipe: grep -o '[0-9a-z]\{40\} ' | tr '\n' ' '
+            pipe: grep -o '[0-9a-z]\{40\}' | tr '\n' ' '
 
