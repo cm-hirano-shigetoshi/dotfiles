@@ -126,6 +126,27 @@ function copyBuffer() {
 }
 zle -N copyBuffer
 
+function test_hogehoge() {
+  local strings
+  strings=$(~/PublicRepository/shell-buffer-islands/range $CURSOR "$BUFFER")
+  local LEFT CENTER RIGHT
+  LEFT=$(sed -z -n '1p' <<< "$strings" | sed 's/\x0//')
+  CENTER=$(sed -z -n '2p' <<< "$strings" | sed 's/\x0//')
+  RIGHT=$(sed -z -n '3p' <<< "$strings" | sed 's/\x0//')
+  #echo "\"$LEFT\"" | xxd
+  #echo "\"$CENTER\"" | xxd
+  #echo "\"$RIGHT\"" | xxd
+  cat <<< "${CENTER}" > ~/temp
+  out=$(/Users/hirano.shigetoshi/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/zsh/fzfer/select_file.yml)
+  if [[ -n "$out" ]]; then
+    BUFFER="${LEFT}${out} ${RIGHT}"
+    CURSOR=$((${#LEFT} + ${#out} + 1))
+    zle redisplay
+    typeset -f zle-line-init >/dev/null && zle zle-line-init
+  fi
+}
+zle -N test_hogehoge
+
 # 前の単語へ移動
 bindkey ","    override_backward-word
 # 次の単語へ移動
@@ -152,4 +173,5 @@ bindkey "^]"    vi-find-next-char
 bindkey "^d^b"  copyBuffer
 # バッファを実行して結果をバッファにはりつける
 bindkey '^[e' __expand-buffer
-
+# fzfでファイルの選択
+bindkey '\e[Z' test_hogehoge

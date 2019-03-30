@@ -1,0 +1,25 @@
+base_task:
+  input: find . -type f 2>/dev/null | grep -v '/\.[^/]\+/'
+  query: $(cat ~/temp)
+  opts:
+    - multi
+    - no-sort
+    - layout=reverse-list
+    - preview-window=up:hidden
+expects:
+  enter:
+    stdout:
+      join:
+  ctrl-h:
+    continue:
+      input: find ~ -type f 2>/dev/null
+  f1:
+    continue:
+      input: find $(cd .. && pwd) -type f 2>/dev/null
+  f2:
+    continue:
+      input: find $(cd ../.. && pwd) -type f 2>/dev/null
+  f3:
+    continue:
+      input: find $(cd ../../.. && pwd) -type f 2>/dev/null
+
