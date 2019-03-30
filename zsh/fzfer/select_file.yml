@@ -6,6 +6,7 @@ base_task:
     - no-sort
     - layout=reverse-list
     - preview-window=up:hidden
+  preview: head -n 1000 {}
 expects:
   enter:
     stdout:

@@ -10,11 +10,9 @@ base_task:
     preview: head -1000 $(git rev-parse --show-toplevel)/{}
 expects:
     ctrl-m:
-        stdout:
-            pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
+        pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
     select-1:
-        stdout:
-            pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
+        pipe: sed "s!^!$(git rev-parse --show-toplevel)/!" | tr '\n' ' '
     ctrl-h:
         continue:
             input: cd $(git rev-parse --show-toplevel); git ls-files
