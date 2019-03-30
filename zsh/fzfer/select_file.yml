@@ -10,6 +10,7 @@ base_task:
 expects:
   enter:
     stdout:
+      quote:
       join:
   ctrl-h:
     continue:
