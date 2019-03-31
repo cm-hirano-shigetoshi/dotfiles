@@ -1,5 +1,5 @@
 base_task:
-    input: git grep -n --color=always "$(cat /Users/hirano.shigetoshi/temp)"
+    input: unbuffer pt --nogroup "$(cat /Users/hirano.shigetoshi/temp)"
     opts:
         - multi
         - delimiter=':'
@@ -8,14 +8,11 @@ base_task:
         - height=9999
         - layout=reverse-list
         - preview-window=up:60%
-        - prompt="GitFiles> "
+        - prompt="Search>"
     preview: bash /Users/hirano.shigetoshi/dotfiles/vim/fzfer/preview.sh {1} {2} $LINES
 expects:
     ctrl-g:
         continue:
+            input: git grep -n --color=always "$(cat /Users/hirano.shigetoshi/temp)"
             opts:
-                - nth=..
-    esc:
-        continue:
-            opts:
-                - nth=2..
+                - prompt="GitGrep>"
