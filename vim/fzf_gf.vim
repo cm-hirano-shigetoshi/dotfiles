@@ -1,6 +1,6 @@
 function! Fzf_gf()
-    if expand(glob('<cfile>')) != ''
-        execute("normal gf")
+    if glob('<cfile>') != ''
+        execute("find " . expand('<cfile>'))
     else
         let file_name = expand('<cfile>')
         call writefile([file_name], "/Users/hirano.shigetoshi/temp")
