@@ -1,0 +1,3 @@
+base_task:
+    input: pt -g '^' "$(sed -n '1p' /Users/hirano.shigetoshi/temp)" | sed 's%^//%/%'
+    query: $(sed -n '2p' /Users/hirano.shigetoshi/temp | sed 's/$/ /')
