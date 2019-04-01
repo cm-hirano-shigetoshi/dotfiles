@@ -5,7 +5,13 @@ function! Fzf_gf()
         let file_name = expand('<cfile>')
         call writefile([file_name], "/Users/hirano.shigetoshi/temp")
         let out = system("tput cnorm > /dev/tty; ~/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/vim/fzfer/gf.yml 2>/dev/tty")
-        execute("ar " . out)
+        if out == '(create)'
+            let pos = strridx(file_name, "/")
+            call system("mkdir -p '" . file_name[:pos] . "'")
+            execute("e " . file_name)
+        else
+            execute("ar " . out)
+        endif
         redraw!
     endif
 endfunction
