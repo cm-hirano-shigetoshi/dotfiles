@@ -1,8 +1,7 @@
 function! Fzf_complete_path()
     let file_path = expand('<cfile>')
     let pos = strridx(file_path, '/')
-    echomsg pos . "," . len(file_path)
-    if pos == len(file_path)+1
+    if pos == len(file_path)-1
         let dir = file_path[:pos-1]
         let query = ""
     else
