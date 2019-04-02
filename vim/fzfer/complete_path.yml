@@ -7,3 +7,10 @@ base_task:
         - prompt="$(sed -n '1p' /Users/hirano.shigetoshi/temp | sed -e 's%//%/%g' -e 's%$%/%')"
         - select-1
         - height=9999
+expects:
+    ctrl-d:
+        continue:
+            input: cd "$(sed -n '2p' /Users/hirano.shigetoshi/temp)";
+                     find . -maxdepth 3 -type d 2>/dev/null
+                     | sed 's%^\./%%'
+

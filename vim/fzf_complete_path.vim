@@ -20,10 +20,20 @@ function! Fzf_complete_path()
     endif
     call writefile([dir, expand(dir), query], "/Users/hirano.shigetoshi/temp")
     let out = system("tput cnorm > /dev/tty; ~/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/vim/fzfer/complete_path.yml 2>/dev/tty")
+    call writefile([out], "/Users/hirano.shigetoshi/temp")
     if len(out) > 0
-        let selected_path = dir . "/" . out
+        if dir == "/"
+            let selected_path = "/" . out
+        else
+            let selected_path = dir . "/" . out
+        endif
+        call writefile([selected_path], "/Users/hirano.shigetoshi/temp")
         let move_left = len(file_path) - 1
-        execute('normal v' . move_left . 'hd')
+        if move_left > 0
+            execute('normal v' . move_left . 'hd')
+        else
+            execute('normal x')
+        endif
         execute('normal a' . selected_path)
     endif
     redraw!
