@@ -9,8 +9,13 @@ function! Fzf_complete_path()
             let dir = file_path
             call writefile([file_path, ""], "/Users/hirano.shigetoshi/temp")
         else
-            let dir = file_path[:pos-1]
-            let query = file_path[pos+1:]
+            if pos == 0
+                let dir = "/"
+                let query = file_path[1:]
+            else
+                let dir = file_path[:pos-1]
+                let query = file_path[pos+1:]
+            endif
             call writefile([dir, query], "/Users/hirano.shigetoshi/temp")
         endif
     endif

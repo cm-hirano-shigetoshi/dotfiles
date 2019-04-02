@@ -4,8 +4,9 @@ base_task:
              | sed -e 's%^//%/%' -e 's%^./%%'
     query: $(sed -n '2p' /Users/hirano.shigetoshi/temp | sed 's/\(\S\)$/\1 /')
     opts:
-        - prompt="$(sed -n '1p' /Users/hirano.shigetoshi/temp)/"
+        - prompt="$(sed -n '1p' /Users/hirano.shigetoshi/temp | sed 's%^//%/%')"
         - select-1
+        - height=9999
 expects:
     enter:
         stdout:
