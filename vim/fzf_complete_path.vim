@@ -1,13 +1,14 @@
 function! Fzf_complete_path()
-    let file_path = expand(expand('<cfile>'))
+    let file_path = expand('<cfile>')
     let pos = strridx(file_path, '/')
+    echomsg pos . "," . len(file_path)
     if pos == len(file_path)+1
-        let dir = file_path[:pos-2]
-        call writefile([dir, ""], "/Users/hirano.shigetoshi/temp")
+        let dir = file_path[:pos-1]
+        let query = ""
     else
-        if isdirectory(file_path)
+        if isdirectory(expand(file_path))
             let dir = file_path
-            call writefile([file_path, ""], "/Users/hirano.shigetoshi/temp")
+            let query = ""
         else
             if pos == 0
                 let dir = "/"
@@ -16,9 +17,9 @@ function! Fzf_complete_path()
                 let dir = file_path[:pos-1]
                 let query = file_path[pos+1:]
             endif
-            call writefile([dir, query], "/Users/hirano.shigetoshi/temp")
         endif
     endif
+    call writefile([dir, expand(dir), query], "/Users/hirano.shigetoshi/temp")
     let out = system("tput cnorm > /dev/tty; ~/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/vim/fzfer/complete_path.yml 2>/dev/tty")
     if len(out) > 0
         let selected_path = dir . "/" . out
