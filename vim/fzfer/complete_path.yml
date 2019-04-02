@@ -1,3 +1,12 @@
 base_task:
-    input: pt -g '^' "$(sed -n '1p' /Users/hirano.shigetoshi/temp)" | sed 's%^//%/%'
-    query: $(sed -n '2p' /Users/hirano.shigetoshi/temp | sed 's/$/ /')
+    input: cd "$(sed -n '1p' /Users/hirano.shigetoshi/temp)";
+             pt -g '^'
+             | sed -e 's%^//%/%' -e 's%^./%%'
+    query: $(sed -n '2p' /Users/hirano.shigetoshi/temp | sed 's/\(\S\)$/\1 /')
+    opts:
+        - prompt="$(sed -n '1p' /Users/hirano.shigetoshi/temp)/"
+        - select-1
+expects:
+    enter:
+        stdout:
+
