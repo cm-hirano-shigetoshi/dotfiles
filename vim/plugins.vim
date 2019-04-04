@@ -19,6 +19,7 @@ augroup always-use-plugins
   packadd github.com_junegunn_fzf
   packadd github.com_kana_vim-textobj-user
   packadd github.com_easymotion_vim-easymotion
+  packadd github.com_nvie_vim-flake8
   packadd vim-textobj-surround
   packadd vim-textobj-group
   packadd jump-to-surround
