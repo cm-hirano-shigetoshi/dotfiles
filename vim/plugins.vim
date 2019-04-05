@@ -23,6 +23,7 @@ augroup always-use-plugins
   packadd vim-textobj-surround
   packadd vim-textobj-group
   packadd jump-to-surround
+  packadd TimeMachine.vim
 augroup END
 
 augroup nim-plugins

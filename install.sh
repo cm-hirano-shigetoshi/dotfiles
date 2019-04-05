@@ -65,6 +65,7 @@ vim() {
     git clone https://github.com/kana/vim-textobj-user .vim/pack/master/opt/github.com_kana_vim-textobj-user
     git clone https://github.com/easymotion/vim-easymotion .vim/pack/master/opt/github.com_easymotion_vim-easymotion
     git clone https://github.com/nvie/vim-flake8 .vim/pack/master/opt/github.com_nvie_vim-flake8
+    ln -s /Users/hirano.shigetoshi/PublicRepository/TimeMachine.vim .vim/pack/master/opt/TimeMachine.vim
     if $develop; then
         git clone https://github.com/zah/nim.vim .vim/pack/master/opt/github.com_zah_nim.vim
     fi
