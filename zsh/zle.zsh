@@ -136,8 +136,7 @@ function test_hogehoge() {
   #echo "\"$LEFT\"" | xxd
   #echo "\"$CENTER\"" | xxd
   #echo "\"$RIGHT\"" | xxd
-  cat <<< "${CENTER}" > ~/temp
-  out=$(/Users/hirano.shigetoshi/PublicRepository/fzfer/fzfer.sh /Users/hirano.shigetoshi/dotfiles/zsh/fzfer/select_file.yml)
+  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${CENTER}")
   if [[ -n "$out" ]]; then
     BUFFER="${LEFT}${out} ${RIGHT}"
     CURSOR=$((${#LEFT} + ${#out} + 1))

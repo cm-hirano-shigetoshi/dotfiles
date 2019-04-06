@@ -1,11 +1,10 @@
 base_task:
   input: find . -type f 2>/dev/null | grep -v '/\.[^/]\+/'
-  query: $(cat ~/temp)
+  query: '${1}'
   opts:
     - multi
     - no-sort
     - layout=reverse-list
-    - preview-window=up:hidden
   preview: head -n 1000 {}
 expects:
   enter:
