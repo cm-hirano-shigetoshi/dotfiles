@@ -25,6 +25,7 @@ augroup always-use-plugins
   packadd jump-to-surround
   packadd TimeMachine.vim
   packadd RecentUse.vim
+  packadd FileSearch.vim
 augroup END
 
 augroup nim-plugins
