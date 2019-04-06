@@ -1,5 +1,5 @@
 base_task:
-  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "$PWD"
+  input: bash ~/dotfiles/zsh/fzfer/select_file.sh
   query: '${1}'
   opts:
     - multi

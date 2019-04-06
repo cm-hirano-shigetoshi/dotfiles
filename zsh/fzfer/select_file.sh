@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 set -eu
 
-if [[ -d "$1" ]]; then
-  echo "=== A01 $1 ===" >> ~/.debug
-  readonly DIR=$(cd $1 && pwd)
+if [[ $# -gt 0 ]]; then
+  if [[ -d "$1" ]]; then
+    readonly DIR=$(cd $1 && pwd)
+  else
+    readonly DIR=$(cd $(dirname $1) && pwd)
+  fi
+  readonly DEPTH=$(echo ${DIR} | tr '/' '\n' | wc -l)
+  if [[ ${DEPTH} -gt 3 ]]; then
+    find ${DIR} 2>/dev/null | sed 's%^\./%%'
+  else
+    find ${DIR} -maxdepth 3 2>/dev/null | sed 's%^\./%%'
+  fi
 else
-  echo "=== A02 $1 ===" >> ~/.debug
-  readonly DIR=$(cd $(dirname $1) && pwd)
+  readonly DEPTH=$(pwd | tr '/' '\n' | wc -l)
+  if [[ ${DEPTH} -gt 3 ]]; then
+    find . 2>/dev/null | sed 's%^\./%%'
+  else
+    find . -maxdepth 3 2>/dev/null | sed 's%^\./%%'
+  fi
 fi
-echo "=== A03 $DIR ===" >> ~/.debug
-readonly DEPTH=$(echo ${DIR} | tr '/' '\n' | wc -l)
-if [[ ${DEPTH} -gt 3 ]]; then
-  cd ${DIR} && find . 2>/dev/null | sed 's%^\./%%'
-else
-  cd ${DIR} && find . -maxdepth 3 2>/dev/null | sed 's%^\./%%'
-fi
+
