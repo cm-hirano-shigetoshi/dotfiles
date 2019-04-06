@@ -7,5 +7,5 @@ function v() {
   fi
 }
 zle -N v
-bindkey "^s" v
+bindkey "v" v
 
