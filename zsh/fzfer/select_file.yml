@@ -1,5 +1,5 @@
 base_task:
-  input: find . -type f 2>/dev/null | grep -v '/\.[^/]\+/'
+  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "$PWD"
   query: '${1}'
   opts:
     - multi
@@ -23,4 +23,8 @@ expects:
   f3:
     continue:
       input: find $(cd ../../.. && pwd) -type f 2>/dev/null
+  ctrl-d:
+    continue:
+      input: bash ~/dotfiles/zsh/fzfer/select_file.sh ${o}
+      query: ''
 
