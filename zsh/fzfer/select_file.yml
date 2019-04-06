@@ -16,10 +16,10 @@ expects:
       input: find ~ -type f 2>/dev/null
   f1:
     continue:
-      input: find $(cd .. && pwd) -type f 2>/dev/null
+      input: find .. -type f 2>/dev/null
   f2:
     continue:
-      input: find $(cd ../.. && pwd) -type f 2>/dev/null
+      input: find ../.. -type f 2>/dev/null
   f3:
     continue:
       input: find $(cd ../../.. && pwd) -type f 2>/dev/null
