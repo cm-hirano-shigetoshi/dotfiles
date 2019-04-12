@@ -1,5 +1,5 @@
 base_task:
-    input: unbuffer pt --nogroup "$(cat /Users/hirano.shigetoshi/temp)"
+    input: unbuffer pt --nogroup -w "$(cat /Users/hirano.shigetoshi/temp)"
     opts:
         - multi
         - delimiter=':'
