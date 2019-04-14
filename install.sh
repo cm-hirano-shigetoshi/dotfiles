@@ -68,6 +68,7 @@ vim() {
     ln -s /Users/hirano.shigetoshi/PublicRepository/TimeMachine.vim .vim/pack/master/opt/TimeMachine.vim
     ln -s /Users/hirano.shigetoshi/PublicRepository/RecentUse.vim .vim/pack/master/opt/RecentUse.vim
     ln -s /Users/hirano.shigetoshi/PublicRepository/FileSearch.vim .vim/pack/master/opt/FileSearch.vim
+    ln -s /Users/hirano.shigetoshi/PublicRepository/WordSearch.vim .vim/pack/master/opt/WordSearch.vim
     if $develop; then
         git clone https://github.com/zah/nim.vim .vim/pack/master/opt/github.com_zah_nim.vim
     fi

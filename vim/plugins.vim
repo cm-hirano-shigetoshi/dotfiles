@@ -26,6 +26,7 @@ augroup always-use-plugins
   packadd TimeMachine.vim
   packadd RecentUse.vim
   packadd FileSearch.vim
+  packadd WordSearch.vim
 augroup END
 
 augroup nim-plugins
