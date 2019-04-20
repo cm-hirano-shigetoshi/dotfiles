@@ -1,16 +1,16 @@
 base_task:
-  input: bash ~/dotfiles/zsh/fzfer/select_file.sh
-  query: '${1}'
+  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${1}"
+  query: '${2}'
   opts:
+    - prompt="${1}/"
     - multi
     - no-sort
     - layout=reverse-list
-  preview: head -n 1000 {}
+  preview: head -n 10000 {}
 expects:
   enter:
     stdout:
-      quote:
-      join:
+      - filepath:
   ctrl-h:
     continue:
       input: find ~ -type f 2>/dev/null

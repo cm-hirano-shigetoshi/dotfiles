@@ -126,25 +126,36 @@ function copyBuffer() {
 }
 zle -N copyBuffer
 
-function test_hogehoge() {
+function fzf_complete() {
   local strings
   strings=$(~/PublicRepository/shell-buffer-islands/range $CURSOR "$BUFFER")
-  local LEFT CENTER RIGHT
-  LEFT=$(sed -z -n '1p' <<< "$strings" | sed 's/\x0//')
-  CENTER=$(sed -z -n '2p' <<< "$strings" | sed 's/\x0//')
-  RIGHT=$(sed -z -n '3p' <<< "$strings" | sed 's/\x0//')
-  #echo "\"$LEFT\"" | xxd
-  #echo "\"$CENTER\"" | xxd
-  #echo "\"$RIGHT\"" | xxd
-  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${CENTER}")
+  local left center right dir query
+  left=$(sed -z -n '1p' <<< "$strings" | sed 's/\x0//')
+  center=$(sed -z -n '2p' <<< "$strings" | sed 's/\x0//')
+  right=$(sed -z -n '3p' <<< "$strings" | sed 's/\x0//')
+  #echo "\"$left\"" | xxd
+  #echo "\"$center\"" | xxd
+  #echo "\"$right\"" | xxd
+
+  center="${center%%/}"
+  local center_path="${center}"
+  center_path="$(echo "${center}" | sed "s%^~%${HOME}%")"
+  if [[ -d "${center_path}" ]]; then
+    dir="${center}"
+    query=""
+  else
+    dir="$(dirname "${center_path}")"
+    query="$(basename "${center_path}")"
+  fi
+  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${dir}" "${query}")
   if [[ -n "$out" ]]; then
-    BUFFER="${LEFT}${out} ${RIGHT}"
-    CURSOR=$((${#LEFT} + ${#out} + 1))
+    BUFFER="${left}${dir}/${out} ${right}"
+    CURSOR=$((${#left} + ${#dir} + ${#out} + 2))
     zle redisplay
     typeset -f zle-line-init >/dev/null && zle zle-line-init
   fi
 }
-zle -N test_hogehoge
+zle -N fzf_complete
 
 # 前の単語へ移動
 bindkey ","    override_backward-word
@@ -163,7 +174,7 @@ bindkey "^[9"    override_forward-kill-blank-word
 # カーソルより左を削除
 bindkey "^u"    kill-left-line
 # 任意の位置から補完を行う
-bindkey "^i"    override_expand-or-complete
+#bindkey "^i"    override_expand-or-complete
 # readPathLinkを適用する
 bindkey "^@"    readPathLink
 # charを検索して移動
@@ -173,4 +184,4 @@ bindkey "^d^b"  copyBuffer
 # バッファを実行して結果をバッファにはりつける
 bindkey '^[e' __expand-buffer
 # fzfでファイルの選択
-bindkey '\e[Z' test_hogehoge
+bindkey '\e[Z' fzf_complete
