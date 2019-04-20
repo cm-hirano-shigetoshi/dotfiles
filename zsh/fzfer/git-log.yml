@@ -10,6 +10,7 @@ base_task:
     line_select:
         filter: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
 expects:
-    ctrl-m:
-        line_select_pipe: grep -o '[0-9a-z]\{40\}' | tr '\n' ' '
+    enter:
+        line_select:
+        pipe: grep -o '[0-9a-z]\{40\}' | tr '\n' ' '
 
