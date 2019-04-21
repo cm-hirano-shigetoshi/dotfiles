@@ -1,6 +1,6 @@
 base_task:
   input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${2}"
-  query: '${3}'
+  query: ${3}
   opts:
     - prompt="${1}"
     - multi
@@ -10,7 +10,7 @@ base_task:
 expects:
   enter:
     stdout:
-      - prefix: $(echo "${1}" | sed 's%^\./%%')
+      - prefix: ${1}
       - filepath:
       - join:
   ctrl-h:

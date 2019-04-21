@@ -137,12 +137,8 @@ function fzf_complete() {
   #echo "\"$center\"" | xxd
   #echo "\"$right\"" | xxd
 
-  if [[ "${center}" = "" ]]; then
-    center="./"
-  fi
   center="$(echo "${center}" | sed 's%\([^/]\)$%\1/%')"
-  local center_path="$(echo "${center}" | sed 's%^$%.%')"
-  center_path="$(echo "${center}" | sed "s%^~%${HOME}%")"
+  local center_path="$(echo "${center}" | sed -e 's%^$%.%' -e "s%^~%${HOME}%")"
   if [[ -d "${center_path}" ]]; then
     dir="${center_path}"
     query=""
