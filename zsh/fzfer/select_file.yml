@@ -1,8 +1,8 @@
 base_task:
-  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${1}"
-  query: '${2}'
+  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${2}"
+  query: '${3}'
   opts:
-    - prompt="${1}/"
+    - prompt="${1}"
     - multi
     - no-sort
     - layout=reverse-list
@@ -10,7 +10,9 @@ base_task:
 expects:
   enter:
     stdout:
+      - prefix: $(echo "${1}" | sed 's%^\./%%')
       - filepath:
+      - join:
   ctrl-h:
     continue:
       input: find ~ -type f 2>/dev/null

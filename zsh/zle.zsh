@@ -137,20 +137,23 @@ function fzf_complete() {
   #echo "\"$center\"" | xxd
   #echo "\"$right\"" | xxd
 
-  center="${center%%/}"
-  local center_path="${center}"
+  if [[ "${center}" = "" ]]; then
+    center="./"
+  fi
+  center="$(echo "${center}" | sed 's%\([^/]\)$%\1/%')"
+  local center_path="$(echo "${center}" | sed 's%^$%.%')"
   center_path="$(echo "${center}" | sed "s%^~%${HOME}%")"
   if [[ -d "${center_path}" ]]; then
-    dir="${center}"
+    dir="${center_path}"
     query=""
   else
     dir="$(dirname "${center_path}")"
     query="$(basename "${center_path}")"
   fi
-  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${dir}" "${query}")
+  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${center}" "${dir}" "${query}")
   if [[ -n "$out" ]]; then
-    BUFFER="${left}${dir}/${out} ${right}"
-    CURSOR=$((${#left} + ${#dir} + ${#out} + 2))
+    BUFFER="${left}${out}${right}"
+    CURSOR=$((${#BUFFER} - ${#right}))
     zle redisplay
     typeset -f zle-line-init >/dev/null && zle zle-line-init
   fi
