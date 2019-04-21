@@ -127,9 +127,8 @@ function copyBuffer() {
 zle -N copyBuffer
 
 function fzf_complete() {
-  local strings
+  local strings left center right dir query
   strings=$(~/PublicRepository/shell-buffer-islands/range $CURSOR "$BUFFER")
-  local left center right dir query
   left=$(sed -z -n '1p' <<< "$strings" | sed 's/\x0//')
   center=$(sed -z -n '2p' <<< "$strings" | sed 's/\x0//')
   right=$(sed -z -n '3p' <<< "$strings" | sed 's/\x0//')
@@ -138,13 +137,12 @@ function fzf_complete() {
   #echo "\"$right\"" | xxd
 
   center="$(echo "${center}" | sed 's%\([^/]\)$%\1/%')"
-  local center_path="$(echo "${center}" | sed -e 's%^$%.%' -e "s%^~%${HOME}%")"
-  if [[ -d "${center_path}" ]]; then
-    dir="${center_path}"
+  dir="$(echo "${center}" | sed -e 's%^$%.%' -e "s%^~%${HOME}%")"
+  if [[ -d "${dir}" ]]; then
     query=""
   else
-    dir="$(dirname "${center_path}")"
-    query="$(basename "${center_path}")"
+    dir="$(dirname "${dir}")"
+    query="$(basename "${dir}")"
   fi
   out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${center}" "${dir}" "${query}")
   if [[ -n "$out" ]]; then
