@@ -141,8 +141,9 @@ function fzf_complete() {
   if [[ -d "${dir}" ]]; then
     query=""
   else
-    dir="$(dirname "${dir}")"
+    center="$(echo "${center}" | sed 's%[^/]\+/$%%')"
     query="$(basename "${dir}")"
+    dir="$(dirname "${dir}")"
   fi
   out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${center}" "${dir}" "${query}")
   if [[ -n "$out" ]]; then

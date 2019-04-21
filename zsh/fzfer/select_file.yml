@@ -2,7 +2,7 @@ base_task:
   input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${2}"
   query: ${3}
   opts:
-    - prompt="${1}"
+    - prompt=${1}
     - multi
     - no-sort
     - layout=reverse-list
