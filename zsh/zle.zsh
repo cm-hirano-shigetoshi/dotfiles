@@ -145,7 +145,7 @@ function fzf_complete() {
     query="$(basename "${dir}")"
     dir="$(dirname "${dir}")"
   fi
-  out=$(~/PublicRepository/fzfer/fzfer.sh ~/dotfiles/zsh/fzfer/select_file.yml "${center}" "${dir}" "${query}")
+  out=$(fzfer run ~/dotfiles/zsh/fzfer/select_file.yml "${center}" "${dir}" "${query}")
   if [[ -n "$out" ]]; then
     BUFFER="${left}${out}${right}"
     CURSOR=$((${#BUFFER} - ${#right}))
