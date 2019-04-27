@@ -5,7 +5,7 @@ set cpoptions+=n
 " 現在のバッファに変更があっても他のバッファに移れる
 set hidden
 " 行番号を表示
-set number relativenumber
+set number
 " 保存したとき、前の保存状態をバックアップする
 set backup
 " バックアップ場所
