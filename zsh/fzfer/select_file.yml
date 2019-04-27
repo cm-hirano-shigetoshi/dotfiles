@@ -1,8 +1,7 @@
 base_task:
-  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "${2}"
-  query: ${3}
+  input: bash ~/dotfiles/zsh/fzfer/select_file.sh "$arg2"
+  query: $arg3
   opts:
-    - prompt=${1}
     - multi
     - no-sort
     - layout=reverse-list
@@ -10,7 +9,7 @@ base_task:
 expects:
   enter:
     stdout:
-      - prefix: ${1}
+      - prefix: $arg1
       - filepath:
       - join:
   ctrl-h:
@@ -27,6 +26,6 @@ expects:
       input: find $(cd ../../.. && pwd) -type f 2>/dev/null
   ctrl-d:
     continue:
-      input: bash ~/dotfiles/zsh/fzfer/select_file.sh ${o}
+      input: bash ~/dotfiles/zsh/fzfer/select_file.sh $argo
       query: ''
 
