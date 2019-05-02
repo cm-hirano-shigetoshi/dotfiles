@@ -27,5 +27,6 @@ augroup always-use-plugins
   packadd RecentUse.vim
   packadd FileSearch.vim
   packadd WordSearch.vim
+  packadd csvq.vim
 augroup END
 
