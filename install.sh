@@ -70,7 +70,7 @@ vim() {
     ln -s /Users/hirano.shigetoshi/PublicRepository/FileSearch.vim .vim/pack/master/opt/FileSearch.vim
     ln -s /Users/hirano.shigetoshi/PublicRepository/WordSearch.vim .vim/pack/master/opt/WordSearch.vim
     if $develop; then
-        git clone https://github.com/zah/nim.vim .vim/pack/master/opt/github.com_zah_nim.vim
+        git clone https://github.com/zah/nim.vim .vim/pack/master/start/github.com_zah_nim.vim
     fi
 }
 

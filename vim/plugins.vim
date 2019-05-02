@@ -29,8 +29,3 @@ augroup always-use-plugins
   packadd WordSearch.vim
 augroup END
 
-augroup nim-plugins
-  autocmd!
-  autocmd FileType nim packadd github.com_zah_nim.vim
-augroup END
-
