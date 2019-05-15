@@ -14,7 +14,7 @@ function fzf_snippet() {
   if [[ $text = =* ]]; then
     eval "${text#=}" | strutil newline -z | pbcopy
   else
-    echo $text | strutil newline -z | pbcopy
+    echo "$text" | strutil newline -z | pbcopy
   fi
 }
 fzf_snippet
