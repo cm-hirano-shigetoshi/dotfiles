@@ -10,6 +10,8 @@ map f<CR> <Plug>(jump_to_surround#Jump)
 nmap <Space> vi<Space>
 nmap <Space><Space> viS
 
+nmap <F8> <Plug>(CSVQ)
+
 "ls ~/.vim/pack/master/opt
 augroup always-use-plugins
   autocmd!
