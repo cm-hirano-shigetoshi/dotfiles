@@ -5,7 +5,7 @@ base_task:
         - no-sort
         - reverse
         - with-nth=2..
-        - preview-window='up:70%:wrap'
+        - preview-window='up:70%:wrap:hidden'
     preview: git log --graph --decorate --oneline | $fzfer_dir/preview/show_arround_line.sh - {1} $LINES
     line_select:
         filter: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
