@@ -1,7 +1,10 @@
 function! Clipboard()
-    let file = $HOME . "/clip"
     let lines = split(@", "\n")
-    call writefile(lines, file)
-    let ret = system('cat ' . file . ' | pbcopy')
+    if len(lines) == 1
+        let text = lines[0]
+    else
+        let text = @"
+    endif
+    call system("echo -n '" . text . "' | pbcopy")
 endfunction
 nnoremap <silent> <Space>y :call Clipboard()<CR>
