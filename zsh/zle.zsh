@@ -80,7 +80,7 @@ function kill-left-line() {
 zle -N kill-left-line
 
 function __control_i() {
-  if [[ "${BUFFER}" =~ ^aws\s* ]]; then
+  if [[ "${BUFFER}" =~ ^aws\s*$ ]]; then
     fzf_aws_help
   else
     override_expand-or-complete
