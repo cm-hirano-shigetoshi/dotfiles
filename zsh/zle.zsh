@@ -79,15 +79,6 @@ function kill-left-line() {
 }
 zle -N kill-left-line
 
-function __control_i() {
-  if [[ "${BUFFER}" =~ ^aws\s*$ ]]; then
-    fzf_aws_help
-  else
-    override_expand-or-complete
-  fi
-}
-zle -N __control_i
-
 function override_expand-or-complete() {
     if [ ! -z $RBUFFER ] && [ "X$RBUFFER[1]" != "X " ]; then
         zle set-mark-command
@@ -181,7 +172,6 @@ bindkey "^[9"    override_forward-kill-blank-word
 bindkey "^u"    kill-left-line
 # 任意の位置から補完を行う
 #bindkey "^i"    override_expand-or-complete
-bindkey "^i"    __control_i
 # readPathLinkを適用する
 bindkey "^@"    readPathLink
 # charを検索して移動
@@ -192,3 +182,4 @@ bindkey "^d^b"  copyBuffer
 bindkey '^[e' __expand-buffer
 # fzfでファイルの選択
 bindkey '\e[Z' fzf_complete
+

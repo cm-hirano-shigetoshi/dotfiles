@@ -1,3 +1,5 @@
+export DOTFILES=${HOME}/dotfiles
+
 if [[ $SHELL =~ bash$ ]]; then
     export EXTERNAL_APP_PATH=$HOME/local
     if [ -e $HOME/.nimble/bin/nim ]; then
