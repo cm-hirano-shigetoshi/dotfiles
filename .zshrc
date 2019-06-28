@@ -32,7 +32,9 @@ source '/Users/hirano.shigetoshi/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
-zplugin light zdharma/fast-syntax-highlighting
-zplugin ice src"fzf-aws-help.zsh"; zplugin light cm-hirano-shigetoshi/fzf-aws-help
+zplugin ice wait'!0'; zplugin light zdharma/fast-syntax-highlighting
+zplugin ice wait'!0' as"program" pick"bin/fzfyml"; zplugin light cm-hirano-shigetoshi/fzfyml
+zplugin ice wait'!0' src"fzf-aws-help.zsh"; zplugin light cm-hirano-shigetoshi/fzf-aws-help
 
 source ${DOTFILES}/zsh/bindkey.zsh
+
