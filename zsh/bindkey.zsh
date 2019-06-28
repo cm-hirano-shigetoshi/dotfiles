@@ -1,5 +1,5 @@
 function __control_h() {
-  if [[ "${BUFFER}" = "aws" ]] || [[ "${BUFFER}" = "aws " ]]; then
+  if [[ ${#BUFFER} -eq 0 ]] || [[ "${BUFFER}" = "aws" ]] || [[ "${BUFFER}" = "aws " ]]; then
     zle fzf-aws-help
   else
     zle aws-resource-info

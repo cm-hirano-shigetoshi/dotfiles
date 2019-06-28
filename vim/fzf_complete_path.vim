@@ -19,7 +19,7 @@ function! Fzf_complete_path()
         endif
     endif
     call writefile([dir, expand(dir), query], "/Users/hirano.shigetoshi/temp")
-    let out = system("tput cnorm > /dev/tty; fzfer run /Users/hirano.shigetoshi/dotfiles/vim/fzfer/complete_path.yml 2>/dev/tty")
+    let out = system("tput cnorm > /dev/tty; fzfyml run /Users/hirano.shigetoshi/dotfiles/vim/fzfyml/complete_path.yml 2>/dev/tty")
     call writefile([out], "/Users/hirano.shigetoshi/temp")
     if len(out) > 0
         if dir == "/"
