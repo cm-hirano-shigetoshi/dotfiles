@@ -5,11 +5,11 @@ export PATH=${EXTERNAL_APP_PATH}/bin:${NIM_HOME}/bin:${PATH}
 # PATH の重複を消去する
 typeset -U path
 # プロンプトの設定
-autoload -U colors
-colors
-export HIDDEN_START_OF_PROMPT=""
-PROMPT_BASE="${HIDDEN_START_OF_PROMPT}[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]%gb"$'\n'"$ "
-PROMPT=$PROMPT_BASE
+if which git_super_status >/dev/null; then
+  PROMPT='[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]$(git_super_status)'$'\n''$ '
+else
+  PROMPT="[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]"$'\n'"$ "
+fi
 # 言語設定
 export ENCODING="utf8"
 
