@@ -15,7 +15,7 @@ export ENCODING="utf8"
 
 # zsh の補完機能を使うおまじない
 autoload -Uz compinit
-compinit
+compinit -C
 # 補完候補にも色を付ける
 zstyle ':completion:*' list-colors 'di=34;1'
 # ファイル名の途中でも補完候補とし、小文字は大文字としても検索
