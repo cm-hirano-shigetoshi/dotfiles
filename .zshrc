@@ -16,6 +16,9 @@ else
   dotfiles=$(dirname $(readlink -e $0))
 fi
 for f in $dotfiles/zsh/*.zsh; do
+    if [[ $f =~ bindkey ]]; then
+        continue
+    fi
     source $f
 done
 
