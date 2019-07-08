@@ -69,10 +69,10 @@ nnoremap N Nzz
 nnoremap [b :bp<CR>
 nnoremap ]b :bn<CR>
 nnoremap <Leader><CR> V:!sh<CR>
-nnoremap * *N
-nnoremap g* g*N
-nnoremap # *NN
-nnoremap g# g*NN
+nnoremap * *Nzz
+nnoremap g* g*Nzz
+nnoremap # *NNzz
+nnoremap g# g*NNzz
 
 inoremap <C-c> <ESC>
 inoremap <C-b> <Left>
