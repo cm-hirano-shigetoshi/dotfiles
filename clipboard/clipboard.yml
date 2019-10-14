@@ -1,5 +1,5 @@
 base_task:
-  input: /usr/local/opt/coreutils/libexec/gnubin/tac "${HOME}/.clipboard_history"
+  input: /usr/local/opt/coreutils/libexec/gnubin/tac $arg1
           | awk '!a[$0]++'
           | grep -v '^\s*$'
   preview: echo {} | bash $(dirname ${yml})/preview.sh

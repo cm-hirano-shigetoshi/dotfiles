@@ -3,7 +3,7 @@ function fzf_history() {
   local readonly CLIPBOARD_HISTORY_FILE="${HOME}/.clipboard_history"
   local readonly TOOL_DIR="${HOME}/dotfiles/clipboard"
   local result
-  result=$(fzfyml run ${TOOL_DIR}/clipboard.yml)
+  result=$(fzfyml run ${TOOL_DIR}/clipboard.yml "$CLIPBOARD_HISTORY_FILE")
   if [[ -z "${result}" ]]; then
     return
   fi
