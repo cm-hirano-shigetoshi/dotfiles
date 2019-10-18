@@ -32,7 +32,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "/usr/local/bin/tmux new-window 'bash ~/dotfiles/clipboard/clipboard.sh'"
+                    "shell_command": "/usr/local/bin/tmux new-window '~/.zplugin/plugins/cm-hirano-shigetoshi---clipboard-history/main/clipboard.sh'"
                   }
                 ],
                 "type": "basic"
