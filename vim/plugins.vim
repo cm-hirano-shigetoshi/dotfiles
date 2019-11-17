@@ -3,7 +3,20 @@ nmap S <Plug>Ysurround
 xmap S <Plug>VSurround
 
 let g:EasyMotion_do_mapping = 0
-map s <Plug>(easymotion-bd-f)
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_migemo = 1
+nmap s <Plug>(easymotion-overwin-f)
+vmap s <Plug>(easymotion-bd-f)
+omap s <Plug>(easymotion-bd-f)
+vmap f <Plug>(easymotion-fl)
+omap f <Plug>(easymotion-fl)
+vmap t <Plug>(easymotion-tl)
+omap t <Plug>(easymotion-tl)
+vmap F <Plug>(easymotion-Fl)
+omap F <Plug>(easymotion-Fl)
+vmap T <Plug>(easymotion-Tl)
+omap T <Plug>(easymotion-Tl)
+
 
 map f<CR> <Plug>(jump_to_surround#Jump)
 
