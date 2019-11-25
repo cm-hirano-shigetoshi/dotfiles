@@ -8,14 +8,10 @@ let g:EasyMotion_use_migemo = 1
 nmap s <Plug>(easymotion-overwin-f)
 vmap s <Plug>(easymotion-bd-f)
 omap s <Plug>(easymotion-bd-f)
-vmap f <Plug>(easymotion-fl)
-omap f <Plug>(easymotion-fl)
-vmap t <Plug>(easymotion-tl)
-omap t <Plug>(easymotion-tl)
-vmap F <Plug>(easymotion-Fl)
-omap F <Plug>(easymotion-Fl)
-vmap T <Plug>(easymotion-Tl)
-omap T <Plug>(easymotion-Tl)
+omap F <Plug>(easymotion-bd-fl)
+vmap F <Plug>(easymotion-bd-fl)
+omap T <Plug>(easymotion-bd-tl)
+vmap T <Plug>(easymotion-bd-tl)
 
 
 map f<CR> <Plug>(jump_to_surround#Jump)
