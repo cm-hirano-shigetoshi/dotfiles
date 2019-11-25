@@ -125,35 +125,6 @@ function copyBuffer() {
 }
 zle -N copyBuffer
 
-function fzf_complete() {
-  local strings left center right dir query
-  strings=$(~/PublicRepository/shell-buffer-islands/range $CURSOR "$BUFFER")
-  left=$(sed -z -n '1p' <<< "$strings" | sed 's/\x0//')
-  center=$(sed -z -n '2p' <<< "$strings" | sed 's/\x0//')
-  right=$(sed -z -n '3p' <<< "$strings" | sed 's/\x0//')
-  #echo "\"$left\"" | xxd
-  #echo "\"$center\"" | xxd
-  #echo "\"$right\"" | xxd
-
-  center="$(echo "${center}" | sed 's%\([^/]\)$%\1/%')"
-  dir="$(echo "${center}" | sed -e 's%^$%.%' -e "s%^~%${HOME}%")"
-  if [[ -d "${dir}" ]]; then
-    query=""
-  else
-    center="$(echo "${center}" | sed 's%[^/]\+/$%%')"
-    query="$(basename "${dir}")"
-    dir="$(dirname "${dir}")"
-  fi
-  out=$(fzfyml run ${dotfiles}/zsh/fzfyml/select_file.yml "${center}" "${dir}" "${query}")
-  if [[ -n "$out" ]]; then
-    BUFFER="${left}${out}${right}"
-    CURSOR=$((${#BUFFER} - ${#right}))
-    zle redisplay
-    typeset -f zle-line-init >/dev/null && zle zle-line-init
-  fi
-}
-zle -N fzf_complete
-
 # 前の単語へ移動
 bindkey ","    override_backward-word
 # 次の単語へ移動
@@ -180,6 +151,4 @@ bindkey "^]"    vi-find-next-char
 bindkey "^d^b"  copyBuffer
 # バッファを実行して結果をバッファにはりつける
 bindkey '^[e' __expand-buffer
-# fzfでファイルの選択
-bindkey '\e[Z' fzf_complete
 
