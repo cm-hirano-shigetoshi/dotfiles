@@ -1,16 +1,15 @@
 base_task:
     input: git log --graph --decorate --oneline --abbrev=40 --color=always
+    transform:
+      - pipe: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
     opts:
         - multi
         - no-sort
         - reverse
-        - with-nth=2..
         - preview-window='up:70%:wrap:hidden'
     preview: git log --graph --decorate --oneline | fzfyml preview show_arround_line.sh - {1} $LINES
-    line_select:
-        filter: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
-expects:
-    enter:
-        line_select:
-        pipe: grep -o '[0-9a-z]\{40\}' | tr '\n' ' '
+    stdout:
+        enter:
+          - before-transformed: LINE
+          - pipe: grep -o '[0-9a-z]\{40\}' | tr '\n' ' '
 

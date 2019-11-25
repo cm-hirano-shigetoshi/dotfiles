@@ -62,9 +62,8 @@ if which fzf >/dev/null 2>&1; then
         out=$(fzfyml run $dotfiles/zsh/fzfyml/git-log.yml)
         if [[ -n "$out" ]]; then
             BUFFER+="$out"
-            CURSOR=${#BUFFER}
+            CURSOR+=${#out}
             zle redisplay
-            typeset -f zle-line-init >/dev/null && zle zle-line-init
         fi
     }
     zle -N fzf-git-log-widget
