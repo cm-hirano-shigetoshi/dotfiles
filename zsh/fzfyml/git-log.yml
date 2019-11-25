@@ -1,7 +1,6 @@
 base_task:
     input: git log --graph --decorate --oneline --abbrev=40 --color=always
-    transform:
-      - pipe: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
+    transform: sed -e 's/\([0-9a-z]\{7\}\)[0-9a-z]\{33\}\([^0-9a-z]\)/\1\2/'
     opts:
         - multi
         - no-sort
