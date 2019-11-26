@@ -7,8 +7,8 @@ base_task:
         - nth=2..
         - preview-window=up:60%
     preview: ~/dotfiles/zsh/lib/preview-git.sh {}
-    binds:
+    bind:
         ctrl-v: execute-silent(tovim {-1})
-    stdout:
+    output:
         enter:
             - pipe: grep -v '^##' | cut -c 4- | sed 's/^.\+ -> //' | tr '\n' ' '
