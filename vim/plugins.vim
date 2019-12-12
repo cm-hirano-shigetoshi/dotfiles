@@ -13,10 +13,6 @@ vmap F <Plug>(easymotion-bd-fl)
 omap T <Plug>(easymotion-bd-tl)
 vmap T <Plug>(easymotion-bd-tl)
 
-
-map f<CR> <Plug>(jump_to_surround#Jump)
-
-nmap <Space> vi<Space>
 nmap <Space><Space> viS
 
 nmap <F8> <Plug>(CSVQ)
