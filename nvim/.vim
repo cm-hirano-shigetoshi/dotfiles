@@ -1,0 +1,1 @@
+/Users/hirano.shigetoshi/.vim
