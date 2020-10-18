@@ -74,6 +74,14 @@ vim() {
     fi
 }
 
+nvim() {
+    cd $HOME
+    mkdir -p .config
+    cd .config
+    rm nvim
+    ln -s ~/dotfiles/nvim nvim
+}
+
 cui() {
     cd $HOME
     if $develop; then
@@ -127,6 +135,7 @@ if [ $# -eq 0 ]; then
     dotfiles
     keybind
     vim
+    nvim
     cui
     fzf
     nim
