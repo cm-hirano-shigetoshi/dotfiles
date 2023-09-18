@@ -26,5 +26,5 @@ set copyindent
 set nofixeol
 " undoファイルを所定の場所に保存
 set undofile
-set undodir=~/.vim/undo
+set undodir=$HOME/.local/share/nvim/undo
 
