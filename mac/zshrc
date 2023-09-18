@@ -120,7 +120,7 @@ if [[ -n $TMUX ]]; then
 
   typeset -U path PATH
 
-  ln -s /opt/homebrew_x86/bin/nvim $HOME/bin/master/vim
+  ln -sf /opt/homebrew_x86/bin/nvim $HOME/bin/master/vim
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
