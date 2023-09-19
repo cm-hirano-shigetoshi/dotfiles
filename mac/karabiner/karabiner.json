@@ -3689,7 +3689,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "source ~/.zprofile && tmux new-window \"/Users/hirano.shigetoshi/.zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/clipboard.sh\" && /usr/bin/osascript -e 'tell application \"iTerm\" to activate'"
+                                        "shell_command": "source ~/.zprofile && tmux new-window \"/Users/hirano.shigetoshi/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/clipboard.sh\" && /usr/bin/osascript -e 'tell application \"iTerm\" to activate'"
                                     }
                                 ],
                                 "to_after_key_up": [],
