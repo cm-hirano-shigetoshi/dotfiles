@@ -18,7 +18,7 @@ enum custom_keycodes {
 
 #define EISU LALT(KC_GRV)
 
-const key_override_t underscore_key_override = ko_make_basic(MOD_MASK_SHIFT, JP_COLN, KC_F21);
+const key_override_t underscore_key_override = ko_make_basic(MOD_MASK_SHIFT, JP_COLN, JP_PLUS);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &underscore_key_override,
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
     XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_MPLY,                        _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-    KC_BSPC, KC_EXLM, JP_DQUO, KC_HASH, KC_DLR,  KC_PERC, _______,                        _______, JP_AMPR, JP_QUOT, JP_ASTR, JP_PLUS, JP_TILD, KC_DEL,
+    KC_BSPC, KC_EXLM, JP_DQUO, KC_HASH, KC_DLR,  KC_PERC, _______,                        _______, JP_AMPR, JP_QUOT, JP_ASTR, JP_SCLN, JP_TILD, KC_DEL,
     _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , _______,                        _______, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , JP_PIPE,
     _______, JP_COLN, JP_AT,   KC_MINS, KC_SLSH, KC_DOT , _______,                        _______, KC_EQL,  KC_GRV,  JP_LPRN, JP_RPRN, JP_YEN,  JP_UNDS,
     _______, _______, _______, _______,          _______, _______, _______,      _______, _______, _______,          _______, _______, _______, _______

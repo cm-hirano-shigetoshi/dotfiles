@@ -62,7 +62,6 @@ Name("super_)")	From('o', vmods='super')	To(')')
 Name("super_us_)")	From('p', vmods='super')	To(')')	Condition("device", {'product_id': 59100})
 Name("super_us_`")	From('[', vmods='super')	To('`')	Condition("device", {'product_id': 59100})
 Name("super_us_~")	From(']', vmods='super')	To('`', mod="S")	Condition("device", {'product_id': 59100})
-Name("super_semicolon")	From('f21', mod="S")	To(';')	Condition("device", {'product_id': 24672})
 
 Name("easy_left")	From('h', vmods='eisuu')	To('left_arrow')
 Name("easy_right")	From('l', vmods='eisuu')	To('right_arrow')
