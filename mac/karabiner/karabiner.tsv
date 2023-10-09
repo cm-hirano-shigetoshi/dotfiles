@@ -112,4 +112,5 @@ Name("clipboard")	From('v', mod='Cc')	To(Shell("source ~/.zprofile && tmux new-w
 Name("snnipet")	From('t', mod='Cc')	To(Shell("source ~/.zprofile && tmux new-window \"/Users/hirano.shigetoshi/.local/share/zinit/plugins/cm-hirano-shigetoshi---snippet/main/snippet.sh /Users/hirano.shigetoshi/OneDrive/obsidian/MyBrain/04_Snippet\" && /usr/bin/osascript -e 'tell application \"iTerm\" to activate'"))
 Name("alfred")	From('fn')	To('fn')	ToAlone('space', mod="O")	
 Name("alfred_pc")	From('right_option')	To('fn')	ToAlone('space', mod="O")	
+Name("window_switch")	From('tab', 'Cc')	To('@', 'C')
 
