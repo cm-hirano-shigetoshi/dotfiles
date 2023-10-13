@@ -48,6 +48,7 @@ Plug 'vim-jp/vital.vim'
 "Plug 'cm-hirano-shigetoshi/fzf-file-selector.lua'
 Plug 'cm-hirano-shigetoshi/fzf-file-selector.vim'
 Plug 'cm-hirano-shigetoshi/fzf-grep.vim'
+Plug 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
 
 call plug#end()
 
