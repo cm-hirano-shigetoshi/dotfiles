@@ -31,9 +31,6 @@ if [[ -n $TMUX ]]; then
   zinit ice wait'!0' src"directory.zsh" silent; zinit light cm-hirano-shigetoshi/directory-stack
   # コマンド履歴
   zinit ice wait'!0' src"history.zsh" silent; zinit light cm-hirano-shigetoshi/command-history
-  # gitのステータス表示（PROMPTにgit_super_statusを入れて初めて効果が出る）
-  zinit ice src"zshrc.sh"; zinit light olivierverdier/zsh-git-prompt
-  PROMPT='[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]$(git_super_status)'$'\n''$ '
   # コマンドに色を付ける
   zinit ice wait'!0' silent; zinit light zdharma/fast-syntax-highlighting
   # クリップボード履歴
@@ -53,6 +50,20 @@ if [[ -n $TMUX ]]; then
   # aws cliコマンド拡張
   zinit ice wait'!0' src"fzf-aws-cli-completor.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-aws-cli-completor
 
+  #
+  # Git情報の表示
+  #
+  git_prompt_path="${XDG_CONFIG_HOME-$HOME/.config}/zsh/git-prompt.sh"
+  if [[ ! -e "${git_prompt_path}" ]]; then
+      mkdir -p "$(dirname ${git_prompt_path})"
+      wget -qO "${git_prompt_path}" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
+  fi
+  source "$HOME/.config/zsh/git-prompt.sh"
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  GIT_PS1_SHOWUPSTREAM=auto
+  setopt PROMPT_SUBST ; PS1='[%F{green}%n@%m%f:%F{yellow}%~%f] %F{red}$(__git_ps1 "(%s)")%f'$'\n\$ '
   #
   # asdf
   #
