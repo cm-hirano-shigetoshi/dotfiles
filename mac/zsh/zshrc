@@ -41,6 +41,9 @@ if [[ -n $TMUX ]]; then
   zinit ice wait'!0' src"FzfFileSelector" silent; zinit light cm-hirano-shigetoshi/FzfFileSelector
   zle -N _fzf_file_selector
   bindkey '\e[Z' _fzf_file_selector
+  # Powerlevel10k
+  zinit ice depth=1
+  zinit light romkatv/powerlevel10k
 
   # git
   zinit ice wait'!0' src"git.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-git
@@ -50,20 +53,7 @@ if [[ -n $TMUX ]]; then
   # aws cliコマンド拡張
   zinit ice wait'!0' src"fzf-aws-cli-completor.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-aws-cli-completor
 
-  #
-  # Git情報の表示
-  #
-  git_prompt_path="${XDG_CONFIG_HOME-$HOME/.config}/zsh/git-prompt.sh"
-  if [[ ! -e "${git_prompt_path}" ]]; then
-      mkdir -p "$(dirname ${git_prompt_path})"
-      wget -qO "${git_prompt_path}" "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh"
-  fi
-  source "$HOME/.config/zsh/git-prompt.sh"
-  GIT_PS1_SHOWDIRTYSTATE=true
-  GIT_PS1_SHOWUNTRACKEDFILES=true
-  GIT_PS1_SHOWSTASHSTATE=true
-  GIT_PS1_SHOWUPSTREAM=auto
-  setopt PROMPT_SUBST ; PS1='[%F{green}%n@%m%f:%F{yellow}%~%f] %F{red}$(__git_ps1 "(%s)")%f'$'\n\$ '
+
   #
   # asdf
   #
@@ -140,3 +130,5 @@ fi
 export PATH="/Users/hirano.shigetoshi/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
