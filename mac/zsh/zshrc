@@ -31,9 +31,6 @@ if [[ -n $TMUX ]]; then
   zinit ice wait'!0' src"directory.zsh" silent; zinit light cm-hirano-shigetoshi/directory-stack
   # コマンド履歴
   zinit ice wait'!0' src"history.zsh" silent; zinit light cm-hirano-shigetoshi/command-history
-  # gitのステータス表示（PROMPTにgit_super_statusを入れて初めて効果が出る）
-  zinit ice src"zshrc.sh"; zinit light olivierverdier/zsh-git-prompt
-  PROMPT='[%{$fg[green]%}%n@%m %{$fg[yellow]%}%d%{$reset_color%}]$(git_super_status)'$'\n''$ '
   # コマンドに色を付ける
   zinit ice wait'!0' silent; zinit light zdharma/fast-syntax-highlighting
   # クリップボード履歴
@@ -44,6 +41,9 @@ if [[ -n $TMUX ]]; then
   zinit ice wait'!0' src"FzfFileSelector" silent; zinit light cm-hirano-shigetoshi/FzfFileSelector
   zle -N _fzf_file_selector
   bindkey '\e[Z' _fzf_file_selector
+  # Powerlevel10k
+  zinit ice depth=1
+  zinit light romkatv/powerlevel10k
 
   # git
   zinit ice wait'!0' src"git.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-git
@@ -52,6 +52,7 @@ if [[ -n $TMUX ]]; then
   zinit ice wait'!0' src"ninja.zsh" silent; zinit light cm-hirano-shigetoshi/CommandLineNinja
   # aws cliコマンド拡張
   zinit ice wait'!0' src"fzf-aws-cli-completor.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-aws-cli-completor
+
 
   #
   # asdf
@@ -129,3 +130,5 @@ fi
 export PATH="/Users/hirano.shigetoshi/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
