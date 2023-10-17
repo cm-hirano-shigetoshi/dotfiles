@@ -9,5 +9,8 @@
     },
     "coc.preferences.formatOnSaveFiletypes": [
         "rust"
+    ],
+    "Lua.diagnostics.globals": [
+        "vim"
     ]
 }
