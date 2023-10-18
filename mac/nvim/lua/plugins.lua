@@ -35,4 +35,5 @@ return require('packer').startup(function(use)
     use 'cm-hirano-shigetoshi/fzf-file-selector.vim'
     use 'cm-hirano-shigetoshi/fzf-grep.vim'
     use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
+    use 'cm-hirano-shigetoshi/vim-csvq'
 end)
