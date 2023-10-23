@@ -3,7 +3,7 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+return require('packer').startup(function(use, rocks)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
@@ -32,7 +32,10 @@ return require('packer').startup(function(use)
     -- 自作お試し
     --Plug 'cm-hirano-shigetoshi/VimFzfFileSelector'
     --Plug 'cm-hirano-shigetoshi/fzf-file-selector.lua'
-    use 'cm-hirano-shigetoshi/fzf-file-selector.vim'
+    use {
+        'cm-hirano-shigetoshi/fzf-file-selector.vim',
+        rocks { "luaposix" },
+    }
     use 'cm-hirano-shigetoshi/fzf-grep.vim'
     use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
     use 'cm-hirano-shigetoshi/vim-csvq'
