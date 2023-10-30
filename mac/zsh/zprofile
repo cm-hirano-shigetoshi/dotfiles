@@ -21,6 +21,7 @@ export DOTFILES="$HOME/dotfiles.mac"
 export EDITOR=vim
 
 FZF_DEFAULT_OPTS=""
+FZF_DEFAULT_OPTS+=" --exact"
 FZF_DEFAULT_OPTS+=" --no-mouse --no-sort"
 FZF_DEFAULT_OPTS+=" --bind='ctrl-s:toggle-sort'"
 export FZF_DEFAULT_OPTS
