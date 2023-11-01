@@ -30,7 +30,10 @@ if [[ -n $TMUX ]]; then
   # ディレクトリスタック
   zinit ice wait'!0' src"directory.zsh" silent; zinit light cm-hirano-shigetoshi/directory-stack
   # コマンド履歴
-  zinit ice wait'!0' src"history.zsh" silent; zinit light cm-hirano-shigetoshi/command-history
+  zinit ice wait'!0' src"history.zsh" silent; zinit light cm-hirano-shigetoshi/CommandHistory
+  zle -N fzf-command-history
+  bindkey "^r" fzf-command-history
+
   # コマンドに色を付ける
   zinit ice wait'!0' silent; zinit light zdharma/fast-syntax-highlighting
   # クリップボード履歴
@@ -123,8 +126,6 @@ if [[ -n $TMUX ]]; then
 
   ln -sf /opt/homebrew_x86/bin/nvim $HOME/bin/master/vim
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/hirano.shigetoshi/.rd/bin:$PATH"
