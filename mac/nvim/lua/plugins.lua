@@ -39,4 +39,5 @@ return require('packer').startup(function(use, rocks)
     use 'cm-hirano-shigetoshi/fzf-grep.vim'
     use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
     use 'cm-hirano-shigetoshi/vim-csvq'
+    use 'cm-hirano-shigetoshi/TimeMachine.vim'
 end)
