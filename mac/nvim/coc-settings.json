@@ -1,14 +1,5 @@
 {
     "suggest.noselect": true,
-    "python.formatting.provider": "black",
-    "python.formatting.blackPath": "/opt/homebrew/bin/black",
-    "python.formatting.blackArgs": [],
-    "diagnostic-languageserver.formatFiletypes": {
-        "python": [
-            "isort",
-            "docformatter"
-        ]
-    },
     "coc.preferences.formatOnSaveFiletypes": [
         "rust"
     ],
