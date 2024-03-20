@@ -1,2 +1,2 @@
-nmap <Tab>? <Plug>fzf-grep-run
-nmap <Tab># <Plug>fzf-grep-current-word
+nnoremap <Tab>? <Plug>fzf-grep-run
+nnoremap <Tab># <Plug>fzf-grep-cword
