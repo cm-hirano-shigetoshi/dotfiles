@@ -17,7 +17,6 @@ return require('packer').startup(function(use, rocks)
         requires = { 'junegunn/fzf', run = ':call fzf#install()' }
     }
     use 'vijaymarupudi/nvim-fzf'
-    --use 'yuki-yano/fzf-preview.vim', { 'branch': 'release/rpc' }
     use 'cm-hirano-shigetoshi/fzf-grep.lua'
 
     -- 基本動作の拡張
@@ -27,15 +26,9 @@ return require('packer').startup(function(use, rocks)
     use 'mbbill/undotree'
 
     -- その他
-    --use 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-
-    -- プラグインテスト
-    use 'vim-jp/vital.vim'
 
     -- 自作お試し
     use 'cm-hirano-shigetoshi/fzf-template-nvim-lua'
-    --Plug 'cm-hirano-shigetoshi/VimFzfFileSelector'
-    --Plug 'cm-hirano-shigetoshi/fzf-file-selector.lua'
     use {
         'cm-hirano-shigetoshi/fzf-file-selector.vim',
         rocks { "luaposix" },
