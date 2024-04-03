@@ -1,0 +1,23 @@
+[selection]
+save_to_clipboard = true
+
+[font]
+size = 14
+normal = { family = "MesloLGS NF", style = "Regular" }
+
+[mouse]
+bindings = [{ mouse = "Right", action = "PasteSelection" }]
+
+[window]
+opacity = 0.90
+
+[colors]
+transparent_background_colors = true
+
+[keyboard]
+bindings = [
+  # バックスラッシュが一発で打てるように
+  { key = "¥", chars = "\\" },
+  # フォントサイズの拡大
+  { key = "+", mods = "Command|Shift", action = "IncreaseFontSize" },
+]
