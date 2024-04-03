@@ -10,4 +10,4 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> mrn <Plug>(coc-rename)
 nnoremap <silent> K :<C-u>call <SID>show_documentation()<CR>
 nnoremap <silent> <F1> :<C-u>call CocAction('diagnosticToggle')<CR>
-
+nnoremap <silent> mf :<C-u>call CocAction('format')<CR>
