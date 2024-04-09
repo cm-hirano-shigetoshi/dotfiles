@@ -10,6 +10,7 @@ bindings = [{ mouse = "Right", action = "PasteSelection" }]
 
 [window]
 opacity = 0.90
+option_as_alt = "Both"
 
 [colors]
 transparent_background_colors = true
@@ -21,3 +22,4 @@ bindings = [
   # フォントサイズの拡大
   { key = "+", mods = "Command|Shift", action = "IncreaseFontSize" },
 ]
+
