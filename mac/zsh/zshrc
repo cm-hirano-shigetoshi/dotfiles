@@ -30,7 +30,7 @@ if [[ -n $TMUX ]]; then
   # ディレクトリスタック
   zinit ice wait'!0' src"directory.zsh" silent; zinit light cm-hirano-shigetoshi/directory-stack
   # コマンド履歴
-  zinit ice wait'!0' src"history.zsh" atclone"bash build.sh" atpull'%atclone'
+  zinit ice atclone"bash build.sh" atpull'%atclone' src"history.zsh"
   zinit light cm-hirano-shigetoshi/CommandHistory
   zle -N fzf-command-history
   bindkey "^r" fzf-command-history

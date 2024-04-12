@@ -33,6 +33,9 @@ ln -sf $SCRIPT_DIR/zsh/zshrc $HOME/.zshrc
 ln -sf $SCRIPT_DIR/zsh/p10k.zsh $HOME/.config/zsh/p10k.zsh
 
 #
-# coreutils
+# brew install
 #
 brew install coreutils gnu-sed
+brew install fzf
+brew install ripgrep bat fd
+
