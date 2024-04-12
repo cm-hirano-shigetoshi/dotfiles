@@ -60,7 +60,7 @@ if [[ -n $TMUX ]]; then
   #
   # asdf
   #
-  source "$HOME/.asdf/asdf.sh"
+  [[ -e "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
   #
   # direnv
   #
@@ -123,8 +123,6 @@ if [[ -n $TMUX ]]; then
   PATH="$HOME/bin/develop:$PATH"
 
   typeset -U path PATH
-
-  ln -sf /opt/homebrew_x86/bin/nvim $HOME/bin/master/vim
 fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
