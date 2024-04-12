@@ -6,14 +6,14 @@ SCRIPT_DIR=$(perl -MCwd=realpath -le 'print realpath shift' "$0/..")
 #
 # Rust
 #
-if ! builtin which cargo; then
+if ! which cargo; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
 #
 # Homebrew
 #
-if ! builtin which brew; then
+if ! which brew; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
