@@ -132,8 +132,8 @@ export PATH="/Users/hirano.shigetoshi/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ -n "$ZDOTDIR" ]]; then
-    [[ ! -f "$ZDOTDIR/p10k.zsh" ]] || source "$ZDOTDIR/p10k.zsh"
+if [[ -d "$HOME/.config/zsh" ]]; then
+    [[ ! -f "$HOME/.config/zsh/p10k.zsh" ]] || source "$HOME/.config/zsh/p10k.zsh"
 else
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
