@@ -10,7 +10,10 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.font = wezterm.font("HackGen", {weight="Regular", stretch="Normal", style="Normal"}) -- /Users/hirano.shigetoshi/Library/Fonts/HackGen-Regular.ttf, CoreText
+--
+-- フォント
+--
+config.font = wezterm.font_with_fallback({family="HackGen", weight="Regular", stretch="Normal", style="Normal"})
 config.font_size = 13.0
 config.window_background_opacity = 0.80
 
