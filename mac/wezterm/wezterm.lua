@@ -39,12 +39,12 @@ config.keys = {
          action = wezterm.action.CloseCurrentPane { confirm = true },
    },
    {
-         key = ",",
+         key = "n",
          mods = "CMD|CTRL",
          action = wezterm.action{SplitVertical={domain="CurrentPaneDomain"}},
     },
    {
-         key = ".",
+         key = "m",
          mods = "CMD|CTRL",
          action = wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}},
     },
