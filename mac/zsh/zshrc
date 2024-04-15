@@ -124,6 +124,8 @@ if [[ -n $TMUX ]]; then
   PATH="$HOME/bin/develop:$PATH"
 
   typeset -U path PATH
+
+  export BAT_THEME="Dracula"
 fi
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
