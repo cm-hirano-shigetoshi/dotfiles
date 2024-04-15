@@ -59,9 +59,9 @@ if [[ -n $TMUX ]]; then
 
 
   #
-  # asdf
+  # mise
   #
-  [[ -e "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
+  [[ -e "$HOME/.local/bin/mise" ]] && eval "$(~/.local/bin/mise activate zsh)"
   #
   # direnv
   #
