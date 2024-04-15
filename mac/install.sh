@@ -3,6 +3,14 @@ set -eu
 
 SCRIPT_DIR=$(perl -MCwd=realpath -le 'print realpath shift' "$0/..")
 
+function symlink_dir() {
+    src=$1
+    dst=$2
+    [[ -L "$dst" ]] && rm -fr "$dst"
+    ln -sf "$src" "$dst"
+}
+
+
 #
 # mise
 #
@@ -64,8 +72,8 @@ mkdir -p $PACKER_HOME/start
 mkdir -p $HOME/.config/nvim
 ln -sf $SCRIPT_DIR/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -sf $SCRIPT_DIR/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
-ln -sf $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
-ln -sf $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
+symlink_dir $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
+symlink_dir $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
 ln -sf $PACKER_HOME $HOME/.config/nvim/packer
 #nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 #(cd $PACKER_HOME/start/coc.nvim && npm ci)
