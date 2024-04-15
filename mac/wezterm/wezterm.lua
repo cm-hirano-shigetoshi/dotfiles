@@ -32,6 +32,41 @@ config.keys = {
         mods = "CMD|SHIFT",
         action = wezterm.action.IncreaseFontSize,
     },
+    {
+         key = "w",
+         mods = "CMD",
+         action = wezterm.action.CloseCurrentPane { confirm = true },
+   },
+   {
+         key = ",",
+         mods = "CMD|CTRL",
+         action = wezterm.action{SplitVertical={domain="CurrentPaneDomain"}},
+    },
+   {
+         key = ".",
+         mods = "CMD|CTRL",
+         action = wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}},
+    },
+    {
+        key = 'h',
+        mods = 'CMD|CTRL',
+        action = wezterm.action.ActivatePaneDirection 'Left',
+    },
+    {
+        key = 'j',
+        mods = 'CMD|CTRL',
+        action = wezterm.action.ActivatePaneDirection 'Down',
+    },
+    {
+        key = 'k',
+        mods = 'CMD|CTRL',
+        action = wezterm.action.ActivatePaneDirection 'Up',
+    },
+    {
+        key = 'l',
+        mods = 'CMD|CTRL',
+        action = wezterm.action.ActivatePaneDirection 'Right',
+    },
 }
 
 config.mouse_bindings = {
