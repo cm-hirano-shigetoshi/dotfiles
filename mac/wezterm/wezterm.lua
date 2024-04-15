@@ -16,6 +16,7 @@ end
 config.font = wezterm.font_with_fallback({family="HackGen", weight="Regular", stretch="Normal", style="Normal"})
 config.font_size = 13.0
 config.window_background_opacity = 0.80
+config.color_scheme = 'Shic (terminal.sexy)'
 
 config.keys = {
     {
