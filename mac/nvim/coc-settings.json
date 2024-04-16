@@ -1,9 +1,5 @@
 {
     "suggest.noselect": true,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "rust",
-        "python"
-    ],
     "Lua.diagnostics.globals": [
         "vim"
     ]
