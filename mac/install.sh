@@ -26,6 +26,14 @@ function initialize_packer() {
 }
 
 #
+# Homebrew
+#
+if ! which brew; then
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+brew install wget
+
+#
 # mise
 #
 if [[ ! -e "$HOME/.local/bin/mise" ]]; then
@@ -41,7 +49,6 @@ fi
 #
 # Python
 #
-pip install requests # fzfのserverのために必要
 
 #
 # Rust
@@ -51,19 +58,6 @@ if ! which cargo; then
 fi
 
 #
-# Homebrew
-#
-if ! which brew; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
-
-#
-# WezTerm
-#
-mkdir -p $HOME/.config/wezterm
-ln -sf $SCRIPT_DIR/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
-
-#
 # zsh
 #
 mkdir -p $HOME/.config/zsh
@@ -71,6 +65,7 @@ ln -sf $SCRIPT_DIR/zsh/zprofile $HOME/.zprofile
 ln -sf $SCRIPT_DIR/zsh/zshenv $HOME/.zshenv
 ln -sf $SCRIPT_DIR/zsh/zshrc $HOME/.zshrc
 ln -sf $SCRIPT_DIR/zsh/p10k.zsh $HOME/.config/zsh/p10k.zsh
+pip install requests # fzfのserverのために必要
 
 #
 # brew install
@@ -80,6 +75,12 @@ brew install fzf
 brew install ripgrep bat fd
 brew install wget
 brew install jq
+
+#
+# WezTerm
+#
+mkdir -p $HOME/.config/wezterm
+ln -sf $SCRIPT_DIR/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
 
 #
 # Neovim
@@ -95,5 +96,6 @@ symlink_dir $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
 symlink_dir $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
 ln -sf $PACKER_HOME $HOME/.config/nvim/packer
 initialize_packer
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' | true
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 cd $PACKER_HOME/start/coc.nvim && npm ci
+
