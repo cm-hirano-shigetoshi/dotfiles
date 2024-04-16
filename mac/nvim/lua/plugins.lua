@@ -17,7 +17,10 @@ return require('packer').startup(function(use, rocks)
         requires = { 'junegunn/fzf', run = ':call fzf#install()' }
     }
     use 'vijaymarupudi/nvim-fzf'
-    use 'cm-hirano-shigetoshi/fzf-grep.lua'
+    use {
+        'cm-hirano-shigetoshi/fzf-grep.lua',
+        rocks { "luasocket" },
+    }
 
     -- 基本動作の拡張
     use 'easymotion/vim-easymotion'

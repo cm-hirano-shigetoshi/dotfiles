@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eu
+set -veuo pipefail
 
 SCRIPT_DIR=$(perl -MCwd=realpath -le 'print realpath shift' "$0/..")
 
@@ -10,6 +10,20 @@ function symlink_dir() {
     ln -sf "$src" "$dst"
 }
 
+function initialize_packer() {
+    AVAILABLE_VERSION="2.1.0-beta3"
+    packer_hererocks_home="$HOME/.cache/nvim/packer_hererocks"
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' | true
+    if [[ ! -d $packer_hererocks_home/$AVAILABLE_VERSION ]]; then
+        version=$(ls -1 $packer_hererocks_home | grep '^\d' | head -1)
+        mv $packer_hererocks_home/$version $packer_hererocks_home/$AVAILABLE_VERSION
+        ln -s $AVAILABLE_VERSION $packer_hererocks_home/$version
+        MACOSX_DEPLOYMENT_TARGET=13.4 \
+            python ~/.cache/nvim/packer_hererocks/hererocks.py \
+            --verbose -r latest -j $AVAILABLE_VERSION \
+            $packer_hererocks_home/$AVAILABLE_VERSION
+    fi
+}
 
 #
 # mise
@@ -75,5 +89,6 @@ ln -sf $SCRIPT_DIR/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 symlink_dir $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
 symlink_dir $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
 ln -sf $PACKER_HOME $HOME/.config/nvim/packer
-#nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-#(cd $PACKER_HOME/start/coc.nvim && npm ci)
+initialize_packer
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' | true
+cd $PACKER_HOME/start/coc.nvim && npm ci
