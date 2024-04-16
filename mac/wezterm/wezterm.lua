@@ -15,8 +15,21 @@ end
 --
 config.font = wezterm.font_with_fallback({ family = "HackGen", weight = "Regular", stretch = "Normal", style = "Normal" })
 config.font_size = 13.0
-config.window_background_opacity = 0.80
 config.color_scheme = 'Dracula'
+
+--config.window_background_image = '/path/to/wallpaper01.jpg'
+config.window_background_image = ''
+if config.window_background_image == '' then
+    config.window_background_opacity = 0.80
+    config.text_background_opacity = 0.5
+else
+    config.window_background_image_hsb = {
+        brightness = 0.3
+    }
+    config.window_background_opacity = 1
+    config.text_background_opacity = 0.3
+end
+
 
 config.keys = {
     {
