@@ -2,6 +2,9 @@
 set -veuo pipefail
 
 SCRIPT_DIR=$(perl -MCwd=realpath -le 'print realpath shift' "$0/..")
+PATH="$PATH:/opt/homebrew/bin"
+PATH="$PATH:$HOME/.local/share/mise/installs/python/latest/bin"
+PATH="$PATH:$HOME/.local/share/mise/installs/node/latest/bin"
 
 function symlink_dir() {
     src=$1
@@ -25,36 +28,42 @@ function initialize_packer() {
     fi
 }
 
+
 #
 # Homebrew
 #
 if ! which brew; then
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-brew install wget
 
 #
 # mise
 #
+brew install wget
 if [[ ! -e "$HOME/.local/bin/mise" ]]; then
     curl https://mise.run | sh
 fi
+
+#
+# Node
+#
 if ! which node; then
     $HOME/.local/bin/mise use --global node
-fi
-if ! which python; then
-    $HOME/.local/bin/mise use --global python
 fi
 
 #
 # Python
 #
+brew install xz
+if ! which python; then
+    $HOME/.local/bin/mise use --global python
+fi
 
 #
 # Rust
 #
 if ! which cargo; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    $HOME/.local/bin/mise use --global -y rust
 fi
 
 #
