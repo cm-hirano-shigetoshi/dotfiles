@@ -103,7 +103,7 @@ if which -p ls | grep -qF 'coreutils'; then
 else
   alias ls='ls -G'
 fi
-export EDITOR="vim"
+export EDITOR="nvim"
 if which -p arch >/dev/null 2>&1 && [[ $(arch) = "arm64" ]]; then
   alias arm64='arch -arch arm64'
   alias x86='arch -arch x86_64'
@@ -136,3 +136,8 @@ if [[ -d "$HOME/.config/zsh" ]]; then
 else
     [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
+
+#
+# エイリアス
+#
+alias vim='nvim'
