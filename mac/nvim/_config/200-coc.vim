@@ -1,6 +1,7 @@
 let g:coc_global_extensions = [
       \'coc-json',
       \'@yaegassy/coc-ruff',
+      \'coc-lua',
       \]
 
 function! s:show_documentation() abort

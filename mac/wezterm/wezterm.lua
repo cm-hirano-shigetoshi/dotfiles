@@ -13,7 +13,7 @@ end
 --
 -- フォント
 --
-config.font = wezterm.font_with_fallback({family="HackGen", weight="Regular", stretch="Normal", style="Normal"})
+config.font = wezterm.font_with_fallback({ family = "HackGen", weight = "Regular", stretch = "Normal", style = "Normal" })
 config.font_size = 13.0
 config.window_background_opacity = 0.80
 config.color_scheme = 'Dracula'
@@ -34,19 +34,19 @@ config.keys = {
         action = wezterm.action.IncreaseFontSize,
     },
     {
-         key = "w",
-         mods = "CMD",
-         action = wezterm.action.CloseCurrentPane { confirm = true },
-   },
-   {
-         key = "n",
-         mods = "CMD|CTRL",
-         action = wezterm.action{SplitVertical={domain="CurrentPaneDomain"}},
+        key = "w",
+        mods = "CMD",
+        action = wezterm.action.CloseCurrentPane { confirm = true },
     },
-   {
-         key = "m",
-         mods = "CMD|CTRL",
-         action = wezterm.action{SplitHorizontal={domain="CurrentPaneDomain"}},
+    {
+        key = "n",
+        mods = "CMD|CTRL",
+        action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } },
+    },
+    {
+        key = "m",
+        mods = "CMD|CTRL",
+        action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } },
     },
     {
         key = 'h',
