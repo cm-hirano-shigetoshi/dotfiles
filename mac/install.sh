@@ -107,4 +107,5 @@ ln -sf $PACKER_HOME $HOME/.config/nvim/packer
 initialize_packer
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 cd $PACKER_HOME/start/coc.nvim && npm ci
+pip install ruff ruff-lsp
 

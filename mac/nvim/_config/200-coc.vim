@@ -1,3 +1,8 @@
+let g:coc_global_extensions = [
+      \'coc-json',
+      \'@yaegassy/coc-ruff',
+      \]
+
 function! s:show_documentation() abort
   if index(['vim','help'], &filetype) >= 0
     execute 'h ' . expand('<cword>')
