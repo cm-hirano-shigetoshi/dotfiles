@@ -39,6 +39,11 @@ if ! which python; then
 fi
 
 #
+# Python
+#
+pip install requests # fzfのserverのために必要
+
+#
 # Rust
 #
 if ! which cargo; then
