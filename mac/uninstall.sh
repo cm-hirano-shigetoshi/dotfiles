@@ -29,6 +29,13 @@ fi
 /bin/rm -f $HOME/.zshrc
 
 #
+# Rust
+#
+if which rustup; then
+    rustup self uninstall
+fi
+
+#
 # mise
 #
 if which mise; then

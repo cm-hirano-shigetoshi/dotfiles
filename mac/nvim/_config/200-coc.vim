@@ -2,6 +2,7 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'@yaegassy/coc-ruff',
       \'coc-lua',
+      \'coc-rust-analyzer',
       \]
 
 function! s:show_documentation() abort

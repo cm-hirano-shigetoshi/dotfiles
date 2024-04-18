@@ -63,9 +63,7 @@ sudo ln -sf $HOME/.local/share/mise/installs/python/latest/bin/python /usr/local
 #
 # Rust
 #
-if ! which cargo; then
-    $HOME/.local/bin/mise use --global -y rust
-fi
+sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y
 
 #
 # zsh
@@ -109,4 +107,5 @@ initialize_packer
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 [[ ! -e $PACKER_HOME/start/coc.nvim/node_modules ]] && (cd $PACKER_HOME/start/coc.nvim && npm ci)
 pip install ruff ruff-lsp
+brew install rust-analyzer
 
