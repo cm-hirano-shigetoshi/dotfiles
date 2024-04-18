@@ -14,7 +14,7 @@ end
 -- フォント
 --
 config.font = wezterm.font_with_fallback({ family = "HackGen", weight = "Regular", stretch = "Normal", style = "Normal" })
-config.font_size = 13.0
+config.font_size = 17.0
 config.color_scheme = 'Dracula'
 
 --config.window_background_image = '/path/to/wallpaper01.jpg'
@@ -90,5 +90,10 @@ config.mouse_bindings = {
         action = wezterm.action.PasteFrom 'Clipboard',
     },
 }
+
+--
+-- 細かい見た目
+--
+config.tab_bar_at_bottom = true
 
 return config
