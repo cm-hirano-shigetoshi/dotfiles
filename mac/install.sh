@@ -58,6 +58,7 @@ brew install xz
 if ! which python; then
     $HOME/.local/bin/mise use --global python
 fi
+sudo ln -sf $HOME/.local/share/mise/installs/python/latest/bin/python /usr/local/bin/python
 
 #
 # Rust
