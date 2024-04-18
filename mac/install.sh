@@ -82,8 +82,8 @@ pip install requests # fzfのserverのために必要
 brew install coreutils gnu-sed
 brew install fzf
 brew install ripgrep bat fd
-brew install wget
-brew install jq
+brew install wget jq
+brew install pstree
 
 #
 # WezTerm
