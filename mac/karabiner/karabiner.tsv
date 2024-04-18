@@ -92,8 +92,8 @@ Name("terminal_ctrl_7")	From('7', mod='c')	To('escape')	To('7')	Condition("appli
 Name("terminal_ctrl_8")	From('8', mod='c')	To('escape')	To('8')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
 Name("terminal_ctrl_9")	From('9', mod='c')	To('escape')	To('9')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
 Name("terminal_ctrl_0")	From('0', mod='c')	To('escape')	To('0')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
-Name("terminal_prev_word")	From(',', mod='c')	To('b', mod="O")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
-Name("terminal_next_word")	From('.', mod='c')	To('f', mod="O")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
+#Name("terminal_prev_word")	From(',', mod='c')	To('b', mod="O")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
+#Name("terminal_next_word")	From('.', mod='c')	To('f', mod="O")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
 
 Name("tmux_prefix")	From(';', mod="c")	To(']', mod="c")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
 Name("tmux_prefix_custom")	From(':', mod="c")	To(']', mod="c")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty"]})
