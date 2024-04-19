@@ -27,7 +27,9 @@ zinit light-mode for \
 # プラグインインストール
 #
 # ディレクトリスタック
-zinit ice wait'!0' src"directory.zsh" silent; zinit light cm-hirano-shigetoshi/directory-stack
+zinit ice src"d.zsh"; zinit light cm-hirano-shigetoshi/d
+bindkey "^d^d" d
+
 # コマンド履歴
 zinit ice atclone"bash build.sh" atpull'%atclone' src"history.zsh"
 zinit light cm-hirano-shigetoshi/CommandHistory
