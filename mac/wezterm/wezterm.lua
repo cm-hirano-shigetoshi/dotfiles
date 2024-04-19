@@ -30,7 +30,6 @@ else
     config.text_background_opacity = 0.3
 end
 
-
 config.keys = {
     {
         key = "¥",
@@ -62,6 +61,21 @@ config.keys = {
         action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } },
     },
     {
+        key = "o",
+        mods = "CMD|CTRL",
+        action = wezterm.action.RotatePanes 'Clockwise'
+    },
+    {
+        key = "[",
+        mods = "CMD|CTRL",
+        action = wezterm.action.ActivateTabRelative(-1),
+    },
+    {
+        key = "]",
+        mods = "CMD|CTRL",
+        action = wezterm.action.ActivateTabRelative(1),
+    },
+    {
         key = 'h',
         mods = 'CMD|CTRL',
         action = wezterm.action.ActivatePaneDirection 'Left',
@@ -80,6 +94,26 @@ config.keys = {
         key = 'l',
         mods = 'CMD|CTRL',
         action = wezterm.action.ActivatePaneDirection 'Right',
+    },
+    {
+        key = 'h',
+        mods = 'CMD|CTRL|SHIFT',
+        action = wezterm.action.AdjustPaneSize { 'Left', 2 },
+    },
+    {
+        key = 'j',
+        mods = 'CMD|CTRL|SHIFT',
+        action = wezterm.action.AdjustPaneSize { 'Down', 2 },
+    },
+    {
+        key = 'k',
+        mods = 'CMD|CTRL|SHIFT',
+        action = wezterm.action.AdjustPaneSize { 'Up', 2 },
+    },
+    {
+        key = 'l',
+        mods = 'CMD|CTRL|SHIFT',
+        action = wezterm.action.AdjustPaneSize { 'Right', 2 },
     },
 }
 
