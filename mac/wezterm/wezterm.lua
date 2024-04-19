@@ -52,6 +52,16 @@ config.keys = {
     },
     {
         key = ",",
+        mods = "CTRL",
+        action = wezterm.action.SendKey { key = 'b', mods = 'ALT' },
+    },
+    {
+        key = ".",
+        mods = "CTRL",
+        action = wezterm.action.SendKey { key = 'f', mods = 'ALT' },
+    },
+    {
+        key = ",",
         mods = "CMD|CTRL",
         action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } },
     },
