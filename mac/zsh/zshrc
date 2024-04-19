@@ -51,7 +51,10 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 # git
-zinit ice wait'!0' src"git.zsh" silent; zinit light cm-hirano-shigetoshi/fzf-git
+zinit ice wait'!0' src"git-fzf.zsh" silent; zinit light cm-hirano-shigetoshi/git-fzf
+bindkey "^g^s" git-status
+bindkey "^g^l" git-log
+
 # Ninja
 zinit ice wait'!0' src"ninja.zsh" silent; zinit light cm-hirano-shigetoshi/cli-ninja
 zinit ice wait'!0' src"ninja.zsh" silent; zinit light cm-hirano-shigetoshi/CommandLineNinja
