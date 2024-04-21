@@ -79,6 +79,7 @@ pip install requests # fzfのserverのために必要
 # brew install
 #
 brew install coreutils gnu-sed
+brew install expect
 brew install fzf
 brew install ripgrep bat fd
 brew install wget jq
