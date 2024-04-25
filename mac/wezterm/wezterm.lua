@@ -32,6 +32,11 @@ end
 
 config.keys = {
     {
+        key = "Enter",
+        mods = "ALT",
+        action = wezterm.action.SendKey { key = 'Enter', mods = "ALT" },
+    },
+    {
         key = "¥",
         action = wezterm.action.SendKey { key = '\\' },
     },
