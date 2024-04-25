@@ -109,8 +109,6 @@ Name("ctrl_tab")	From('f20')	To('tab', mod="c")
 Name("delete")	From('backspace', mod='c')	To('delete')
 Name("escape")	From('@', mod='c')	To('escape')
 
-Name("clipboard")	From('v', mod='Cc')	To(Shell("open /Applications/WezTerm.app/ && source ~/.zprofile && tmux new-window \"/Users/hirano.shigetoshi/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/clipboard.sh\""))
-Name("snnipet")	From('t', mod='Cc')	To(Shell("open /Applications/WezTerm.app/ && source ~/.zprofile && tmux new-window \"/Users/hirano.shigetoshi/.local/share/zinit/plugins/cm-hirano-shigetoshi---snippet/main/snippet.sh /Users/hirano.shigetoshi/obsidian/MyBrain/04_Snippet\""))
 Name("alfred")	From('fn')	To('fn')	ToAlone('space', mod="O")	
 Name("alfred_pc")	From('right_option')	To('fn')	ToAlone('space', mod="O")	
 Name("window_switch")	From('tab', 'Cc')	To('@', 'C')
