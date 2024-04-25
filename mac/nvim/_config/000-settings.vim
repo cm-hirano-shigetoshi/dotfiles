@@ -27,4 +27,6 @@ set nofixeol
 " undoファイルを所定の場所に保存
 set undofile
 set undodir=$HOME/.local/share/nvim/undo
+" 外部からの変更を勝手にロードしない
+set noautoread
 
