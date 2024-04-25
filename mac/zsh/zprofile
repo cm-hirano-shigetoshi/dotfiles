@@ -24,6 +24,7 @@ FZF_DEFAULT_OPTS=""
 FZF_DEFAULT_OPTS+=" --exact"
 FZF_DEFAULT_OPTS+=" --no-mouse --no-sort"
 FZF_DEFAULT_OPTS+=" --bind='ctrl-s:toggle-sort'"
+FZF_DEFAULT_OPTS+=" --bind='ctrl-g:track+clear-query'"
 export FZF_DEFAULT_OPTS
 
 PATH="$HOME/bin/master:$PATH"
