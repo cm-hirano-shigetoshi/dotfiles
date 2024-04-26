@@ -3,6 +3,7 @@ let g:coc_global_extensions = [
       \'@yaegassy/coc-ruff',
       \'coc-lua',
       \'coc-rust-analyzer',
+      \'coc-tsserver',
       \]
 
 function! s:show_documentation() abort
