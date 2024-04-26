@@ -15,7 +15,7 @@ end
 --
 -- フォント
 --
-config.font = wezterm.font_with_fallback({ family = "HackGen", weight = "Regular", stretch = "Normal", style = "Normal" })
+config.font = wezterm.font_with_fallback({ "Moralerspace Neon NF" })
 config.font_size = 17.0
 config.color_scheme = 'Dracula'
 
