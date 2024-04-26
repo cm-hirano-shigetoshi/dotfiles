@@ -1,6 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
+require 'utils'
+
 -- This table will hold the configuration.
 local config = {}
 
@@ -129,6 +131,16 @@ config.keys = {
         key = 'l',
         mods = 'CMD|CTRL|SHIFT',
         action = wezterm.action.AdjustPaneSize { 'Right', 2 },
+    },
+    {
+        key = "n",
+        mods = "CMD|CTRL|SHIFT",
+        action = wezterm.action { EmitEvent = "decrease-opacity" },
+    },
+    {
+        key = "m",
+        mods = "CMD|CTRL|SHIFT",
+        action = wezterm.action { EmitEvent = "increase-opacity" },
     },
 }
 

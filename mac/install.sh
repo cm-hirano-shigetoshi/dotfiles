@@ -88,8 +88,9 @@ brew install pstree
 #
 # WezTerm
 #
-mkdir -p $HOME/.config/wezterm
-ln -sf $SCRIPT_DIR/wezterm/wezterm.lua $HOME/.config/wezterm/wezterm.lua
+mkdir -p $HOME/.config/
+rm -fr $HOME/.config/wezterm
+symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 
 #
 # Neovim
