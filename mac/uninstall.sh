@@ -42,6 +42,11 @@ if which mise; then
 fi
 
 #
+# Git
+#
+rm -fr $HOME/.config/git
+
+#
 # Homebrew
 #
 if which brew; then
