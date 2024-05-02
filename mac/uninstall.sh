@@ -10,9 +10,8 @@ if which brew && brew list | grep -x 'neovim'; then
     brew uninstall neovim
 fi
 /bin/rm -fr $HOME/.config/coc
-/bin/rm -fr $HOME/.local/share/nvim
 /bin/rm -fr $HOME/.config/nvim
-/bin/rm -fr $HOME/.cache/nvim
+/bin/rm -fr $HOME/.local/share/nvim/site/pack/packer
 
 #
 # WezTerm
@@ -53,3 +52,9 @@ if which brew; then
     echo 'Y' | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 fi
 [[ -e /opt/homebrew ]] && sudo /bin/rm -fr /opt/homebrew
+
+#
+# General
+#
+/bin/rm -fr $HOME/.cache
+
