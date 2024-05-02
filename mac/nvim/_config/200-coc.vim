@@ -1,6 +1,7 @@
 let g:coc_global_extensions = [
       \'coc-json',
       \'@yaegassy/coc-ruff',
+      \'coc-jedi',
       \'coc-lua',
       \'coc-rust-analyzer',
       \'coc-tsserver',
