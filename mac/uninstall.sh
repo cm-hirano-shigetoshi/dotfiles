@@ -13,7 +13,6 @@ fi
 /bin/rm -fr $HOME/.local/share/nvim
 /bin/rm -fr $HOME/.config/nvim
 /bin/rm -fr $HOME/.cache/nvim
-/bin/rm -fr $HOME/.cache/nvim
 
 #
 # WezTerm
@@ -32,7 +31,7 @@ fi
 # Rust
 #
 if which rustup; then
-    rustup self uninstall
+    rustup self uninstall -y
 fi
 
 #

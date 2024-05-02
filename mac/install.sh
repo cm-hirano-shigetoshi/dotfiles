@@ -37,9 +37,15 @@ if ! which brew; then
 fi
 
 #
+# Git
+#
+mkdir -p $HOME/.config/
+symlink_dir $SCRIPT_DIR/git $HOME/.config/git
+brew install difftastic
+
+#
 # mise
 #
-brew install wget
 if [[ ! -e "$HOME/.local/bin/mise" ]]; then
     curl https://mise.run | sh
 fi
