@@ -79,16 +79,7 @@ ln -sf $SCRIPT_DIR/zsh/zshenv $HOME/.zshenv
 ln -sf $SCRIPT_DIR/zsh/zshrc $HOME/.zshrc
 ln -sf $SCRIPT_DIR/zsh/p10k.zsh $HOME/.config/zsh/p10k.zsh
 pip install requests # fzfのserverのために必要
-
-#
-# brew install
-#
-brew install coreutils gnu-sed
-brew install expect
-brew install fzf
-brew install ripgrep bat fd
-brew install wget jq
-brew install pstree
+brew install coreutils gnu-sed fzf ripgrep bat fd expect
 
 #
 # WezTerm
