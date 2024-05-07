@@ -65,13 +65,8 @@ zinit ice wait'!0' src"aws-cli-fzf.zsh" silent; zinit light cm-hirano-shigetoshi
 #
 # mise
 #
-[[ -e "$HOME/.local/bin/mise" ]] && eval "$(~/.local/bin/mise activate zsh)"
-#
-# direnv
-#
-if which -p direnv >/dev/null; then
-  eval "$(direnv hook zsh)"
-fi
+[[ -e "$HOME/.local/bin/mise" ]] && eval "$($HOME/.local/bin/mise activate zsh)"
+
 #
 # 一般の設定
 #
@@ -103,13 +98,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'l:|=* r:|[.-]=* m:{a-z}={A-
 #
 # 一時的な設定
 #
-if which -p ls | grep -qF 'coreutils'; then
+if which ls | grep -qF 'coreutils'; then
   alias ls='ls --color=auto'
 else
   alias ls='ls -G'
 fi
 export EDITOR="nvim"
-if which -p arch >/dev/null 2>&1 && [[ $(arch) = "arm64" ]]; then
+if which arch >/dev/null 2>&1 && [[ $(arch) = "arm64" ]]; then
   alias arm64='arch -arch arm64'
   alias x86='arch -arch x86_64'
 fi
@@ -123,7 +118,7 @@ if [[ -d /Library/Java/JavaVirtualMachines/amazon-corretto-15.jdk/Contents/Home 
 fi
 
 # 意図的に使いたいものは最後に加える
-PATH="$HOME/bin/master:$PATH"
+PATH="$HOME/bin/main:$PATH"
 # 実験中のファイルはbin/developに置く
 PATH="$HOME/bin/develop:$PATH"
 

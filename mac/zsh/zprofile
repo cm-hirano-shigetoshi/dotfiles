@@ -27,7 +27,7 @@ FZF_DEFAULT_OPTS+=" --bind='ctrl-s:toggle-sort'"
 FZF_DEFAULT_OPTS+=" --bind='ctrl-g:track+clear-query'"
 export FZF_DEFAULT_OPTS
 
-PATH="$HOME/bin/master:$PATH"
+PATH="$HOME/bin/main:$PATH"
 
 if [[ -s $HOME/company/.profile ]]; then
     source $HOME/company/.profile
