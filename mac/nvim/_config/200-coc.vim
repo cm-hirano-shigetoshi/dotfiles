@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
       \'coc-lua',
       \'coc-rust-analyzer',
       \'coc-tsserver',
+      \'coc-go',
       \]
 
 function! s:show_documentation() abort
