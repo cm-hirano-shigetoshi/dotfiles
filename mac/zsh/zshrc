@@ -54,6 +54,7 @@ zinit light romkatv/powerlevel10k
 zinit ice wait'!0' src"git-fzf.zsh" silent; zinit light cm-hirano-shigetoshi/git-fzf
 bindkey "^g^s" git-status
 bindkey "^g^l" git-log
+bindkey "^g^b" git-branch
 
 # Ninja
 zinit ice wait'!0' src"ninja.zsh" silent; zinit light cm-hirano-shigetoshi/cli-ninja
