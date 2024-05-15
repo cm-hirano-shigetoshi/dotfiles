@@ -39,9 +39,9 @@ fi
 #
 # Git
 #
+brew install git difftastic
 mkdir -p $HOME/.config/
 symlink_dir $SCRIPT_DIR/git $HOME/.config/git
-brew install difftastic
 
 #
 # mise
