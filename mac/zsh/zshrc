@@ -40,6 +40,8 @@ bindkey "^r" fzf-command-history
 zinit ice wait'!0' silent; zinit light zdharma/fast-syntax-highlighting
 # クリップボード履歴
 zinit ice wait'!0' silent; zinit light cm-hirano-shigetoshi/clipboard-history
+# クリップボード変換テンプレ
+zinit ice wait'!0' silent; zinit light cm-hirano-shigetoshi/clipboard-convert-template
 # スニペットの貼り付け機能
 zinit ice wait'!0' silent; zinit light cm-hirano-shigetoshi/snippet
 # ファイル名検索
