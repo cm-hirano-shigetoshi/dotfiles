@@ -17,7 +17,7 @@ end
 --
 config.font = wezterm.font_with_fallback({ "Moralerspace Neon NF" })
 config.font_size = 17.0
-config.color_scheme = 'Dracula'
+config.color_scheme = 'Ibm 3270 (High Contrast) (Gogh)'
 
 --config.window_background_image = '/path/to/wallpaper01.jpg'
 config.window_background_image = ''
