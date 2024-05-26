@@ -144,3 +144,4 @@ fi
 # エイリアス
 #
 alias vim='nvim'
+alias 1pass='op run --env-file="$HOME/.local/share/env"'
