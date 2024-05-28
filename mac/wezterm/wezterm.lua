@@ -58,6 +58,11 @@ config.keys = {
         action = wezterm.action.CloseCurrentPane { confirm = true },
     },
     {
+        key = "w",
+        mods = "CMD|SHIFT",
+        action = wezterm.action.CloseCurrentTab { confirm = true },
+    },
+    {
         key = ",",
         mods = "CTRL",
         action = wezterm.action.SendKey { key = 'b', mods = 'ALT' },
