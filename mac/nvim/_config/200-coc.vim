@@ -22,3 +22,4 @@ nnoremap <silent> K :<C-u>call <SID>show_documentation()<CR>
 nnoremap <silent> <F1> :<C-u>call CocAction('diagnosticToggle')<CR>
 nnoremap <silent> mf :<C-u>call CocAction('format')<CR>
 autocmd FileType python nnoremap <silent> mf :<C-u>call CocAction('format')<CR>:<C-u>CocCommand ruff.executeOrganizeImports<CR>
+autocmd FileType sql nnoremap <silent> mf :<C-u>%!format_sql<CR>
