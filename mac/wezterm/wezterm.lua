@@ -19,8 +19,7 @@ config.font = wezterm.font_with_fallback({ "Moralerspace Neon NF" })
 config.font_size = 16.0
 config.color_scheme = 'Ibm 3270 (High Contrast) (Gogh)'
 
---config.window_background_image = '/path/to/wallpaper01.jpg'
-config.window_background_image = ''
+config.window_background_image = getRandomFilePath(os.getenv("HOME") .. "/.local/share/wezterm/wallpapers")
 if config.window_background_image == '' then
     config.window_background_opacity = 0.80
     config.text_background_opacity = 0.5

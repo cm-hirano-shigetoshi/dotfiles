@@ -24,3 +24,24 @@ wezterm.on("decrease-opacity", function(window)
     end
     window:set_config_overrides(overrides)
 end)
+
+function getRandomFilePath(directory)
+    local files = {}
+
+    -- ディレクトリの内容を取得
+    local p = io.popen('ls "' .. directory .. '"')
+    for file in p:lines() do
+        table.insert(files, directory .. "/" .. file)
+    end
+    p:close()
+
+    if #files == 0 then
+        return '' -- ディレクトリが空だった場合にnilを返す
+    end
+
+    -- ランダム選択
+    math.randomseed(os.time())
+    local randomIndex = math.random(#files)
+
+    return files[randomIndex]
+end
