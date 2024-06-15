@@ -16,7 +16,7 @@ end
 -- フォント
 --
 config.font = wezterm.font_with_fallback({ "Moralerspace Neon NF" })
-config.font_size = 17.0
+config.font_size = 16.0
 config.color_scheme = 'Ibm 3270 (High Contrast) (Gogh)'
 
 --config.window_background_image = '/path/to/wallpaper01.jpg'
@@ -29,7 +29,7 @@ else
         brightness = 0.3
     }
     config.window_background_opacity = 1
-    config.text_background_opacity = 0.3
+    config.text_background_opacity = 0.8
 end
 
 config.keys = {
