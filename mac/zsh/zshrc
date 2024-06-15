@@ -143,5 +143,6 @@ fi
 #
 # エイリアス
 #
+alias sort='LC_ALL=C sort'
 alias vim='nvim'
 alias 1pass='op run --env-file="$HOME/.local/share/env" --'
