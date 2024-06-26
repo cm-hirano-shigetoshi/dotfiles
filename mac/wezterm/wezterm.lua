@@ -12,6 +12,9 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.initial_cols = 80;
+config.initial_rows = 24;
+
 --
 -- フォント
 --
