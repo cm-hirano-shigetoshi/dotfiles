@@ -132,12 +132,12 @@ config.keys = {
     {
         key = 'j',
         mods = 'CMD|CTRL|SHIFT',
-        action = wezterm.action.AdjustPaneSize { 'Down', 2 },
+        action = wezterm.action.AdjustPaneSize { 'Down', 1 },
     },
     {
         key = 'k',
         mods = 'CMD|CTRL|SHIFT',
-        action = wezterm.action.AdjustPaneSize { 'Up', 2 },
+        action = wezterm.action.AdjustPaneSize { 'Up', 1 },
     },
     {
         key = 'l',
