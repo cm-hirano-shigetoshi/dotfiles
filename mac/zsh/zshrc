@@ -27,13 +27,13 @@ zinit light-mode for \
 # プラグインインストール
 #
 # ディレクトリスタック
-zinit ice src"d.zsh"; zinit light cm-hirano-shigetoshi/d
+zinit ice atclone"bash build.sh" atpull'%atclone' src"d.zsh"
+zinit light cm-hirano-shigetoshi/d
 bindkey "^d^d" d
 
 # コマンド履歴
 zinit ice atclone"bash build.sh" atpull'%atclone' src"history.zsh"
 zinit light cm-hirano-shigetoshi/CommandHistory
-zle -N fzf-command-history
 bindkey "^r" fzf-command-history
 
 # コマンドに色を付ける
