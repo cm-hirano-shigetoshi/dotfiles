@@ -33,7 +33,7 @@ if config.window_background_image == '' then
     config.text_background_opacity = 0.5
 else
     config.window_background_image_hsb = {
-        brightness = 0.3
+        brightness = 0.1
     }
     config.window_background_opacity = 1
     config.text_background_opacity = 0.8
