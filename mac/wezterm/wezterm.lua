@@ -60,6 +60,11 @@ config.keys = {
         action = wezterm.action.IncreaseFontSize,
     },
     {
+        key = 'r',
+        mods = 'CMD|SHIFT',
+        action = wezterm.action.ReloadConfiguration,
+    },
+    {
         key = "w",
         mods = "CMD",
         action = wezterm.action.CloseCurrentPane { confirm = true },
