@@ -27,7 +27,7 @@ config.inactive_pane_hsb = {
     brightness = 0.6,
 }
 
-config.window_background_image = getRandomFilePath(os.getenv("HOME") .. "/.local/share/wezterm/wallpapers")
+config.window_background_image = ''
 if config.window_background_image == '' then
     config.window_background_opacity = 0.80
     config.text_background_opacity = 0.5
