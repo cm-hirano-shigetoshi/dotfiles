@@ -8,8 +8,6 @@ digraphs j[ 12300  " 「
 digraphs j] 12301  " 」
 
 nnoremap - @q
-nnoremap Y "*y$
-nnoremap y "*y
 nnoremap <Space><CR> V:!bash<CR>
 nnoremap <silent> y* :<C-u>w !pbcopy<CR><CR>
 nnoremap [b :bp<CR>
@@ -37,8 +35,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
 xnoremap <Space><CR> :!bash<CR>
-xnoremap y "*y
-xnoremap Y "*Y
 
 inoremap <C-c> <Esc>
 inoremap <Left> <C-g>U<Left>
@@ -46,3 +42,12 @@ inoremap <Right> <C-g>U<Right>
 
 " SQL補完機能のprefixをC-cからEscに変更
 let g:ftplugin_sql_omni_key = '<Esc>'
+
+" ヤンク文字列をOSのクリップボードに送る
+function! ClipboardYank()
+  call system('pbcopy', @0)
+endfunction
+augroup Yank
+  autocmd!
+  autocmd TextYankPost * if v:event.operator ==# 'y' | call ClipboardYank() | endif
+augroup END
