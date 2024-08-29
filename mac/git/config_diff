@@ -1,3 +1,5 @@
+[push]
+default = current
 [diff]
 tool = difftastic
 external = difft
