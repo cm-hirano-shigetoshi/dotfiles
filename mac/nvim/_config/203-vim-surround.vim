@@ -16,7 +16,7 @@ function! ChangeSurround()
     endif
 endfunction
 
-xmap s <Plug>VSurround
-nmap s <Plug>Ysurround
-nnoremap <silent> ds :call DeleteSurround()<cr>
-nnoremap <silent> cs :call ChangeSurround()<cr>
+xmap \ <Plug>VSurround
+nmap \ <Plug>Ysurround
+nnoremap <silent> d\ :call DeleteSurround()<cr>
+nnoremap <silent> c\ :call ChangeSurround()<cr>
