@@ -51,3 +51,66 @@ augroup Yank
   autocmd!
   autocmd TextYankPost * if v:event.operator ==# 'y' | call ClipboardYank() | endif
 augroup END
+
+" 囲みのテキストオブジェクトを簡単に使う
+function! DeleteInner()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("di" .. cursor_char, "n")
+    else
+        call feedkeys("di", "n")
+    endif
+endfunction
+
+function! DeleteAll()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("da" .. cursor_char, "n")
+    else
+        call feedkeys("da", "n")
+    endif
+endfunction
+
+function! ChangeInner()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("ci" .. cursor_char, "n")
+    else
+        call feedkeys("ci", "n")
+    endif
+endfunction
+
+function! ChangeAll()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("ca" .. cursor_char, "n")
+    else
+        call feedkeys("ca", "n")
+    endif
+endfunction
+
+function! VisualInner()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("vi" .. cursor_char, "n")
+    else
+        call feedkeys("vi", "n")
+    endif
+endfunction
+
+function! VisualAll()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("va" .. cursor_char, "n")
+    else
+        call feedkeys("va", "n")
+    endif
+endfunction
+
+nnoremap <silent> di :call DeleteInner()<cr>
+nnoremap <silent> da :call DeleteAll()<cr>
+nnoremap <silent> ci :call ChangeInner()<cr>
+nnoremap <silent> ca :call ChangeAll()<cr>
+nnoremap <silent> vi :call VisualInner()<cr>
+nnoremap <silent> va :call VisualAll()<cr>
+
