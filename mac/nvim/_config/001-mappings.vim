@@ -107,10 +107,30 @@ function! VisualAll()
     endif
 endfunction
 
+function! YankInner()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("yi" .. cursor_char, "n")
+    else
+        call feedkeys("yi", "n")
+    endif
+endfunction
+
+function! YankAll()
+    let cursor_char = getline('.')[col('.') - 1]
+    if cursor_char =~# '[[\]()<>{}"`'']'
+        call feedkeys("ya" .. cursor_char, "n")
+    else
+        call feedkeys("ya", "n")
+    endif
+endfunction
+
 nnoremap <silent> di :call DeleteInner()<cr>
 nnoremap <silent> da :call DeleteAll()<cr>
 nnoremap <silent> ci :call ChangeInner()<cr>
 nnoremap <silent> ca :call ChangeAll()<cr>
 nnoremap <silent> vi :call VisualInner()<cr>
 nnoremap <silent> va :call VisualAll()<cr>
+nnoremap <silent> yi :call YankInner()<cr>
+nnoremap <silent> ya :call YankAll()<cr>
 
