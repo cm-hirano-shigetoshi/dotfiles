@@ -18,7 +18,7 @@ function initialize_packer() {
     packer_hererocks_home="$HOME/.cache/nvim/packer_hererocks"
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' | true
     if [[ ! -d $packer_hererocks_home/$AVAILABLE_VERSION ]]; then
-        version=$(ls -1 $packer_hererocks_home | grep '^\d' | head -1)
+        version=$(ls -1 $packer_hererocks_home | grep '^\d' | sort -r | head -1)
         mv $packer_hererocks_home/$version $packer_hererocks_home/$AVAILABLE_VERSION
         ln -s $AVAILABLE_VERSION $packer_hererocks_home/$version
         MACOSX_DEPLOYMENT_TARGET=13.4 \
