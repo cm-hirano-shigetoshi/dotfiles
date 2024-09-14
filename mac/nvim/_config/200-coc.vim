@@ -6,6 +6,7 @@ let g:coc_global_extensions = [
       \'coc-rust-analyzer',
       \'coc-tsserver',
       \'coc-go',
+      \'coc-prettier',
       \]
 
 function! s:show_documentation() abort
