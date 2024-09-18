@@ -58,7 +58,7 @@ zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
 # git
-zinit ice wait'!0' src"git-fzf.zsh" silent; zinit light cm-hirano-shigetoshi/git-fzf
+zinit ice src"git-fzf.zsh" silent; zinit light cm-hirano-shigetoshi/git-fzf
 bindkey "^g^s" git-status
 bindkey "^g^l" git-log
 bindkey "^g^b" git-branch
