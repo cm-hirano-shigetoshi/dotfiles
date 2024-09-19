@@ -148,3 +148,5 @@ fi
 alias sort='LC_ALL=C sort'
 alias vim='nvim'
 alias 1pass='op run --env-file="$HOME/.local/share/env" --'
+alias pip='HTTPS_PROXY="" HTTP_PROXY="" pip'
+alias brew='HTTPS_PROXY="" HTTP_PROXY="" brew'
