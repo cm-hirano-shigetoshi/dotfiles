@@ -159,6 +159,14 @@ config.keys = {
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action { EmitEvent = "increase-opacity" },
     },
+    {
+        -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
+        key = "!",
+        mods = "CMD|CTRL|SHIFT",
+        action = wezterm.action.SpawnCommandInNewWindow {
+            args = { os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/wezterm.sh' },
+        },
+    },
 }
 
 config.mouse_bindings = {
