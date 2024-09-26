@@ -169,6 +169,14 @@ config.keys = {
     },
     {
         -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
+        key = '"',
+        mods = "CMD|CTRL|SHIFT",
+        action = wezterm.action.SpawnCommandInNewTab {
+            args = { os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---snippet/main/wezterm.sh' },
+        },
+    },
+    {
+        -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
         key = "#",
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action.SpawnCommandInNewTab {
