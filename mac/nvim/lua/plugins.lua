@@ -27,6 +27,7 @@ return require('packer').startup(function(use, rocks)
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'mbbill/undotree'
+    use 'vim-scripts/camelcasemotion'
 
     -- その他
 
@@ -39,4 +40,5 @@ return require('packer').startup(function(use, rocks)
     use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
     use 'cm-hirano-shigetoshi/vim-csvq'
     use 'cm-hirano-shigetoshi/TimeMachine.vim'
+
 end)
