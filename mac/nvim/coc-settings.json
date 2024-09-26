@@ -1,6 +1,6 @@
 {
     "suggest.noselect": true,
     "Lua.diagnostics.globals": [
-        "vim"
+        "vim", "hs"
     ]
 }
