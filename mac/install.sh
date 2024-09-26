@@ -71,6 +71,11 @@ fi
 sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y
 
 #
+# Hammerspoon
+#
+ln -sf $SCRIPT_DIR/hammerspoon $HOME/.hammerspoon
+
+#
 # zsh
 #
 mkdir -p $HOME/.config/zsh

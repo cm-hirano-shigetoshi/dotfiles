@@ -27,6 +27,11 @@ fi
 /bin/rm -f $HOME/.zshrc
 
 #
+# Hammerspoon
+#
+rm -fr $HOME/.hammerspoon
+
+#
 # Rust
 #
 if which rustup; then
