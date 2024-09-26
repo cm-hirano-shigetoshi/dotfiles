@@ -7,6 +7,10 @@ return require('packer').startup(function(use, rocks)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- ベースとなるプラグイン
+    use 'vim-denops/denops.vim'
+    use 'lambdalisue/kensaku.vim'
+
     -- IDEぽい環境の構築
     use 'neoclide/coc.nvim'
     --Plug 'davidhalter/jedi-vim'
@@ -28,6 +32,7 @@ return require('packer').startup(function(use, rocks)
     use 'tpope/vim-surround'
     use 'mbbill/undotree'
     use 'vim-scripts/camelcasemotion'
+    use 'lambdalisue/kensaku-search.vim'
 
     -- その他
 
@@ -40,5 +45,4 @@ return require('packer').startup(function(use, rocks)
     use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
     use 'cm-hirano-shigetoshi/vim-csvq'
     use 'cm-hirano-shigetoshi/TimeMachine.vim'
-
 end)
