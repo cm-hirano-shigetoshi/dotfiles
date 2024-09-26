@@ -22,5 +22,5 @@ require 'plugins'
 EOF
 
 " 各種設定の読み込み
-call map(sort(split(globpath(&runtimepath, '_config/*.vim'))), {->[execute('exec "so" v:val')]})
+call map(sort(split(globpath(&runtimepath, '_config/*.{vim,lua}'))), {->[execute('exec "so" v:val')]})
 
