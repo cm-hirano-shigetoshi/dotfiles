@@ -7,6 +7,9 @@ return require('packer').startup(function(use, rocks)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    -- 日本語化
+    use 'vim-jp/vimdoc-ja'
+
     -- ベースとなるプラグイン
     use 'vim-denops/denops.vim'
     use 'lambdalisue/kensaku.vim'
