@@ -1,6 +1,19 @@
 require 'functions'
 
 
+hs.hotkey.bind({ "ctrl", "command" }, "m", function()
+    local n = 1
+    for _ = 1, n, 1 do
+        LeftDoubleClick();
+        hs.timer.usleep(100000)
+        hs.eventtap.keyStroke({}, "f");
+        hs.timer.usleep(100000)
+        hs.eventtap.keyStroke({}, "l");
+        hs.timer.usleep(100000)
+    end
+end)
+
+
 hs.hotkey.bind({ "ctrl", "command" }, "c", function()
     hs.application.launchOrFocus("wezterm")
     hs.eventtap.keyStroke({ "cmd", "ctrl", "shift" }, "1")
