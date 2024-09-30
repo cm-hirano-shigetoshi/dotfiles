@@ -125,12 +125,11 @@ function! YankAll()
     endif
 endfunction
 
-nnoremap <silent> di :call DeleteInner()<cr>
-nnoremap <silent> da :call DeleteAll()<cr>
-nnoremap <silent> ci :call ChangeInner()<cr>
-nnoremap <silent> ca :call ChangeAll()<cr>
-nnoremap <silent> vi :call VisualInner()<cr>
-nnoremap <silent> va :call VisualAll()<cr>
-nnoremap <silent> yi :call YankInner()<cr>
-nnoremap <silent> ya :call YankAll()<cr>
-
+nnoremap <silent> di<space> :call DeleteInner()<cr>
+nnoremap <silent> da<space> :call DeleteAll()<cr>
+nnoremap <silent> ci<space> :call ChangeInner()<cr>
+nnoremap <silent> ca<space> :call ChangeAll()<cr>
+nnoremap <silent> vi<space> :call VisualInner()<cr>
+nnoremap <silent> va<space> :call VisualAll()<cr>
+nnoremap <silent> yi<space> :call YankInner()<cr>
+nnoremap <silent> ya<space> :call YankAll()<cr>
