@@ -58,6 +58,13 @@ if ! which node; then
 fi
 
 #
+# Deno
+#
+if ! which deno; then
+    $HOME/.local/bin/mise use --global deno
+fi
+
+#
 # Python
 #
 brew install xz
