@@ -8,7 +8,7 @@ function! DeleteSurround()
     endif
 endfunction
 
-function! ChangeSurround()
+function! ReplaceSurround()
     let cursor_char = getline('.')[col('.') - 1]
     call feedkeys("\<Plug>Csurround", "n")
     if cursor_char =~# '[[\]()<>{}"`'']'
@@ -19,4 +19,4 @@ endfunction
 xmap \ <Plug>VSurround
 nmap \ <Plug>Ysurround
 nnoremap <silent> d\ :call DeleteSurround()<cr>
-nnoremap <silent> c\ :call ChangeSurround()<cr>
+nnoremap <silent> r\ :call ReplaceSurround()<cr>
