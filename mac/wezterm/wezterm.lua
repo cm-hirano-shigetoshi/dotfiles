@@ -151,6 +151,21 @@ config.keys = {
     },
     {
         key = "n",
+        mods = "CMD|SHIFT",
+        action = wezterm.action_callback(function(_, pane)
+            pane:move_to_new_window()
+        end),
+    },
+    {
+        key = "t",
+        mods = "CMD|SHIFT",
+        action = wezterm.action_callback(function(_, pane)
+            local tab, _ = pane:move_to_new_tab()
+            tab:activate()
+        end),
+    },
+    {
+        key = "n",
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action { EmitEvent = "decrease-opacity" },
     },
