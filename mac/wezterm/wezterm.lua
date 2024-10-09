@@ -165,12 +165,12 @@ config.keys = {
         end),
     },
     {
-        key = "n",
+        key = "UpArrow",
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action { EmitEvent = "decrease-opacity" },
     },
     {
-        key = "m",
+        key = "DownArrow",
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action { EmitEvent = "increase-opacity" },
     },
