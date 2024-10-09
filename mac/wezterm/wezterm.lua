@@ -163,25 +163,19 @@ config.keys = {
         -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
         key = "!",
         mods = "CMD|CTRL|SHIFT",
-        action = wezterm.action.SpawnCommandInNewTab {
-            args = { os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/wezterm.sh' },
-        },
+        action = wezterm.action { EmitEvent = "invoke-clipboard-history" },
     },
     {
         -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
         key = '"',
         mods = "CMD|CTRL|SHIFT",
-        action = wezterm.action.SpawnCommandInNewTab {
-            args = { os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---snippet/main/wezterm.sh' },
-        },
+        action = wezterm.action { EmitEvent = "invoke-snippet" },
     },
     {
         -- Hammerspoonのホットキーから呼ばれる前提なので使いづらいキーバインド
         key = "#",
         mods = "CMD|CTRL|SHIFT",
-        action = wezterm.action.SpawnCommandInNewTab {
-            args = { os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/wezterm_edit.sh' },
-        },
+        action = wezterm.action { EmitEvent = "invoke-clipboard-editor" },
     },
 }
 

@@ -1,6 +1,36 @@
 local wezterm = require 'wezterm'
 
 
+wezterm.on("invoke-clipboard-history", function(window, pane)
+    window:perform_action(wezterm.action.SpawnCommandInNewTab {
+        args = {
+            'bash',
+            '-c',
+            os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/wezterm.sh ' .. pane:pane_id()
+        },
+    }, pane)
+end)
+
+wezterm.on("invoke-snippet", function(window, pane)
+    window:perform_action(wezterm.action.SpawnCommandInNewTab {
+        args = {
+            'bash',
+            '-c',
+            os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---snippet/main/wezterm.sh ' .. pane:pane_id()
+        },
+    }, pane)
+end)
+
+wezterm.on("invoke-clipboard-editor", function(window, pane)
+    window:perform_action(wezterm.action.SpawnCommandInNewTab {
+        args = {
+            'bash',
+            '-c',
+            os.getenv("HOME") .. '/.local/share/zinit/plugins/cm-hirano-shigetoshi---clipboard-history/main/wezterm_edit.sh ' .. pane:pane_id()
+        },
+    }, pane)
+end)
+
 wezterm.on("increase-opacity", function(window)
     local overrides = window:get_config_overrides() or {}
     if not overrides.window_background_opacity then
