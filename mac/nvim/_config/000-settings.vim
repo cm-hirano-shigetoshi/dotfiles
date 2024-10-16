@@ -31,7 +31,5 @@ set undofile
 set undodir=$HOME/.local/share/nvim/undo
 " 外部からの変更を勝手にロードしない
 set noautoread
-" 検索をsmartcaseにする
-set ignorecase
 " 相対行数
 set relativenumber
