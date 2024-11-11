@@ -1,3 +1,5 @@
+[core]
+quotepath = false
 [push]
 default = current
 [diff]
