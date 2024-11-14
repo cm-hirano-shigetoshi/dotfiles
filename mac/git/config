@@ -2,6 +2,7 @@
 quotepath = false
 [push]
 default = current
+autoSetupRemote = true
 [diff]
 tool = difftastic
 external = difft
