@@ -35,7 +35,7 @@ FocusApp({ "ctrl", "command" }, "a", "google chrome")
 FocusApp({ "ctrl", "command" }, "s", "slack")
 FocusApp({ "ctrl", "command" }, "w", "obsidian")
 FocusApp({ "ctrl", "command" }, "e", "microsoft edge")
-FocusApp({ "ctrl", "command" }, "z", "my-todo-app")
+FocusApp({ "ctrl", "command" }, "z", "oreno-todo-app")
 
 
 
