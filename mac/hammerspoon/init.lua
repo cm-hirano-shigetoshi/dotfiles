@@ -36,7 +36,7 @@ FocusApp({ "ctrl", "command" }, "s", "slack")
 FocusApp({ "ctrl", "command" }, "w", "obsidian")
 FocusApp({ "ctrl", "command" }, "e", "microsoft edge")
 FocusApp({ "ctrl", "command" }, "z", "oreno-todo-app")
-FocusApp({ "ctrl", "command" }, "x", "Visual Studio Code")
+FocusApp({ "ctrl", "command" }, "d", "Logseq")
 
 
 
