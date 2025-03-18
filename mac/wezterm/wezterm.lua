@@ -20,7 +20,7 @@ config.initial_rows = 24;
 --
 config.font = wezterm.font_with_fallback({ "Moralerspace Neon NF" })
 config.font_size = 16.0
-config.color_scheme = 'Ibm 3270 (High Contrast) (Gogh)'
+config.color_scheme = 'Abernathy'
 
 config.inactive_pane_hsb = {
     saturation = 0.6,
