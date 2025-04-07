@@ -8,10 +8,6 @@ if exists('&termguicolors')
   setglobal termguicolors
 endif
 
-if exists('&completeslash')
-  setglobal completeslash=slash
-endif
-
 " git commit 時にはプラグインは読み込まない
 if $HOME != $USERPROFILE && $GIT_EXEC_PATH != ''
   finish
