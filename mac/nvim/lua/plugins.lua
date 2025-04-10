@@ -1,52 +1,51 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use, rocks)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
+require("lazy").setup({
     -- 日本語化
-    use 'vim-jp/vimdoc-ja'
+    'vim-jp/vimdoc-ja',
 
     -- ベースとなるプラグイン
-    use 'vim-denops/denops.vim'
-    use 'lambdalisue/kensaku.vim'
-    use 'echasnovski/mini.nvim'
+    'vim-denops/denops.vim',
+    'lambdalisue/kensaku.vim',
+    'echasnovski/mini.nvim',
 
     -- IDEぽい環境の構築
-    use 'neoclide/coc.nvim'
+    'neoclide/coc.nvim',
 
     -- fzf系
-    use {
-        'junegunn/fzf.vim',
-        requires = { 'junegunn/fzf', run = ':call fzf#install()' }
-    }
-    use 'vijaymarupudi/nvim-fzf'
-    use {
+    'junegunn/fzf.vim',
+    'vijaymarupudi/nvim-fzf',
+    {
         'cm-hirano-shigetoshi/fzf-grep.lua',
-        rocks { "luasocket" },
-    }
+        build = '/Users/hirano.shigetoshi/.local/share/mise/shims/luarocks install luasocket'
+    },
 
     -- 基本動作の拡張
-    use 'easymotion/vim-easymotion'
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-surround'
-    use 'mbbill/undotree'
-    use 'vim-scripts/camelcasemotion'
-    use 'lambdalisue/kensaku-search.vim'
-
-    -- その他
+    'easymotion/vim-easymotion',
+    'tpope/vim-repeat',
+    'tpope/vim-surround',
+    'mbbill/undotree',
+    'vim-scripts/camelcasemotion',
+    'lambdalisue/kensaku-search.vim',
 
     -- 自作お試し
-    use 'cm-hirano-shigetoshi/fzf-template-nvim-lua'
-    use {
+    'cm-hirano-shigetoshi/fzf-template-nvim-lua',
+    {
         'cm-hirano-shigetoshi/fzf-file-selector.vim',
-        rocks { "luaposix" },
-    }
-    use 'cm-hirano-shigetoshi/fzf-buffer-searcher.lua'
-    use 'cm-hirano-shigetoshi/vim-csvq'
-    use 'cm-hirano-shigetoshi/TimeMachine.vim'
-
-end)
+        build = '/Users/hirano.shigetoshi/.local/share/mise/shims/luarocks install posix'
+    },
+    'cm-hirano-shigetoshi/fzf-buffer-searcher.lua',
+    'cm-hirano-shigetoshi/vim-csvq',
+    'cm-hirano-shigetoshi/TimeMachine.vim'
+})
