@@ -105,18 +105,8 @@ symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 # Neovim
 #
 brew install neovim
-PACKER_HOME=$HOME/.local/share/nvim/site/pack/packer
-mkdir -p $PACKER_HOME/start
-[[ ! -d "$PACKER_HOME/start/packer.nvim" ]] && git clone --depth 1 https://github.com/wbthomason/packer.nvim $PACKER_HOME/start/packer.nvim
 mkdir -p $HOME/.config/nvim
 ln -sf $SCRIPT_DIR/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -sf $SCRIPT_DIR/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 symlink_dir $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
 symlink_dir $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
-ln -sf $PACKER_HOME $HOME/.config/nvim/packer
-initialize_packer
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-[[ ! -e $PACKER_HOME/start/coc.nvim/node_modules ]] && (cd $PACKER_HOME/start/coc.nvim && npm ci)
-pip install ruff ruff-lsp
-brew install rust-analyzer
-
