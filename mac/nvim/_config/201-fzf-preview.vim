@@ -2,10 +2,9 @@
 "let g:fzf_preview_buffers_jump = 1
 "let g:fzf_preview_directory_files_command = 'rg --files --no-messages'
 "
-"nnoremap          <Tab>/ :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
 "nnoremap          <Tab>? :<C-u>CocCommand fzf-preview.ProjectGrep ^<CR>
 "nnoremap <silent> <Tab>: :<C-u>CocCommand fzf-preview.CommandPalette<CR>
-nnoremap <silent> <Tab>b :<C-u>CocCommand fzf-preview.AllBuffers<CR>
+"nnoremap <silent> <Tab>b :<C-u>CocCommand fzf-preview.AllBuffers<CR>
 "nnoremap <silent> <Tab>d :<C-u>CocCommand fzf-preview.CocDiagnostics --add-fzf-arg=--exit-0<CR>
 "nnoremap <silent> <Tab>j :<C-u>CocCommand fzf-preview.Jumps<CR>
 "nnoremap <silent> <Tab>c :<C-u>CocCommand fzf-preview.Changes<CR>

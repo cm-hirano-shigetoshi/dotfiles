@@ -24,12 +24,14 @@ require("lazy").setup({
     'neoclide/coc.nvim',
 
     -- fzf系
+    'junegunn/fzf',
     'junegunn/fzf.vim',
     'vijaymarupudi/nvim-fzf',
     {
         'cm-hirano-shigetoshi/fzf-grep.lua',
         build = '/Users/hirano.shigetoshi/.local/share/mise/shims/luarocks install luasocket'
     },
+    'yuki-yano/fzf-preview.vim',
 
     -- 基本動作の拡張
     'easymotion/vim-easymotion',
