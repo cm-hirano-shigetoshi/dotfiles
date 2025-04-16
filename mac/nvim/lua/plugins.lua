@@ -24,6 +24,8 @@ require("lazy").setup({
     'vim-denops/denops.vim',
     'lambdalisue/kensaku.vim',
     'echasnovski/mini.nvim',
+    'lunarmodules/luasocket',
+    'luaposix/luaposix',
 
     -- IDEぽい環境の構築
     'neoclide/coc.nvim',
@@ -32,12 +34,7 @@ require("lazy").setup({
     'junegunn/fzf',
     'junegunn/fzf.vim',
     'vijaymarupudi/nvim-fzf',
-    {
-        'cm-hirano-shigetoshi/fzf-grep.lua',
-        dependencies = {
-            'lunarmodules/luasocket'
-        }
-    },
+    'cm-hirano-shigetoshi/fzf-grep.lua',
     'yuki-yano/fzf-preview.vim',
 
     -- 基本動作の拡張
@@ -50,13 +47,7 @@ require("lazy").setup({
 
     -- 自作お試し
     'cm-hirano-shigetoshi/fzf-template-nvim-lua',
-    {
-        'cm-hirano-shigetoshi/fzf-file-selector.vim',
-        dependencies = {
-            'lunarmodules/luasocket',
-            'luaposix/luaposix',
-        }
-    },
+    'cm-hirano-shigetoshi/fzf-file-selector.vim',
     'cm-hirano-shigetoshi/fzf-buffer-searcher.lua',
     'cm-hirano-shigetoshi/vim-csvq',
     'cm-hirano-shigetoshi/TimeMachine.vim'
