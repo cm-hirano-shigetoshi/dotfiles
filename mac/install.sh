@@ -13,22 +13,6 @@ function symlink_dir() {
     ln -sf "$src" "$dst"
 }
 
-function initialize_packer() {
-    AVAILABLE_VERSION="2.1.0-beta3"
-    version="2.1.1744318430" # 20250415 一時凌ぎのため
-    packer_hererocks_home="$HOME/.cache/nvim/packer_hererocks"
-    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' | true
-    if [[ ! -d $packer_hererocks_home/$AVAILABLE_VERSION ]]; then
-        version=${version-$(ls -1 $packer_hererocks_home | grep '^\d' | sort -r | head -1)}
-        mv $packer_hererocks_home/$version $packer_hererocks_home/$AVAILABLE_VERSION
-        ln -s $AVAILABLE_VERSION $packer_hererocks_home/$version
-        MACOSX_DEPLOYMENT_TARGET=13.4 \
-            python ~/.cache/nvim/packer_hererocks/hererocks.py \
-            --verbose -r latest -j $AVAILABLE_VERSION \
-            $packer_hererocks_home/$AVAILABLE_VERSION
-    fi
-}
-
 
 #
 # Homebrew
