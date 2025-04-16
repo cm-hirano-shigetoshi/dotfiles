@@ -11,7 +11,7 @@ if which brew && brew list | grep -x 'neovim'; then
 fi
 /bin/rm -fr $HOME/.config/coc
 /bin/rm -fr $HOME/.config/nvim
-/bin/rm -fr $HOME/.local/share/nvim/site/pack/packer
+/bin/rm -fr $HOME/.local/share/nvim/lazy $HOME/.local/share/nvim/lazy-rocks
 
 #
 # WezTerm
