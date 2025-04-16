@@ -24,7 +24,6 @@ require("lazy").setup({
     'vim-denops/denops.vim',
     'lambdalisue/kensaku.vim',
     'echasnovski/mini.nvim',
-    'lunarmodules/luasocket',
     'luaposix/luaposix',
 
     -- IDEぽい環境の構築
