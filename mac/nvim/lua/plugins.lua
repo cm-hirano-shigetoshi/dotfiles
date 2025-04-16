@@ -11,6 +11,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local hererocks_home = os.getenv("HOME") .. "/.local/share/nvim/lazy-rocks/hererocks"
+package.path = package.path .. ";" .. hererocks_home .. "/share/lua/5.1/?.lua"
+package.path = package.path .. ";" .. hererocks_home .. "/share/lua/5.1/?/init.lua"
+package.cpath = package.cpath .. ";" .. hererocks_home .. "/lib/lua/5.1/?.so"
+
 require("lazy").setup({
     -- 日本語化
     'vim-jp/vimdoc-ja',
@@ -29,7 +34,9 @@ require("lazy").setup({
     'vijaymarupudi/nvim-fzf',
     {
         'cm-hirano-shigetoshi/fzf-grep.lua',
-        build = '/Users/hirano.shigetoshi/.local/share/mise/shims/luarocks install luasocket'
+        dependencies = {
+            'lunarmodules/luasocket'
+        }
     },
     'yuki-yano/fzf-preview.vim',
 
@@ -45,7 +52,10 @@ require("lazy").setup({
     'cm-hirano-shigetoshi/fzf-template-nvim-lua',
     {
         'cm-hirano-shigetoshi/fzf-file-selector.vim',
-        build = '/Users/hirano.shigetoshi/.local/share/mise/shims/luarocks install posix'
+        dependencies = {
+            'lunarmodules/luasocket',
+            'luaposix/luaposix',
+        }
     },
     'cm-hirano-shigetoshi/fzf-buffer-searcher.lua',
     'cm-hirano-shigetoshi/vim-csvq',
