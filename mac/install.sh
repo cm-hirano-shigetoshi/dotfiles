@@ -94,9 +94,10 @@ ln -sf $SCRIPT_DIR/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -sf $SCRIPT_DIR/nvim/coc-settings.json $HOME/.config/nvim/coc-settings.json
 symlink_dir $SCRIPT_DIR/nvim/_config $HOME/.config/nvim/_config
 symlink_dir $SCRIPT_DIR/nvim/lua $HOME/.config/nvim/lua
-nvim -c 'q!'
+nvim -c 'q!' sample.py
 $HOME/.local/share/nvim/lazy-rocks/hererocks/bin/luarocks install luasocket
 nvim \
     -c 'call feedkeys("\<Plug>fzf-file-selector", "n")' \
     -c '!(cd ~/.local/share/nvim/lazy/coc.nvim && npm ci)' \
-    -c 'call feedkeys("Installation was Finished! You can close nvim.", "t")'
+    -c 'call feedkeys("Installation was Finished! You can close nvim.", "t")'j\
+    sample.py
