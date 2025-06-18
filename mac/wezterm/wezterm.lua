@@ -150,6 +150,11 @@ config.keys = {
         action = wezterm.action.AdjustPaneSize { 'Right', 2 },
     },
     {
+        key = 'Z',
+        mods = 'CMD|CTRL|SHIFT',
+        action = wezterm.action.TogglePaneZoomState,
+    },
+    {
         key = "n",
         mods = "CMD|SHIFT",
         action = wezterm.action_callback(function(_, pane)
