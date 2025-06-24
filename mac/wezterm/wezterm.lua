@@ -197,6 +197,34 @@ config.keys = {
         mods = "CMD|CTRL|SHIFT",
         action = wezterm.action { EmitEvent = "invoke-clipboard-editor" },
     },
+    {
+        key = "c",
+        mods = "CMD|CTRL|SHIFT",
+        action = wezterm.action_callback(function(_, pane)
+            -- 監視対象の文字列
+            local trigger_text = " tokens · esc to interrupt"
+            -- 取得行数
+            local trriget_line_n = 10
+
+            -- 定期的に画面内容をチェック
+            local function check_output()
+                local screen_text = pane:get_lines_as_text(trriget_line_n)
+
+                if not string.find(screen_text, trigger_text) then
+                    wezterm.run_child_process({
+                        'osascript', '-e', 'display notification "_" with title "Claude Code"'
+                    })
+
+                    return -- 監視終了
+                end
+
+                -- 1秒後に再チェック
+                wezterm.time.call_after(1, check_output)
+            end
+
+            check_output()
+        end),
+    },
 }
 
 config.mouse_bindings = {
