@@ -24,11 +24,6 @@ hs.hotkey.bind({ "ctrl", "command" }, "g", function()
     hs.eventtap.keyStroke({ "cmd", "ctrl", "shift" }, "2")
 end)
 
-hs.hotkey.bind({ "ctrl", "command" }, "v", function()
-    hs.application.launchOrFocus("wezterm")
-    hs.eventtap.keyStroke({ "cmd", "ctrl", "shift" }, "3")
-end)
-
 
 -- アプリのフォーカス
 FocusApp({ "ctrl", "command" }, "a", "google chrome")
@@ -38,6 +33,7 @@ FocusApp({ "ctrl", "command" }, "e", "microsoft edge")
 FocusApp({ "ctrl", "command" }, "z", "oreno-todo-app")
 FocusApp({ "ctrl", "command" }, "d", "Logseq")
 FocusApp({ "ctrl", "command" }, "r", "Google カレンダー")
+FocusApp({ "ctrl", "command" }, "v", "ChoiClip")
 
 
 
