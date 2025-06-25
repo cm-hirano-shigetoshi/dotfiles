@@ -1,16 +1,11 @@
 require 'functions'
 
 
-hs.hotkey.bind({ "ctrl", "command" }, "m", function()
-    local n = 1
-    for _ = 1, n, 1 do
-        LeftDoubleClick();
-        hs.timer.usleep(100000)
-        hs.eventtap.keyStroke({}, "f");
-        hs.timer.usleep(100000)
-        hs.eventtap.keyStroke({}, "l");
-        hs.timer.usleep(100000)
-    end
+-- KarabinerでChoiClipに絞って平易なキーバインドにしている
+hs.hotkey.bind({ "command", "option", "shift", "ctrl" }, "return", function()
+    hs.eventtap.keyStroke({}, "escape")
+    hs.timer.usleep(5000)
+    hs.eventtap.keyStroke({ "cmd" }, "v")
 end)
 
 
