@@ -35,27 +35,9 @@ if [[ ! -e "$HOME/.local/bin/mise" ]]; then
     curl https://mise.run | sh
 fi
 
-#
-# Node
-#
-if ! which node; then
-    $HOME/.local/bin/mise use --global node
-fi
-
-#
-# Deno
-#
-if ! which deno; then
-    $HOME/.local/bin/mise use --global deno
-fi
-
-#
-# Python
-#
+ln -sf $SCRIPT_DIR/mise $HOME/.config/mise
 brew install xz
-if ! which python; then
-    $HOME/.local/bin/mise use --global python
-fi
+$HOME/.local/bin/mise install
 
 #
 # Rust

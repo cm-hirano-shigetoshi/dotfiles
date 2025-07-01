@@ -1,0 +1,15 @@
+[tools]
+node = "latest"
+deno = "latest"
+python = "latest"
+
+[settings]
+quiet = true
+experimental = true
+
+[tasks]
+[tasks.aws]
+run = ["aws"]
+
+[tasks.claude]
+run = ["claude"]
