@@ -68,6 +68,11 @@ rm -fr $HOME/.config/wezterm
 symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 
 #
+# Claude Code
+#
+npm install -g @anthropic-ai/claude-code
+
+#
 # Neovim
 #
 brew install neovim
