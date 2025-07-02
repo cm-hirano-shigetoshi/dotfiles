@@ -2,9 +2,13 @@
 set -veuo pipefail
 
 SCRIPT_DIR=$(perl -MCwd=realpath -le 'print realpath shift' "$0/..")
-PATH="$PATH:/opt/homebrew/bin"
-PATH="$PATH:$HOME/.local/share/mise/installs/python/latest/bin"
-PATH="$PATH:$HOME/.local/share/mise/installs/node/latest/bin"
+HOMEBREW_HOME="/opt/homebrew/bin"
+MISE_PYTHON_HOME="$HOME/.local/share/mise/installs/python/latest/bin"
+MISE_NODE_HOME="$HOME/.local/share/mise/installs/node/latest/bin"
+
+PATH="$PATH:$HOMEBREW_HOME"
+PATH="$PATH:$MISE_PYTHON_HOME"
+PATH="$PATH:$MISE_NODE_HOME"
 
 function symlink_dir() {
     src=$1
@@ -71,6 +75,7 @@ symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 # Claude Code
 #
 npm install -g @anthropic-ai/claude-code
+ln -sf $MISE_NODE_HOME/claude /usr/local/bin/claude
 
 #
 # Neovim
