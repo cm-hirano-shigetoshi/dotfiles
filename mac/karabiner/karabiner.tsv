@@ -101,8 +101,8 @@ Name("tmux_prefix_custom")	From(':', mod="c")	To(']', mod="c")	Condition("applic
 Name("terminal_zoom")	From(';', mod="CS")	To('keypad_plus', mod="C")	Condition("application", {"bundle_identifiers": ["Terminal|iterm2"]})
 
 # Hammerspoonではアプリ制約が複雑なので、複雑なキーバインドを渡す
-Name("choiclip_paste")	From('enter', mod="C")	To('enter', mod="COc")	Condition("application", {"bundle_identifiers": ["ChoiClip"]})
-Name("choiclip_paste_direct")	From('enter', mod="CS")	To('enter', mod="CSOc")	Condition("application", {"bundle_identifiers": ["ChoiClip"]})
+Name("choiclip_paste")	From('enter', mod="C")	To('enter', mod="COS")	Condition("application", {"bundle_identifiers": ["ChoiClip"]})
+Name("choiclip_paste_direct")	From('enter', mod="Cc")	To('enter', mod="COSc")	Condition("application", {"bundle_identifiers": ["ChoiClip"]})
 
 
 Name("modoru")	From('f16')	To('[', mod="C")

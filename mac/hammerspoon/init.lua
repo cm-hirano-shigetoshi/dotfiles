@@ -2,13 +2,13 @@ require 'functions'
 
 
 -- KarabinerでChoiClipに絞って平易なキーバインドにしている
-hs.hotkey.bind({ "command", "option", "ctrl" }, "return", function()
+hs.hotkey.bind({ "command", "option", "shift" }, "return", function()
     hs.eventtap.keyStroke({}, "escape")
     hs.timer.usleep(5000)
     hs.eventtap.keyStroke({ "cmd" }, "v")
 end)
 
-hs.hotkey.bind({ "command", "option", "ctrl", "shift" }, "return", function()
+hs.hotkey.bind({ "command", "option", "shift", "ctrl" }, "return", function()
     hs.eventtap.keyStroke({}, "escape")
     hs.eventtap.keyStroke({ "cmd" }, "v")
     hs.eventtap.keyStroke({ "cmd" }, "return")
