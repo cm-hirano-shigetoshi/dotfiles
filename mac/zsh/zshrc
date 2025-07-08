@@ -71,6 +71,7 @@ zinit ice wait'!0' src"aws-cli-fzf.zsh" silent; zinit light cm-hirano-shigetoshi
 # mise
 #
 [[ -e "$HOME/.local/bin/mise" ]] && eval "$($HOME/.local/bin/mise activate zsh)"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 #
 # 一般の設定
@@ -127,8 +128,6 @@ PATH="$HOME/bin/main:$PATH"
 # 実験中のファイルはbin/developに置く
 PATH="$HOME/bin/develop:$PATH"
 
-typeset -U path PATH
-
 export BAT_THEME="Monokai Extended"
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
@@ -157,3 +156,5 @@ alias claude='mise run claude'
 if [[ $CLAUDECODE = "1" ]]; then
     alias rm='echo "AIによるこのコマンドの利用は禁止されています。代替コマンドの実行はせずユーザに指示を仰いでください。"'
 fi
+
+typeset -U path PATH
