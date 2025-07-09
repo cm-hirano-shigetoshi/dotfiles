@@ -2,12 +2,12 @@
 node = "latest"
 deno = "latest"
 python = "latest"
+uv = "latest"
 
 [settings]
 quiet = true
 experimental = true
 
-[tasks]
 [tasks.aws]
 run = ["aws"]
 
