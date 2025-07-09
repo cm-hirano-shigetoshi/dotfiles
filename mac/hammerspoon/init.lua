@@ -35,6 +35,7 @@ FocusApp({ "ctrl", "command" }, "z", "oreno-todo-app")
 FocusApp({ "ctrl", "command" }, "d", "Logseq")
 FocusApp({ "ctrl", "command" }, "r", "Google カレンダー")
 FocusApp({ "ctrl", "command" }, "v", "ChoiClip")
+FocusApp({ "ctrl", "command" }, "x", "Terminal")
 
 
 
