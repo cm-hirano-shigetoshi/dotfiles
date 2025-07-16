@@ -158,3 +158,5 @@ if [[ $CLAUDECODE = "1" ]]; then
 fi
 
 typeset -U path PATH
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
