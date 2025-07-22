@@ -149,10 +149,6 @@ alias vim='nvim'
 alias 1pass='op run --env-file="$HOME/.local/share/env" --'
 alias ga='git add -u'
 
-# miseで環境差異を吸収する
-alias aws='mise run aws'
-alias cc='mise run claude'
-
 if [[ $CLAUDECODE = "1" ]]; then
     alias rm='echo "AIによるこのコマンドの利用は禁止されています。代替コマンドの実行はせずユーザに指示を仰いでください。"'
 fi

@@ -7,9 +7,3 @@ uv = "latest"
 [settings]
 quiet = true
 experimental = true
-
-[tasks.aws]
-run = ["aws"]
-
-[tasks.claude]
-run = ["claude"]
