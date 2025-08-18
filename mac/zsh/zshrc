@@ -150,7 +150,9 @@ alias 1pass='op run --env-file="$HOME/.local/share/env" --'
 alias ga='git add -u'
 
 if [[ $CLAUDECODE = "1" ]]; then
-    alias rm='echo "AIによるこのコマンドの利用は禁止されています。代替コマンドの実行はせずユーザに指示を仰いでください。"'
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        alias rm='echo "AIによるこのコマンドの利用は禁止されています。代替コマンドの実行はせずユーザに指示を仰いでください。"'
+    fi
 fi
 
 typeset -U path PATH
