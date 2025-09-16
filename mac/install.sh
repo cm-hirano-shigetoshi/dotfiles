@@ -74,8 +74,7 @@ symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 #
 # Claude Code
 #
-npm install -g @anthropic-ai/claude-code
-ln -sf $MISE_NODE_HOME/claude /usr/local/bin/claude
+curl -fsSL https://claude.ai/install.sh | bash
 
 #
 # Neovim
