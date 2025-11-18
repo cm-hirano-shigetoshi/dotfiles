@@ -149,7 +149,8 @@ alias vim='nvim'
 alias 'ka-sa-'='cursor-agent'
 alias 1pass='op run --env-file="$HOME/.local/share/env" --'
 alias ga='git add -u'
-alias claude='mise run claude'
+alias aws='mise run aws --'
+alias claude='mise run claude --'
 
 if [[ $CLAUDECODE = "1" ]]; then
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
