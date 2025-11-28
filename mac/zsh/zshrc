@@ -161,3 +161,6 @@ fi
 typeset -U path PATH
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+alias npx='echo "WARNING: npx は実行しないでください" && false'
+alias npm='echo "WARNING: npm は実行しないでください" && false'
