@@ -105,9 +105,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'l:|=* r:|[.-]=* m:{a-z}={A-
 # 一時的な設定
 #
 if which ls | grep -qF 'coreutils'; then
-  alias ls='ls --color=auto'
+  alias ls='ls --color=auto -A'
 else
-  alias ls='ls -G'
+  alias ls='ls -G -A'
 fi
 export EDITOR="nvim"
 if which arch >/dev/null 2>&1 && [[ $(arch) = "arm64" ]]; then
