@@ -46,8 +46,8 @@ require("lazy").setup({
 
     -- 自作お試し
     'cm-hirano-shigetoshi/fzf-template-nvim-lua',
-    'cm-hirano-shigetoshi/fzf-file-selector.vim',
     'cm-hirano-shigetoshi/fzf-buffer-searcher.lua',
     'cm-hirano-shigetoshi/vim-csvq',
-    'cm-hirano-shigetoshi/TimeMachine.vim'
+    'cm-hirano-shigetoshi/TimeMachine.vim',
+    'shogetoshi/fzf-fd.lua'
 })
