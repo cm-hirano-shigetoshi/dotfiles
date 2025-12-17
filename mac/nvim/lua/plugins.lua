@@ -49,5 +49,6 @@ require("lazy").setup({
     'cm-hirano-shigetoshi/fzf-buffer-searcher.lua',
     'cm-hirano-shigetoshi/vim-csvq',
     'cm-hirano-shigetoshi/TimeMachine.vim',
-    'shogetoshi/fzf-fd.lua'
+    'shogetoshi/fzf-fd.lua',
+    'shogetoshi/fzf-rg.lua',
 })
