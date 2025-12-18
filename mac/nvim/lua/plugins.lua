@@ -51,4 +51,5 @@ require("lazy").setup({
     'cm-hirano-shigetoshi/TimeMachine.vim',
     'shogetoshi/fzf-fd.lua',
     'shogetoshi/fzf-rg.lua',
+    'shogetoshi/fzf-rg-buffer.lua',
 })
