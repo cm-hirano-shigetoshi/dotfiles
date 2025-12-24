@@ -104,11 +104,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'l:|=* r:|[.-]=* m:{a-z}={A-
 #
 # 一時的な設定
 #
-if which ls | grep -qF 'coreutils'; then
-  alias ls='ls --color=auto -A'
-else
-  alias ls='ls -G -A'
-fi
 export EDITOR="nvim"
 if which arch >/dev/null 2>&1 && [[ $(arch) = "arm64" ]]; then
   alias arm64='arch -arch arm64'
@@ -144,6 +139,7 @@ fi
 #
 # エイリアス
 #
+alias ls='eza -Ah --time-style long-iso --git --icons -F=always'
 alias sort='LC_ALL=C sort'
 alias vim='nvim'
 alias 'ka-sa-'='cursor-agent'
@@ -173,3 +169,23 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+# ~/.zshrc に追加
+
+fzf-ls-widget() {
+  local selected
+  selected=$(ls -lQ --color=always | grep -v '^total' | fzf --reverse --multi --ansi -d '"' --nth 2 | awk -F '"' '{print $2}' | sed 's/.*/"&"/' | paste -s -d ' ')
+  if [[ -n "$selected" ]]; then
+    LBUFFER+="$selected "
+  fi
+  zle redisplay
+}
+
+zle -N fzf-ls-widget
+bindkey '^l^s' fzf-ls-widget  # Ctrl+O で起動
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/hirano.shigetoshi/.lmstudio/bin"
+# End of LM Studio CLI section
