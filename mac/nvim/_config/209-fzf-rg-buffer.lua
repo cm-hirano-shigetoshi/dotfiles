@@ -1,1 +1,1 @@
-vim.keymap.set('n', '<Tab>/', '<Plug>fzf-rg-buffer')
+vim.keymap.set('n', '<Tab>/', '<Plug>fzf-rg-buffer-keymap')
