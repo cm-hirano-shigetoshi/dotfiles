@@ -52,6 +52,9 @@ zinit ice wait'!0' silent; zinit light cm-hirano-shigetoshi/snippet
 # ファイル名検索
 zinit ice wait'!0' src"fzf-fd" silent; zinit light shogetoshi/fzf-fd.zsh
 bindkey '\e[Z' fzf-fd
+# fzf-rg
+zinit ice wait'!0' src"fzf-rg" silent; zinit light shogetoshi/fzf-rg.zsh
+bindkey '^s' fzf-rg
 # Powerlevel10k
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
