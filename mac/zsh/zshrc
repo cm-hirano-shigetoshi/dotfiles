@@ -148,6 +148,8 @@ alias 'ka-sa-'='cursor-agent'
 alias 1pass='set -a && source "$HOME/.local/share/env" && set +a &&'
 alias ga='git add -u'
 alias gaa='git add .'
+alias gd='git diff'
+alias gdn='git diff --name-status'
 alias aws='mise run aws --'
 alias claude='mise run claude --'
 
