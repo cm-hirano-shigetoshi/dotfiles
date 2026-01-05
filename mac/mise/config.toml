@@ -1,8 +1,12 @@
+[env]
+MISE_CONFIG_ROOT = '{{config_root}}'
+
 [tools]
 node = "latest"
 deno = "latest"
 python = "latest"
 uv = "latest"
+yarn = "latest"
 
 [settings]
 quiet = true
