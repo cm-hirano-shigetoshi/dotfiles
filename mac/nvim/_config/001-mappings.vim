@@ -133,3 +133,5 @@ nnoremap <silent> vi<space> :call VisualInner()<cr>
 nnoremap <silent> va<space> :call VisualAll()<cr>
 nnoremap <silent> yi<space> :call YankInner()<cr>
 nnoremap <silent> ya<space> :call YankAll()<cr>
+
+nnoremap cp :<C-u>let @+ = expand('%:p')<CR>
