@@ -7,6 +7,7 @@ deno = "latest"
 python = "latest"
 uv = "latest"
 yarn = "latest"
+pnpm = "latest"
 
 [settings]
 quiet = true
