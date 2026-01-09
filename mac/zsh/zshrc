@@ -37,9 +37,11 @@ zinit light cm-hirano-shigetoshi/d
 bindkey "^d^d" d
 
 # コマンド履歴
+zinit ice wait'!0' src"command-history" silent; zinit light shogetoshi/command-history.zsh
+bindkey "^r" _command_history_select
 zinit ice atclone"bash build.sh" atpull'%atclone' src"history.zsh"
 zinit light cm-hirano-shigetoshi/CommandHistory
-bindkey "^r" fzf-command-history
+bindkey "^t" fzf-command-history
 
 # コマンドに色を付ける
 zinit ice wait'!0' silent; zinit light zdharma/fast-syntax-highlighting
