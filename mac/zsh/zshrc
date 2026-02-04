@@ -153,6 +153,7 @@ alias gaa='git add .'
 alias gd='git diff'
 alias gdn='git diff --name-status'
 alias envf="env | fzf --reverse --wrap --preview 'echo {} | sed \"s/^[^=]\+=//\" | tr \":\" \"\n\"' --preview-window 'up:wrap'"
+alias gfzp="fzf --reverse --ansi --multi"
 
 if [[ $CLAUDECODE = "1" ]]; then
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
