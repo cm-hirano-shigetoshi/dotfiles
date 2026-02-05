@@ -41,6 +41,18 @@ FocusApp({ "ctrl", "command" }, "x", "Terminal")
 -- マウスポインタを次のディスプレイへ移動
 MoveMouseToNextScreen({ "alt" }, "5")
 
+-- Cmd + Shift + M でマウスをアクティブウィンドウの中央に移動
+hs.hotkey.bind({"alt"}, "6", function()
+    local win = hs.window.focusedWindow()
+    if win then
+        local frame = win:frame()
+        hs.mouse.absolutePosition({
+            x = frame.x + frame.w / 2,
+            y = frame.y + frame.h / 2
+        })
+    end
+end)
+
 
 -- 以下、自動リロードの設定
 function ReloadConfig(files)
