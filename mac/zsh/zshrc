@@ -176,6 +176,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# playwright
+export PLAYWRIGHT_MCP_USER_DATA_DIR=/tmp/playwright-profile
 
 # ~/.zshrc に追加
 
