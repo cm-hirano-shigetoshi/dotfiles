@@ -75,7 +75,6 @@ zinit ice wait'!0' src"aws-cli-fzf.zsh" silent; zinit light cm-hirano-shigetoshi
 # mise
 #
 [[ -e "$HOME/.local/bin/mise" ]] && eval "$($HOME/.local/bin/mise activate zsh)"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 #
 # 一般の設定
