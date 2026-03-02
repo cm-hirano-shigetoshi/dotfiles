@@ -44,6 +44,11 @@ brew install xz
 $HOME/.local/bin/mise install
 
 #
+# npm
+#
+ln -sf $SCRIPT_DIR/npm/npmrc $HOME/.npmrc
+
+#
 # Rust
 #
 sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y
