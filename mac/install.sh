@@ -49,6 +49,16 @@ $HOME/.local/bin/mise install
 ln -sf $SCRIPT_DIR/npm/npmrc $HOME/.npmrc
 
 #
+# pip
+#
+ln -sf $SCRIPT_DIR/pip/pip.conf $HOME/.config/pip/pip.conf
+
+#
+# uv
+#
+ln -sf $SCRIPT_DIR/uv/uv.toml $HOME/.config/uv/uv.toml
+
+#
 # Rust
 #
 sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y
