@@ -34,8 +34,7 @@ FocusApp({ "ctrl", "command" }, "e", "microsoft edge")
 FocusApp({ "ctrl", "command" }, "z", "OrenoTodo")
 FocusApp({ "ctrl", "command" }, "d", "Logseq")
 FocusApp({ "ctrl", "command" }, "r", "GoogleCalendar")
-FocusApp({ "ctrl", "command" }, "v", "ChoiClip")
-FocusApp({ "ctrl", "command" }, "x", "Terminal")
+FocusApp({ "ctrl", "command" }, "x", "Ghostty")
 
 
 -- マウスポインタを次のディスプレイへ移動
