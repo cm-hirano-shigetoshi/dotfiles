@@ -14,6 +14,11 @@ fi
 /bin/rm -fr $HOME/.local/share/nvim/lazy $HOME/.local/share/nvim/lazy-rocks
 
 #
+# herdr
+#
+/bin/rm -fr $HOME/.config/herdr
+
+#
 # WezTerm
 #
 /bin/rm -fr $HOME/.config/wezterm

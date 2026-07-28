@@ -1,0 +1,16 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+;"
+
+new_tab = ["ctrl+command+;"]
+previous_tab = ["ctrl+command+["]
+next_tab = ["ctrl+command+]"]
+
+focus_pane_left = ["ctrl+command+h"]
+focus_pane_down = ["ctrl+command+j"]
+focus_pane_up = ["ctrl+command+k"]
+focus_pane_right = ["ctrl+command+l"]
+split_vertical = ["ctrl+command+."]
+split_horizontal = ["ctrl+command+,"]
+

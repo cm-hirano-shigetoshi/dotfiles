@@ -87,6 +87,12 @@ rm -fr $HOME/.config/wezterm
 symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 
 #
+# herdr
+#
+mkdir -p $HOME/.config/herdr
+ln -sf $SCRIPT_DIR/herdr/config.toml $HOME/.config/herdr/config.toml
+
+#
 # Claude Code
 #
 curl -fsSL https://claude.ai/install.sh | bash
