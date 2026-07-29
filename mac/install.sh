@@ -87,6 +87,12 @@ rm -fr $HOME/.config/wezterm
 symlink_dir $SCRIPT_DIR/wezterm $HOME/.config/wezterm
 
 #
+# Ghostty
+#
+mkdir -p $HOME/.config/
+ln -sf $SCRIPT_DIR/ghostty/config $HOME/.config/ghostty/config
+
+#
 # herdr
 #
 mkdir -p $HOME/.config/herdr

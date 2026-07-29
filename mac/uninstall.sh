@@ -19,6 +19,11 @@ fi
 /bin/rm -fr $HOME/.config/herdr
 
 #
+# Ghostty
+#
+/bin/rm -fr $HOME/.config/ghostty
+
+#
 # WezTerm
 #
 /bin/rm -fr $HOME/.config/wezterm
