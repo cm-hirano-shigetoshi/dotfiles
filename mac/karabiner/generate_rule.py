@@ -57,6 +57,7 @@ INTERNAL_KEY = {
         ">": "S-period",
         "?": "S-slash",
         "`": "grave_accent_and_tilde",
+        "/": "slash",
         "\\": "international3",
         "enter": "return_or_enter",
         "space": "spacebar",
