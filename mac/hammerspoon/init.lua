@@ -35,13 +35,14 @@ FocusApp({ "ctrl", "command" }, "z", "OrenoTodo")
 FocusApp({ "ctrl", "command" }, "d", "Logseq")
 FocusApp({ "ctrl", "command" }, "r", "GoogleCalendar")
 FocusApp({ "ctrl", "command" }, "x", "Ghostty")
+FocusApp({ "ctrl", "command" }, "space", "Ghostty")
 
 
 -- マウスポインタを次のディスプレイへ移動
 MoveMouseToNextScreen({ "alt" }, "5")
 
 -- Cmd + Shift + M でマウスをアクティブウィンドウの中央に移動
-hs.hotkey.bind({"alt"}, "6", function()
+hs.hotkey.bind({ "alt" }, "6", function()
     local win = hs.window.focusedWindow()
     if win then
         local frame = win:frame()
