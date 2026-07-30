@@ -37,11 +37,21 @@ FocusApp({ "ctrl", "command" }, "r", "GoogleCalendar")
 FocusApp({ "ctrl", "command" }, "x", "Ghostty")
 
 
+-- Ghostty
+-- ペインを閉じる
+RemapKeys({ { app = "Ghostty", from = { mods = { "cmd" }, key = "w", }, to = { mods = { "cmd", "ctrl" }, key = "/", } } })
+-- 新規タブ
+RemapKeys({ { app = "Ghostty", from = { mods = { "cmd" }, key = "t", }, to = { mods = { "cmd", "ctrl" }, key = ";", } } })
+-- タブ切り替え
+RemapKeys({ { app = "Ghostty", from = { mods = { "ctrl" }, key = "tab", }, to = { mods = { "cmd", "ctrl" }, key = "]", } } })
+RemapKeys({ { app = "Ghostty", from = { mods = { "ctrl", "shift" }, key = "tab", }, to = { mods = { "cmd", "ctrl" }, key = "[", } } })
+
+
 -- マウスポインタを次のディスプレイへ移動
 MoveMouseToNextScreen({ "alt" }, "5")
 
 -- Cmd + Shift + M でマウスをアクティブウィンドウの中央に移動
-hs.hotkey.bind({"alt"}, "6", function()
+hs.hotkey.bind({ "alt" }, "6", function()
     local win = hs.window.focusedWindow()
     if win then
         local frame = win:frame()

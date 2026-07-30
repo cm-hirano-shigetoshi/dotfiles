@@ -1,5 +1,8 @@
 onboarding = false
 
+[ui]
+prompt_new_tab_name = false
+
 [keys]
 prefix = "ctrl+;"
 
@@ -13,4 +16,5 @@ focus_pane_up = ["ctrl+command+k"]
 focus_pane_right = ["ctrl+command+l"]
 split_vertical = ["ctrl+command+."]
 split_horizontal = ["ctrl+command+,"]
+close_pane = ["ctrl+command+/"]
 
