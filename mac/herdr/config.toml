@@ -9,6 +9,7 @@ prefix = "ctrl+;"
 new_tab = ["ctrl+command+;"]
 previous_tab = ["ctrl+command+["]
 next_tab = ["ctrl+command+]"]
+close_tab = ["ctrl+command+shift+/"]
 
 focus_pane_left = ["ctrl+command+h"]
 focus_pane_down = ["ctrl+command+j"]

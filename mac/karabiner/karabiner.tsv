@@ -106,6 +106,7 @@ Name("choiclip_paste_direct")	From('enter', mod="Cc")	To('enter', mod="COSc")	Co
 
 # herdr on Ghostty
 Name("herdr_close_pane")	From('w', mod='C')	To('/', mod='Cc')	Condition("application", {"bundle_identifiers": ["ghostty"]})
+Name("herdr_close_tab")	From('w', mod='CS')	To('/', mod='CcS')	Condition("application", {"bundle_identifiers": ["ghostty"]})
 Name("herdr_new_tab")	From('t', mod='C')	To(';', mod='Cc')	Condition("application", {"bundle_identifiers": ["ghostty"]})
 Name("herdr_next_tab")	From('tab', mod='c')	To(']', mod='Cc')	Condition("application", {"bundle_identifiers": ["ghostty"]})
 Name("herdr_prev_tab")	From('tab', mod='cS')	To('[', mod='Cc')	Condition("application", {"bundle_identifiers": ["ghostty"]})
