@@ -154,6 +154,7 @@ alias gdn='git diff --name-status'
 alias envf="env | fzf --reverse --wrap --preview 'echo {} | sed \"s/^[^=]\+=//\" | tr \":\" \"\n\"' --preview-window 'up:wrap'"
 alias gfzp="fzf --reverse --ansi --multi"
 alias gdhtml="uv run https://gist.github.com/shogetoshi/49e4d802b22e17aa4d1b04f65ceb02ee/raw/git_diff_to_html.py"
+alias redshift="uv run --with boto3 https://raw.githubusercontent.com/cm-hirano-shigetoshi/redshift-dataapi-synchronously/refs/heads/master/redshift"
 
 typeset -U path PATH
 
