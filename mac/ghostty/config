@@ -1,2 +1,12 @@
+# バックスラッシュ
 keybind = ¥=text:\x5c
+# 左optionキーをaltとして使う
+macos-option-as-alt = left
+
+# フォント設定
+font-family = Moralerspace Neon
+font-size = 15
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
 
