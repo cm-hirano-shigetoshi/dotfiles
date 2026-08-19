@@ -90,8 +90,9 @@ class From:
     key: str
     mod: list
     vmods: list
+    optional: list = field(default=None)
 
-    def __init__(self, key, mod="", vmods=""):
+    def __init__(self, key, mod="", vmods="", optional=None):
         def has_shift(mod):
             return "S" in mod
 
@@ -107,6 +108,7 @@ class From:
         self.key = key
         self.mod = []
         self.vmods = vmods.split(",") if vmods else []
+        self.optional = optional
         if has_shift(mod):
             self.mod.append("shift")
         if has_control(mod):
@@ -117,10 +119,15 @@ class From:
             self.mod.append("command")
 
     def _generate_modifiers(self):
-        if "shift" in self.mod:
-            return {"mandatory": self.mod, "optional": ["any"]}
-        else:
-            return {"mandatory": self.mod, "optional": ["control", "option", "command"]}
+        modifiers = {"mandatory": self.mod}
+        if self.optional is None:
+            if "shift" in self.mod:
+                modifiers["optional"] = ["any"]
+            else:
+                modifiers["optional"] = ["control", "option", "command"]
+        elif self.optional:
+            modifiers["optional"] = self.optional
+        return modifiers
 
     def asdict(self):
         key_or_mouse = (
@@ -282,7 +289,7 @@ class Binding:
 
         def add_from(manipulators, from_):
             from_dict = from_.asdict()
-            if self.from_.vmods:
+            if self.from_.vmods and from_.optional is None:
                 from_dict["modifiers"]["optional"] = ["any"]
             manipulators["from"] = from_dict
 
@@ -336,7 +343,8 @@ class VirtualModifier:
 
     def asdict(self):
         from_ = self.from_.asdict()
-        from_["modifiers"]["optional"] = ["any"]
+        if self.from_.optional is None:
+            from_["modifiers"]["optional"] = ["any"]
         to = []
         to_after_key_up = []
         for vmod in self.vmods:
@@ -353,8 +361,6 @@ class VirtualModifier:
 
 
 def generat_modification(line):
-    import sys
-
     def get_objects(line):
         """
         Name
