@@ -82,7 +82,7 @@ Name("easy_next_word")	From('.', vmods='eisuu')	To('right_arrow', mod='O')
 
 Name("easy_click")	From('n', vmods='eisuu')	To('mouse_left_click')
 
-Name("terminal_ctrl_c_eisuu")	From('c', mod='c')	To('c', mod="c")	To('eisuu')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty|ghostty"]})
+Name("terminal_ctrl_c_eisuu")	From('c', mod='c')	To('c', mod="c")	To('eisuu')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritty|ghostty|cliphistory"]})
 Name("terminal_ctrl_1")	From('1', mod='c')	To('escape')	To('1')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritt|ghostty"]})
 Name("terminal_ctrl_2")	From('2', mod='c')	To('escape')	To('2')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritt|ghostty"]})
 Name("terminal_ctrl_3")	From('3', mod='c')	To('escape')	To('3')	Condition("application", {"bundle_identifiers": ["Terminal|iterm2|wezterm|alacritt|ghostty"]})
