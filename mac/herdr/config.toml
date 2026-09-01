@@ -23,5 +23,7 @@ swap_pane_down = ["prefix+ctrl+j"]
 swap_pane_up = ["prefix+ctrl+k"]
 swap_pane_right = ["prefix+ctrl+l"]
 close_pane = ["ctrl+command+/"]
+zoom = ["ctrl+command+shift+m"]
 
 copy_mode = ["ctrl+command+shift+["]
+
