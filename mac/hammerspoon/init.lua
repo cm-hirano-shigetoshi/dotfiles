@@ -15,12 +15,6 @@ hs.hotkey.bind({ "command", "option", "shift", "ctrl" }, "return", function()
 end)
 
 
-hs.hotkey.bind({ "ctrl", "command" }, "g", function()
-    hs.application.launchOrFocus("wezterm")
-    hs.eventtap.keyStroke({ "cmd", "ctrl", "shift" }, "2")
-end)
-
-
 -- アプリのフォーカス
 FocusApp({ "ctrl", "command" }, "a", "google chrome")
 FocusApp({ "ctrl", "command" }, "s", "slack")
