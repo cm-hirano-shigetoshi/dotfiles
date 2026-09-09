@@ -92,6 +92,8 @@ setopt hist_ignore_dups
 # deleteキー
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
+# コマンドラインでもコメントを使えるようにする
+setopt interactivecomments
 
 #
 # 補完の設定
